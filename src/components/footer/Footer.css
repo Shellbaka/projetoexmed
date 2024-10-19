@@ -10,7 +10,7 @@
     background-color: #49eefa4b;
 }
 
-footer img {
+footer div img {
     width: 200px;
     height: auto;
     margin-left: 40px;
@@ -34,10 +34,21 @@ footer img {
     flex-direction: column;
     padding: 5px 50px;
     color: rgb(10, 124, 255);
+    border-radius: 50px;
+    
 }
 
 a:hover {
-    color: rgb(54, 186, 247);
+    color: rgb(88, 111, 116);
+    
+}
+
+.footer div img:hover {
+transform: scale(1.08);
+transition: all 0.3s ease;
+z-index: 10;
+cursor: pointer;
+
 }
 
 @media (max-width: 768px) {

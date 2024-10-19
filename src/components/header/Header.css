@@ -15,10 +15,13 @@
 }
 
 .logo img {
-    width: 120px;
+    width: 150px;
     height: auto;
     margin-left: 20px;
     transition: all 0.3s ease;
+    padding: 5px 10px;
+    
+    z-index: 1;
 }
 
 .nav {
@@ -40,7 +43,28 @@
     padding: 5px 30px;
     transition: all 0.3s ease;
     white-space: nowrap; 
+    z-index: 1;
 }
+
+
+.nav a:hover {
+background-color: #6ce9ffd8;
+color: #ffffff;
+z-index: 10;
+transform: scale(1.05);
+
+}
+
+.logo img:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+    z-index: 10;
+    cursor: pointer;
+}
+
+
+
+
 
 @media (max-width: 768px) {
     .header {

@@ -7,7 +7,7 @@ return (
 
 <div>
     
-<img id='Exmed' src="public/logoexmed.svg" alt="Logo" />
+<img className='exmed' src="public/logoexmed.svg" alt="Logo" />
 </div>
 
 <nav>
