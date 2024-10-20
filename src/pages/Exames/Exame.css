@@ -1,0 +1,58 @@
+.Exame {
+    align-items: center;
+text-align: center;
+flex-direction: row;
+display: flex;
+justify-content: center;
+color: black;
+background-color: #ffffff;
+
+width: auto;
+height: auto;
+font-size: 30px;
+position: fixed;
+bottom: 27%;
+    
+
+
+    border: 1px solid red
+}
+
+.botao1 {
+   position: absolute;
+   top: 0px;
+   left: 0;
+}
+
+.botao2 {
+    position: absolute;
+    top: 0px;
+    right: 0;
+}
+
+
+.Buscar img {
+    width: 400px;
+    height: 500px;
+    gap: 30px;
+    
+    margin: 40px;
+}
+
+.Agendar img {
+        width: 400px;
+        height: 500px;
+    
+}
+.botao1 button {
+    font-size: 35px;
+    background-color: #d4d4d4;
+    width: auto;
+
+}
+.botao2 button {
+    font-size: 35px;
+    background-color: #d4d4d4;
+    width: auto;
+
+}
