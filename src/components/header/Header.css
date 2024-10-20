@@ -27,6 +27,7 @@
 .nav {
     display: flex;
     flex-wrap: wrap; 
+    
 }
 
 .nav a {
@@ -48,8 +49,8 @@
 
 
 .nav a:hover {
-background-color: #6ce9ffd8;
-color: #ffffff;
+    background-color: #B1EFE8;
+
 z-index: 10;
 transform: scale(1.05);
 
