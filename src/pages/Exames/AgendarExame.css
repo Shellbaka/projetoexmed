@@ -1,0 +1,34 @@
+.Agendamento {
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid red;
+    color: black;
+    background-color: #ffffff;
+    padding: 20px 20px;
+    width: auto;
+    height: auto;
+    font-size: 30px;
+    position: fixed;
+    bottom: 43%;
+    right: 15%;
+    z-index: 1; /* Mantém a estrutura do conteúdo */
+}
+
+.Agendamento img {
+    width: 400px;
+    height: 250px;
+    margin-left: 40px;
+    border-radius: 30px;
+}
+
+.ExameSangues {
+    flex-direction: column;
+}
+
+.ExameSangue {
+    position: absolute;
+
+}
