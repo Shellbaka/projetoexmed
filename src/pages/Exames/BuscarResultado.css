@@ -1,0 +1,13 @@
+.BuscarResultado.css {
+    font-size: 30px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: row;
+    display: flex;
+    color: black;
+    background-color: #ffffff;
+    padding: 20px 20px;
+    width: auto;
+    height: auto;
+}
