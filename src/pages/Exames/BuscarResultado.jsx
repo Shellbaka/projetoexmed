@@ -13,11 +13,21 @@ return(
     <button type="submit" class="BotaoProcura">Buscar</button>
 </form>
 
-
+<div className='CaixaSelecaoExame'>
+<p>Selecione o Tipo de Exame</p>
+<select className='ExameTipo'>
+    
+    <option>Exame de Sangue</option>
+    <option>Urina e Fezes</option>
+    <option>Vacinação</option>
+   
+</select>
 
 </div>
 
 
+
+</div>
 
 
 );
