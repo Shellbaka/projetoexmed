@@ -1,4 +1,4 @@
-.BuscarResultado.css {
+.BuscarResultado {
     font-size: 30px;
     align-items: center;
     justify-content: center;
@@ -10,4 +10,51 @@
     padding: 20px 20px;
     width: auto;
     height: auto;
+    border-radius: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.555);
+        z-index: 1; /* Mantém a estrutura do conteúdo */
+        position: fixed;
+        bottom: 75%;
+        right: 38%;
+    
+
+}
+
+
+.CaixaDeBusca {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border-radius: 25px;
+    padding: 10px;
+    width: 400px;
+    margin: 0 auto;
+    
+    font-size: 30px;
+}
+
+
+
+.Procurar {
+    border: none;
+    padding: 10px;
+    border-radius: 20px 0px 0px 20px;
+    width: 500px;
+    outline: none;
+    font-size: 20px;
+    background-color: #c9c9c9ab;
+}
+
+.BotaoProcura {
+    border: none;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px 20px 20px 5px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
 }

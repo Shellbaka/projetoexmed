@@ -5,9 +5,13 @@ return(
 
 <div className='BuscarResultado'>
 
-<insert> 
-    
-</insert>
+
+<form class="CaixaDeBusca">
+    <input
+    type="text" class="Procurar" placeholder="Pesquisar...">
+    </input> 
+    <button type="submit" class="BotaoProcura">Buscar</button>
+</form>
 
 
 
