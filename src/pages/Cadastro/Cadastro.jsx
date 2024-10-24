@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import './app.css';
+import './Cadastro.css';
 
-function () {
+function Cadastro() {
   const [formData, setFormData] = useState({
     nome: '',
     endereco: '',
@@ -26,7 +26,7 @@ function () {
   return (
     <div className="container">
       <div className="avatar">
-        <img src="/avatar.png" alt="Avatar" />
+        <img src="public/logoexmed.svg" alt="Avatar" />
       </div>
       <form onSubmit={handleSubmit} className="form">
         <h2>Cadastro</h2>
@@ -40,16 +40,7 @@ function () {
             required
           />
         </label>
-        <label>
-          Endereço:
-          <input
-            type="text"
-            name="endereco"
-            value={formData.endereco}
-            onChange={handleChange}
-            required
-          />
-        </label>
+        
         <label>
           CPF:
           <input
@@ -60,16 +51,7 @@ function () {
             required
           />
         </label>
-        <label>
-          Contato:
-          <input
-            type="text"
-            name="contato"
-            value={formData.contato}
-            onChange={handleChange}
-            required
-          />
-        </label>
+        
         <label>
           E-mail:
           <input
@@ -106,4 +88,4 @@ function () {
   );
 }
 
-export default cadastro;
+export default Cadastro;
