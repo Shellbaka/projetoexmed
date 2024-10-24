@@ -1,6 +1,5 @@
+
 .footer {
-    position: fixed;
-    bottom: 0;
     border: solid rgb(0, 0, 0) 1px;
     width: 100%; 
     display: flex;
@@ -8,7 +7,9 @@
     align-items: center;
     padding: 30px 30px;
     background-color: #49eefa4b;
+    position: relative;
 }
+
 
 footer div img {
     width: 200px;
