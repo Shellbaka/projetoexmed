@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './app.css';
 
-function app() {
+function () {
   const [formData, setFormData] = useState({
     nome: '',
     endereco: '',
