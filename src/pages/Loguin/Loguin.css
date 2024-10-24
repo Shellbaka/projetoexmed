@@ -1,31 +1,62 @@
 .container {
-    background-color: #87b091;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(220, 200, 0, 0.1);
-    width: 300px;
-    text-align: center;
-    margin: 0 auto;
+  background-color: #87b091;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(220, 200, 0, 0.1);
+  width: 300px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+
+.avatar {
+  margin-bottom: 20px;
+}
+
+.avatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.form label {
+  display: block;
+  margin: 15px 0;
+  text-align: left;
+}
+
+.form input {
+  width: 93%;
+  padding: 10px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  color: #000; 
+}
+
+button {
+  background-color: #46b34c;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #42a747;
+}
+
+/* Adaptação do design para telas grandes */
+@media (max-width: 1920px) {
+  .container {
+      width: 330px;
+      margin: 10% auto; /* Centralizar sem o uso de position: fixed */
   }
 
-  .avatar {
-    margin-bottom: 20px;
-  }
-  
-  .avatar img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-  }
-  
-  .form label {
-    display: block;
-    margin: 15px 0;
-    text-align: left;
-  }
-  
   .form input {
-    width: 93%;
+    width: 100%;
     padding: 10px;
     margin: 6px 0;
     border: 1px solid #ccc;
@@ -33,65 +64,29 @@
     background-color: #f0f0f0;
     color: #000; 
   }
-  
   button {
-    background-color: #4CAF50;
-    color: white;
+    
     padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
     width: 100%;
   }
-  
-  button:hover {
-    background-color: #45a049;
+
+  .avatar {
+    margin-bottom: 10px;
+   
+    height: 80px;
+    border-radius: 30px;
+    border: #2a742d88 solid 1px;
+    background-color: #2b9b30;
   }
   
-  /* Adaptação do design para telas grandes */
-  @media (max-width: 1920px) {
-    .container {
-        width: 330px;
-        margin: 10% auto; /* Centralizar sem o uso de position: fixed */
-    }
+  .avatar img {
+    width: 145px;
+    height: 80px;
+    border-radius: 30px; 
+    padding: 5px;
   
-    .form input {
-      width: 100%;
-      padding: 10px;
-      margin: 6px 0;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      background-color: #f0f0f0;
-      color: #000; 
-    }
-    button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      width: 100%;
-    }
-  
-    .avatar {
-      margin-bottom: 10px;
-     
-      height: 80px;
-      border-radius: 30px;
-      border: #2a742d88 solid 1px;
-      background-color: #2b9b30;
-    }
     
-    .avatar img {
-      width: 145px;
-      height: 80px;
-      border-radius: 30px; 
-      padding: 5px;
-    
-      
-    }
-  
   }
-  
-  
+
+}
+
