@@ -4,14 +4,14 @@
     left: 0;
     width: 100%;
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
     padding: 20px;
     background-color: #f8f8f8;
     z-index: 1000;
     border: solid 1px rgb(29, 27, 27);
-    box-sizing: border-box; 
-    overflow: hidden; 
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .logo img {
@@ -25,8 +25,8 @@
 
 .nav {
     display: flex;
-    flex-wrap: wrap; 
-    
+    flex-wrap: wrap;
+
 }
 
 .nav a {
@@ -42,7 +42,7 @@
     border-radius: 45px;
     padding: 5px 30px;
     transition: all 0.3s ease;
-    white-space: nowrap; 
+    white-space: nowrap;
     z-index: 1;
 }
 
@@ -50,8 +50,8 @@
 .nav a:hover {
     background-color: #B1EFE8;
 
-z-index: 10;
-transform: scale(1.05);
+    z-index: 10;
+    transform: scale(1.05);
 
 }
 
@@ -74,7 +74,7 @@ transform: scale(1.05);
 
     .logo img {
         width: 100px;
-        margin: 0 auto; 
+        margin: 0 auto;
     }
 
     .nav a {
@@ -103,6 +103,6 @@ transform: scale(1.05);
         font-size: 16px;
         padding: 10px 20px;
         margin: 5px 0;
-        width: 90%; 
+        width: 90%;
     }
 }

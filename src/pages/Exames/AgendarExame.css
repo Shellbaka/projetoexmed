@@ -3,7 +3,7 @@
     text-align: center;
     flex-direction: row;
     display: flex;
-    
+
     color: black;
     background-color: #ffffff;
     padding: 5px 5px;
@@ -14,7 +14,8 @@
     bottom: 43%;
     left: 13.5%;
     right: 5%;
-    z-index: 1; /* Mantém a estrutura do conteúdo */
+    z-index: 1;
+    /* Mantém a estrutura do conteúdo */
 }
 
 .Agendamento img {
@@ -24,10 +25,12 @@
     border-radius: 30px;
     border: 4px solid rgba(8, 115, 255, 0.411);
     z-index: 1;
-    
+
 }
 
-.ExameSangues button, .Vacinacao button, .UrinaFezes button {
+.ExameSangues button,
+.Vacinacao button,
+.UrinaFezes button {
     font-size: 35px;
     background-color: #d4d4d4;
     border-radius: 40px;
@@ -35,31 +38,35 @@
     border: 2px solid rgba(8, 115, 255, 0.397);
 }
 
-.ExameSangues button{
-    
+.ExameSangues button {
+
     position: absolute;
     left: 5.9%;
     bottom: 73%;
     width: auto;
-    z-index: 100; /* Garante que o botão fique na frente */
-    
+    z-index: 100;
+    /* Garante que o botão fique na frente */
+
 }
 
-.Vacinacao button{
-    
+.Vacinacao button {
+
     position: absolute;
     left: 66.8%;
     bottom: 73%;
     width: auto;
-    z-index: 100; /* Garante que o botão fique na frente */
+    z-index: 100;
+    /* Garante que o botão fique na frente */
 }
-.UrinaFezes button{
-    
+
+.UrinaFezes button {
+
     position: absolute;
     left: 36.6%;
     bottom: 76%;
     width: auto;
-    z-index: 100; /* Garante que o botão fique na frente */
+    z-index: 100;
+    /* Garante que o botão fique na frente */
 }
 
 .Agendamento img:hover {
@@ -70,7 +77,8 @@
 
 }
 
-.ExameSangues button:hover, .Vacinacao button:hover, .UrinaFezes button:hover {
+.ExameSangues button:hover,
+.Vacinacao button:hover,
+.UrinaFezes button:hover {
     background-color: #B1EFE8;
 }
-

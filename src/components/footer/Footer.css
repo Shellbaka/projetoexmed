@@ -1,7 +1,6 @@
-
 .footer {
     border: solid rgb(0, 0, 0) 1px;
-    width: 100%; 
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,19 +33,19 @@ footer div img {
     padding: 5px 50px;
     color: rgb(10, 124, 255);
     border-radius: 50px;
-    
+
 }
 
 a:hover {
     color: rgb(88, 111, 116);
-    
+
 }
 
 .footer div img:hover {
-transform: scale(1.08);
-transition: all 0.3s ease;
-z-index: 10;
-cursor: pointer;
+    transform: scale(1.08);
+    transition: all 0.3s ease;
+    z-index: 10;
+    cursor: pointer;
 
 }
 
@@ -59,7 +58,7 @@ cursor: pointer;
     footer img {
         width: 120px;
         top: 90%;
-        position: relative; 
+        position: relative;
         margin-left: 0;
         margin-bottom: 15px;
     }
@@ -81,7 +80,7 @@ cursor: pointer;
     footer img {
         width: 80px;
         margin-bottom: 10px;
-        position: relative; 
+        position: relative;
     }
 
     .footer a {

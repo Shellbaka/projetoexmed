@@ -40,7 +40,7 @@ function Cadastro() {
             required
           />
         </label>
-        
+
         <label>
           CPF:
           <input
@@ -51,7 +51,7 @@ function Cadastro() {
             required
           />
         </label>
-        
+
         <label>
           E-mail:
           <input

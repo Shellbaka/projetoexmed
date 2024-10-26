@@ -15,11 +15,12 @@
     height: auto;
     border-radius: 20px;
     border: 2px solid rgba(0, 0, 0, 0.555);
-        z-index: 1; /* Mantém a estrutura do conteúdo */
-        position: fixed;
-        bottom: 75%;
-        right: 38%;
-    
+    z-index: 1;
+    /* Mantém a estrutura do conteúdo */
+    position: fixed;
+    bottom: 75%;
+    right: 38%;
+
 
 }
 
@@ -28,12 +29,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     border-radius: 25px;
     padding: 10px;
     width: 400px;
     margin: 0 auto;
-    
+
     font-size: 30px;
 }
 
@@ -62,12 +63,12 @@
     background-color: #0056b3;
 }
 
-.CaixaSelecaoExame  {
+.CaixaSelecaoExame {
     font-size: 20px;
     gap: 0;
     padding: 0;
     margin: 0;
-    
+
 }
 
 .CaixaSelecaoExame p {
@@ -86,6 +87,6 @@
     padding: 10px;
     border-radius: 20px 10px 10px 20px;
     width: 400px;
-    
-    
+
+
 }

@@ -10,7 +10,7 @@ export default function AgendarExame() {
                 <a href='#ExamedeSangue'>
                     <img src='https://www.valordeplanosdesaude.com.br/wp-content/uploads/2018/10/exame-de-sangue-870x400.jpg' alt='Exame de Sangue'></img>
                 </a>
-                
+
             </div>
             <div className='UrinaFezes'>
                 <button className='UrinaFezes1'>Urina e Fezes</button>
