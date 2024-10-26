@@ -11,7 +11,6 @@
     z-index: 1000;
     border: solid 1px rgb(29, 27, 27);
     box-sizing: border-box;
-    overflow: hidden;
 }
 
 .logo img {
@@ -26,7 +25,6 @@
 .nav {
     display: flex;
     flex-wrap: wrap;
-
 }
 
 .nav a {
@@ -46,26 +44,17 @@
     z-index: 1;
 }
 
-
 .nav a:hover {
     background-color: #B1EFE8;
-
-    z-index: 10;
     transform: scale(1.05);
-
 }
 
 .logo img:hover {
     transform: scale(1.1);
-    transition: all 0.3s ease;
-    z-index: 10;
     cursor: pointer;
 }
 
-
-
-
-
+/* Responsividade */
 @media (max-width: 768px) {
     .header {
         flex-direction: column;

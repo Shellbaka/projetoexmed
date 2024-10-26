@@ -16,7 +16,10 @@ function App() {
   return (
     <>
       <Header/>
-      <Loguin/>
+      <div className="main-content">
+
+     <BuscarResultado/>
+      </div>
       <Footer/>
       
     </>

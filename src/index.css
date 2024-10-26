@@ -30,7 +30,13 @@ body {
 
 .main-content {
   flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 80px;
+ 
 }
+
 
 
 
