@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 export default function Header() {
@@ -8,12 +9,12 @@ export default function Header() {
         <img src="public/logoexmed.svg" alt="Logo" />
       </div>
       <nav className="nav">
-        <a href="#home">Home</a>
-        <a href="#exames">Exames</a>
-        <a href="#sobre-nos">Sobre Nós</a>
-        <a href="#central-de-ajuda">Central de Ajuda</a>
-        <a href="#minha-conta">Minha Conta</a>
+        <Link to="/">Home</Link>
+        <Link to="/exame">Exames</Link>
+        <Link to="/sobre-nos">Sobre Nós</Link>
+        <Link to="/central-de-ajuda">Central de Ajuda</Link>
+        <Link to="/minha-conta">Minha Conta</Link>
       </nav>
     </header>
   );
-};
+}

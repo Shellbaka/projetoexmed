@@ -22,6 +22,7 @@ export default function LoginPage() {
     e.preventDefault();
     if (validateForm()) {
       console.log(formData);
+      // Aqui você pode chamar uma função para enviar os dados do formulário
     }
   };
 
@@ -29,7 +30,11 @@ export default function LoginPage() {
     <div className="page-container">
       {/* Imagem na metade esquerda */}
       <div className="image-section">
-        <img src="https://www.projetodraft.com/wp-content/uploads/2021/12/exmed-logo.png.webp" alt="Imagem de fundo" className="background-image" />
+        <img
+          src="https://d1k8mc291fp8hd.cloudfront.net/wp-content/uploads/2024/10/15015.jpg"
+          alt="Imagem de fundo"
+          className="background-image"
+        />
       </div>
 
       {/* Formulário de Login na metade direita */}
@@ -45,7 +50,8 @@ export default function LoginPage() {
               placeholder="Digite seu Email"
               value={formData.email}
               onChange={handleChange}
-              className="login-input"
+              className={`login-input ${errors.email ? 'input-error' : ''}`} // Adiciona classe de erro
+              aria-label="Email"
             />
             {errors.email && <span className="error-message">{errors.email}</span>}
             
@@ -55,17 +61,23 @@ export default function LoginPage() {
               placeholder="Senha"
               value={formData.password}
               onChange={handleChange}
-              className="login-input"
+              className={`login-input ${errors.password ? 'input-error' : ''}`} // Adiciona classe de erro
+              aria-label="Senha"
             />
             {errors.password && <span className="error-message">{errors.password}</span>}
             
-            <button type="submit" className="login-button login-button-primary">Entrar</button>
+            <button type="submit" className="login-button login-button-primary" disabled={Object.keys(errors).length > 0}>
+              Entrar
+            </button>
+            
             
             <div className="forgot-password">
               <a href="/">Esqueceu a senha?</a>
             </div>
             
-            <button type="button" className="login-button login-button-secondary">Cadastre-se</button>
+            <button type="button" className="login-button login-button-secondary" onClick={() => { /* Adicione a lógica de redirecionamento aqui */ }}>
+              Cadastre-se
+            </button>
           </form>
           
         </div>

@@ -1,117 +1,166 @@
-/* Divisão da Página */
 .page-container {
-    display: flex;
-    height: 100vh;
+  display: flex;
+  height: 80vh;
+}
+
+.image-section {
+  flex: 1;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 60px;
+}
+
+.image-section::after {
+  content: '';
+  position: absolute;
+  right: -50px;
+  /* Posiciona a linha à direita da seção da imagem */
+  height: 60%;
+  /* Ajuste a altura da linha conforme desejado */
+  width: 1px;
+  /* Largura da linha */
+  background-color: #ddd;
+  /* Cor da linha */
+}
+
+.background-image {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+  border-radius: 35px;
+}
+
+.login-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.login-card {
+  max-width: 600px;
+  /* Aumenta a largura */
+  padding: 40px;
+  /* Aumenta o espaçamento interno */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.login-title {
+  color: #1877f2;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.login-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.login-button {
+  width: 100%;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background-color 0.3s;
+}
+
+.login-button-primary {
+  background-color: #0866ff;
+  color: #fff;
+}
+
+.login-button-primary:hover {
+  background-color: #1c4eff;
+}
+
+.login-button-secondary {
+  background-color: #42b72a;
+  color: #fff;
+}
+
+.login-button-secondary:hover {
+  background-color: red;
+}
+
+.forgot-password {
+  text-align: center;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #c9ccd1;
+  padding-bottom: 17px;
+}
+
+.forgot-password a {
+  color: #1877f2;
+  font-size: 14px;
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+  .page-container {
+    flex-direction: column; /* Muda a direção para coluna em telas menores */
+    height: auto; /* Permite que a altura seja dinâmica */
   }
-  
+
   .image-section {
-    flex: 1;
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    left: 0; /* Remove o deslocamento em telas menores */
+    margin-bottom: 20px; /* Adiciona espaço abaixo da imagem */
   }
-  
-  .image-section::after {
-    content: '';
-    position: absolute;
-    right: 0; /* Posiciona a linha à direita da seção da imagem */
-    height: 60%; /* Ajuste a altura da linha conforme desejado */
-    width: 1px; /* Largura da linha */
-    background-color: #ddd; /* Cor da linha */
-  }
-  
-  
-  
-  .background-image {
-    width: 100%;
-    height: 60%;
-    object-fit: cover; /* Ajusta a imagem para cobrir toda a área */
-    margin-right: 150px; /* Ajuste o valor para mover a imagem para a esquerda */
-  }
-  
-  
-  
-  .login-section {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-  }
-  
-  /* Estilos do Card de Login */
+
   .login-card {
-    max-width: 400px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    text-align: center;
+    padding: 20px; /* Diminui o espaçamento interno do cartão */
   }
-  
+
   .login-title {
-    color: #1877f2;
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 28px; /* Diminui o tamanho da fonte do título */
   }
-  
+
   .login-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    background-color: white;
-    color: black;
+    padding: 8px; /* Diminui o espaçamento interno */
   }
-  
-  .error-message {
-    color: red;
-    font-size: 12px;
-    margin-bottom: 10px;
-  }
-  
+
   .login-button {
-    width: 100%;
-    padding: 10px;
-    font-weight: bold;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    margin-bottom: 10px;
-    transition: background-color 0.3s;
+    padding: 8px; /* Diminui o espaçamento interno dos botões */
   }
-  
-  .login-button-primary {
-    background-color: #0866ff;
-    color: #fff;
+}
+
+@media (max-width: 480px) {
+  .login-title {
+    font-size: 24px; /* Diminui ainda mais o tamanho da fonte do título */
   }
-  
-  .login-button-primary:hover {
-    background-color: #1c4eff;
+
+  .login-description {
+    font-size: 14px; /* Ajusta o tamanho da fonte da descrição */
   }
-  
-  .login-button-secondary {
-    background-color: #42b72a;
-    color: #fff;
+
+  .login-input {
+    font-size: 14px; /* Ajusta o tamanho da fonte dos campos de entrada */
   }
-  
-  .login-button-secondary:hover {
-    background-color: red;
+
+  .error-message {
+    font-size: 10px; /* Ajusta o tamanho da fonte da mensagem de erro */
   }
-  
-  .forgot-password {
-    text-align: center;
-    margin-bottom: 10px;
-    border-bottom: 2px solid #c9ccd1;
-    padding-bottom: 17px;
+
+  .login-button {
+    padding: 6px; /* Diminui o espaçamento interno dos botões */
   }
-  
-  .forgot-password a {
-    color: #1877f2;
-    font-size: 14px;
-  }
-  
+}
