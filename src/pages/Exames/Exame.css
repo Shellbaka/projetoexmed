@@ -6,32 +6,32 @@
     justify-content: space-between;
     color: black;
     background-color: #ffffff;
-    padding: 20px 20px;
+    padding: 10px 10px;
     width: auto;
     height: auto;
     font-size: 30px;
-    position: fixed;
-    bottom: 27%;
-    right: 25%;
     z-index: 1;
-    /* Mantém a estrutura do conteúdo */
+  
+}
+
+.Exame h2 {
+text-align: center;
+flex-direction: row;
 }
 
 .botao1 {
-    position: absolute;
-    top: 0px;
-    left: 10.2%;
+    align-items: center;
     width: auto;
     z-index: 100;
     /* Garante que o botão fique na frente */
+    flex-direction: row;
 }
 
 .botao2 {
-    position: absolute;
-    top: 0px;
-    right: 8.7%;
+    align-items: center;
     z-index: 100;
-    /* Garante que o botão fique na frente */
+    
+    align-items: column;
 }
 
 .Buscar img {
@@ -57,7 +57,6 @@
     font-size: 35px;
     background-color: #d4d4d4;
     width: auto;
-    position: relative;
     border-radius: 40px;
     font-size: 30px;
     padding: 15px 20px;

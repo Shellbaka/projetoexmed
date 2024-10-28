@@ -8,6 +8,7 @@ import AgendarExame from './pages/Exames/AgendarExame'
 import BuscarResultado from './pages/Exames/BuscarResultado'
 import Cadastro from './pages/Cadastro/Cadastro'
 import Login from './pages/Login/Login'
+import TextoFlex from './components/h2/TextoFlex'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,9 +16,9 @@ function App() {
   return (
     <>
     <Header/>
+    <TextoFlex/>
       <div className="main-content">
-
-     <Home/>
+    <Exame/>
       </div>
       <Footer/>
     </>

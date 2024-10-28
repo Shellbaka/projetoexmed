@@ -1,0 +1,19 @@
+
+  .TextoFlexx {
+    font-size: 30px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: auto; 
+    height: fit-content;
+    margin-top: 30px;
+    
+    
+  }
+
+  .TextoFlexx h2 {
+    color:black;
+    
+  }
+  
