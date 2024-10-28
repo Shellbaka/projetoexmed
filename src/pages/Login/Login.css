@@ -57,8 +57,7 @@
   }
   
   .login-button-primary:hover {
-    background-color: #99EAE1;
-    
+    background-color: #A6F1F5;
   }
   
   .login-button-secondary {
@@ -67,7 +66,7 @@
   }
   
   .login-button-secondary:hover {
-    background-color: #99EAE1;
+    background-color: #7878F2;
   }
   /* Link Esqueceu a Senha */
   .forgot-password {
