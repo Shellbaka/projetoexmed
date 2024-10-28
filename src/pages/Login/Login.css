@@ -58,7 +58,7 @@
   
   .login-button-primary:hover {
     background-color: #99EAE1;
-    transition: transform 0.25s;
+    
   }
   
   .login-button-secondary {
