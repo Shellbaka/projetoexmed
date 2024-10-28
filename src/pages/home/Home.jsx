@@ -8,10 +8,12 @@ export default function Home() {
                     Cuidar da sua saúde
                 </h2>
                 <h2 className="vermeio">nunca foi tão fácil</h2>
-            </div>
-            <p>
+            <p >
                 Tenha acesso a uma nova experiência
-                de cuidados com a
+                de cuidados 
+            </p >
+            <p >
+            com a
                 saúde a partir de R$ 19,90/mês.
             </p>
             <button className='Seja'>
@@ -19,6 +21,7 @@ export default function Home() {
                     Seja Exmed
                 </a>
             </button>
+            </div>
             <div>
                 <img className='ExmedP' src="https://www.valencis.com.br/wp-content/uploads/2017/05/Enfermagem-1.png" alt="Paciente Exmed" />
             </div>

@@ -17,7 +17,7 @@ function App() {
     <Header/>
       <div className="main-content">
 
-     <BuscarResultado/>
+     <Home/>
       </div>
       <Footer/>
     </>

@@ -1,76 +1,66 @@
 .home {
     align-items: center;
-
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     color: black;
     background-color: #ffffff;
-
-    width: 500px;
+    width: auto;
     height: auto;
     font-size: 20px;
-    position: fixed;
-    right: 55%;
-    bottom: 28%;
-
-
+    
 }
 
 .ConteinerText {
-    text-align: left;
-    align-items: center;
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
     color: black;
-
+    margin-right: 20px; 
 }
 
 .preto {
     text-align: left;
     color: black;
     font-size: 70px;
-
+    margin: 0px;
 }
 
 .vermeio {
     text-align: left;
     color: rgb(80, 214, 255);
     font-size: 50px;
+    margin: 0px;
 }
 
 .ExmedP {
     width: 700px;
     height: 500px;
-    margin-left: 40px;
-    position: fixed;
-    right: 15%;
-    bottom: 30%;
     border-radius: 30px;
     border: 2px rgba(0, 0, 0, 0.527) solid;
-
-
+    margin: 10px;
 }
 
-
-.p {
+.ConteinerText p {
     text-align: center;
     align-items: center;
-    color: black;
-
+    color: rgb(0, 0, 0);
+    margin-top: 10px;
+    
 }
+
 
 .Seja {
     text-align: center;
-    align-items: center;
     color: black;
-    font-size: 20px;
+    font-size: 25px;
     background-color: #d4d4d4;
     width: 250px;
     z-index: 1;
     transition: all 0.3s ease;
-    font-size: 25px;
     border-radius: 30px;
     text-decoration: none;
     border: 1px solid rgba(0, 0, 0, 0.089);
-
+    margin-top: 30px; /* Adiciona espaçamento entre o botão e os textos acima */
 }
 
 .Seja a {
@@ -83,6 +73,4 @@
     z-index: 10;
     transform: scale(1.03);
     cursor: pointer;
-
-
 }
