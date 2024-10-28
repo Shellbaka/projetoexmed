@@ -1,91 +1,75 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './Cadastro.css';
 
-function Cadastro() {
-  const [formData, setFormData] = useState({
-    nome: '',
-    endereco: '',
-    cpf: '',
-    contato: '',
-    email: '',
-    senha: '',
-    confirmarSenha: ''
-  });
+export default function LoginPage() {
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.email) newErrors.email = 'Este campo é obrigatório';
+    if (!formData.password) newErrors.password = 'Este campo é obrigatório';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Lógica de envio do formulário
-    console.log(formData);
+    if (validateForm()) {
+      console.log(formData);
+    }
   };
 
   return (
-    <div className="container">
-      <div className="avatar">
-        <img src="public/logoexmed.svg" alt="Avatar" />
+    <div className="page-container">
+      {/* Imagem na metade esquerda */}
+      <div className="image-section">
+        <img src="https://www.projetodraft.com/wp-content/uploads/2021/12/exmed-logo.png.webp" alt="Imagem de fundo" className="background-image" />
       </div>
-      <form onSubmit={handleSubmit} className="form">
-        <h2>Cadastro</h2>
-        <label>
-          Nome:
-          <input
-            type="text"
-            name="nome"
-            value={formData.nome}
-            onChange={handleChange}
-            required
-          />
-        </label>
 
-        <label>
-          CPF:
-          <input
-            type="text"
-            name="cpf"
-            value={formData.cpf}
-            onChange={handleChange}
-            required
-          />
-        </label>
-
-        <label>
-          E-mail:
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <label>
-          Senha:
-          <input
-            type="password"
-            name="senha"
-            value={formData.senha}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <label>
-          Confirmar Senha:
-          <input
-            type="password"
-            name="confirmarSenha"
-            value={formData.confirmarSenha}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <button type="submit">Cadastrar</button>
-      </form>
+      {/* Formulário de Login na metade direita */}
+      <div className="login-section">
+        <div className="login-card">
+          <h1 className="login-title">Criar Conta</h1>
+          <p className="login-description">Cuidar da sua saúde nunca foi tão fácil.</p>
+          
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="email"
+              placeholder="Digite seu Email"
+              value={formData.email}
+              onChange={handleChange}
+              className="login-input"
+            />
+            {errors.email && <span className="error-message">{errors.email}</span>}
+            
+            <input
+              type="password"
+              name="password"
+              placeholder="Senha"
+              value={formData.password}
+              onChange={handleChange}
+              className="login-input"
+            />
+            {errors.password && <span className="error-message">{errors.password}</span>}
+            
+            <button type="submit" className="login-button login-button-primary">Entrar</button>
+            
+            <div className="forgot-password">
+              <a href="/">Esqueceu a senha?</a>
+            </div>
+            
+            <button type="button" className="login-button login-button-secondary">Cadastre-se</button>
+          </form>
+          
+        </div>
+      </div>
     </div>
   );
 }
-
-export default Cadastro;

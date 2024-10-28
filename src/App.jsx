@@ -7,21 +7,19 @@ import Exame from './pages/Exames/Exame'
 import AgendarExame from './pages/Exames/AgendarExame'
 import BuscarResultado from './pages/Exames/BuscarResultado'
 import Cadastro from './pages/Cadastro/Cadastro'
-import Cadastro2 from './pages/Cadastro2/Cadastro2'
-import Loguin from './pages/Loguin/Loguin'
+import Login from './pages/Login/Login'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <Header/>
+    <Header/>
       <div className="main-content">
 
      <BuscarResultado/>
       </div>
       <Footer/>
-      
     </>
   )
 }
