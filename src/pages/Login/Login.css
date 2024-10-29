@@ -1,25 +1,47 @@
 /* Estrutura da Página */
+/* Estrutura da Página */
 .login-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  position: relative; /* Adiciona posição relativa ao contêiner */
+}
+
+.image-container {
+  position: absolute; /* Permite que a imagem seja posicionada sobre o card */
+  top: 155px; /* Ajuste a posição vertical da imagem */
+  left: 50%; /* Centraliza horizontalmente */
+  transform: translateX(-50%); /* Corrige a centralização */
+}
+
+.imglog {
+  max-width: 120%; /* Garante que a imagem não ultrapasse o contêiner */
+  height: auto; /* Mantém a proporção da imagem */
+}
+
+/* Outros estilos */
+.login-card {
+  max-width: 600px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-top: 50px; /* Adiciona margem superior para evitar sobreposição com a imagem */
+}
+
+/* Outros estilos */
+
+ 
   
-  .login-card {
-    max-width: 600px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  .login-description{
+      text-align: center; /* Centraliza o texto horizontalmente */
+      margin: 16px 0; /* Margem superior e inferior */
+      color: #606770; /* Você pode ajustar a cor conforme necessário */
+      font-size: 16px; /* Tamanho da fonte */
   }
-  
-  /*logo exmed*/
-  .imglog {
-    display: block; /* Garante que a imagem ocupe a linha inteira */
-    margin: 0 auto; /* Centraliza a imagem horizontalmente */
-  }
-  
+
+
   /* Campos de Entrada */
   .login-input {
     width: 100%;

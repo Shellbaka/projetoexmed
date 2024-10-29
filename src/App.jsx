@@ -9,15 +9,18 @@ import BuscarResultado from './pages/Exames/BuscarResultado'
 import Cadastro from './pages/Cadastro/Cadastro'
 import Login from './pages/Login/Login'
 import TextoFlex from './components/h2/TextoFlex'
+import TextNav from './pages/Exames/TextNav'
 
 function App() {
   return (
     
 <Router>
       <Header />
-    <Login />
+    <TextNav/>
       
+      <Login/>    
     </Router>
+
   )
 }
 

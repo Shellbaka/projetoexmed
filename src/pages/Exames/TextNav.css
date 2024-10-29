@@ -1,0 +1,85 @@
+/* Centralização e estilo geral */
+.AgendarExame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+h2, h3 {
+    color: #0864b2;
+    margin-bottom: 10px;
+}
+
+/* Botões principais */
+button {
+    background-color: #0864b2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #064c8b;
+}
+
+/* Input e select */
+input[type="text"], input[type="time"], select {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Estilos específicos para o calendário */
+.Calendar {
+    margin: 10px 0;
+}
+
+/* Estilo da confirmação de agendamento */
+.ConfirmaAgenda {
+    background-color: #e9f5fe;
+    border: 1px solid #b3daff;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.ConfirmaAgenda h2 {
+    color: #0864b2;
+    margin-bottom: 5px;
+}
+.ConfirmaAgenda p {
+    color: black;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .AgendarExame {
+        padding: 15px;
+        width: 90%;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    h2, h3 {
+        font-size: 18px;
+    }
+}

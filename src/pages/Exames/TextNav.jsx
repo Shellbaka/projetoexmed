@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { Link } from 'react-router-dom';
+import './TextNav.css';
 
 export default function AgendarExame() {
     const [step, setStep] = useState(1);
@@ -11,8 +12,8 @@ export default function AgendarExame() {
     const [coletor, setColetor] = useState('');
     const [nome, setNome] = useState(localStorage.getItem('nome') || '');
 
-    const avancarEtapa = () => setStep(step + 1);
-    const voltarEtapa = () => setStep(step - 1);
+    const avancarEtapa = () => setStep((prevStep) => prevStep + 1);
+    const voltarEtapa = () => setStep((prevStep) => (prevStep > 1 ? prevStep - 1 : 1));
 
     const salvarNome = (e) => {
         setNome(e.target.value);
@@ -39,11 +40,12 @@ export default function AgendarExame() {
                     <button onClick={() => { setExame('Sangue'); avancarEtapa(); }}>Exame de Sangue</button>
                     <button onClick={() => { setExame('Urina/Fezes'); avancarEtapa(); }}>Urina e Fezes</button>
                     <button onClick={() => { setExame('Vacinação'); avancarEtapa(); }}>Vacinação</button>
+                    <button onClick={voltarEtapa}>Anterior</button>
                 </div>
             )}
 
             {/* Etapa 3: Seleção de data, horário e coletor */}
-            {step === 3 && (
+            {step === 3 && exame && (
                 <div>
                     <h2>Agendar Data e Hora para {exame}</h2>
                     <input
