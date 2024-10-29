@@ -7,18 +7,19 @@ import Exame from './pages/Exames/Exame'
 import AgendarExame from './pages/Exames/AgendarExame'
 import BuscarResultado from './pages/Exames/BuscarResultado'
 import Cadastro from './pages/Cadastro/Cadastro'
+import Cadastro2 from './pages/Cadastro2/Cadastro2'
 import Login from './pages/Login/Login'
 import TextoFlex from './components/h2/TextoFlex'
 import TextNav from './pages/Exames/TextNav'
 
 function App() {
   return (
-    
+   
 <Router>
-      <Header />
-    <TextNav/>
-      
-      <Login/>    
+  <TextNav/>
+  
+  <Cadastro2/>
+  
     </Router>
 
   )

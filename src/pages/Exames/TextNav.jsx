@@ -13,7 +13,7 @@ export default function AgendarExame() {
     const [nome, setNome] = useState(localStorage.getItem('nome') || '');
 
     const avancarEtapa = () => setStep((prevStep) => prevStep + 1);
-    const voltarEtapa = () => setStep((prevStep) => (prevStep > 1 ? prevStep - 1 : 1));
+    const voltarEtapa = () => setStep((prevStep) => Math.max(prevStep - 1, 1));
 
     const salvarNome = (e) => {
         setNome(e.target.value);
@@ -34,13 +34,13 @@ export default function AgendarExame() {
             )}
 
             {/* Etapa 2: Escolha do tipo de exame */}
-            {step === 2 && exame === 'Agendar' && (
+            {step === 2 && (
                 <div>
                     <h2>Escolha o tipo de exame</h2>
                     <button onClick={() => { setExame('Sangue'); avancarEtapa(); }}>Exame de Sangue</button>
                     <button onClick={() => { setExame('Urina/Fezes'); avancarEtapa(); }}>Urina e Fezes</button>
                     <button onClick={() => { setExame('Vacinação'); avancarEtapa(); }}>Vacinação</button>
-                    <button onClick={voltarEtapa}>Anterior</button>
+                    <button onClick={() => { setExame(''); voltarEtapa(); }}>Anterior</button>
                 </div>
             )}
 
@@ -54,10 +54,18 @@ export default function AgendarExame() {
                         value={nome}
                         onChange={salvarNome}
                     />
+                    
                     <div>
-                        <p>Selecione a Data:</p>
-                        <Calendar onChange={setSelectedDate} value={selectedDate} locale="pt-BR" />
-                    </div>
+    <p>Selecione a Data:</p>
+    <Calendar
+        onChange={setSelectedDate}
+        value={selectedDate}
+        locale="pt-BR"
+        className="react-calendar"  // Apenas para garantir que o CSS seja aplicado
+    />
+</div>
+
+                    
                     <div>
                         <p>Selecione o Horário:</p>
                         <input type="time" value={horario} onChange={(e) => setHorario(e.target.value)} />

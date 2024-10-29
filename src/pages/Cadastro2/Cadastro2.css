@@ -1,0 +1,179 @@
+
+* {
+    margin: 0; /* Remove a margem padrão */
+    padding: 0; /* Remove o preenchimento padrão */
+    box-sizing: border-box; /* Inclui o padding e a borda na largura e altura total do elemento */
+  }
+  
+  /* Estilos da classe .Cadastro2 */
+  .app {
+    display: flex; /* Define o layout como flexível */
+    flex-direction: column; /* Alinha os itens na vertical */
+    align-items: center; /* Centraliza os itens horizontalmente */
+    font-family: Arial, sans-serif; /* Define a fonte para a aplicação */
+    background-color: #fff; /* Define a cor de fundo */
+    min-height: 100vh; /* Garante que a altura mínima seja a altura total da viewport */
+    justify-content: center; /* Centraliza os itens verticalmente */
+  }
+  
+  /* Estilos do logo da Exmed */
+  .facebook-logo h1 {
+    font-size: 3em; /* Define o tamanho da fonte */
+    color: black; /* Define a cor do texto */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fontes alternativas */
+    font-weight: bold; /* Deixa a fonte em negrito */
+  }
+  
+  /* Estilos do container do formulário */
+  .form-container {
+    width: 400px; /* Define a largura do container do formulário */
+    background-color: #fff; /* Define a cor de fundo do formulário */
+    padding: 20px; /* Espaçamento interno */
+    border-radius: 8px; /* Arredonda os cantos do container */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Adiciona sombra ao container */
+    text-align: center; /* Centraliza o texto dentro do container */
+  }
+  
+  /* Estilos do título dentro do formulário */
+  .form-container h2 {
+    font-size: 1.5em; /* Define o tamanho da fonte do título */
+    font-weight: bold; /* Deixa a fonte em negrito */
+    margin-bottom: 10px; /* Espaçamento inferior */
+    color: black;
+  }
+  
+  /* Estilos dos parágrafos dentro do formulário */
+  .form-container p {
+    color: #606770; /* Define a cor do texto */
+    font-size: 0.9em; /* Define o tamanho da fonte */
+    margin-bottom: 10px; /* Espaçamento inferior */
+  }
+  
+  /* Estilos para o grupo de inputs de nome */
+  .name-group {
+    display: flex; /* Usa layout flexível */
+    gap: 10px; /* Espaçamento entre os elementos do grupo */
+  }
+  
+  .name-group input {
+    width: 50%; /* Cada input ocupa metade do espaço disponível */
+    padding: 10px; /* Espaçamento interno */
+    border: 1px solid #ccd0d5; /* Borda com cor cinza */
+    border-radius: 5px; /* Arredonda os cantos do input */
+    margin-bottom: 10px; /* Espaçamento inferior */
+    background-color: #fff;
+    color: black;
+  }
+  
+  /* Estilos para o grupo de input de data de nascimento */
+  .input-group {
+    margin-bottom: 15px; /* Espaçamento inferior */
+    text-align: left; /* Alinha o texto à esquerda */
+  }
+  
+  /* Estilos dos rótulos dentro do grupo de input */
+  .input-group label {
+    font-size: 0.9em; /* Define o tamanho da fonte do rótulo */
+    color: #606770; /* Define a cor do texto do rótulo */
+    display: flex; /* Usa layout flexível */
+    align-items: center; /* Alinha os itens verticalmente */
+  }
+  
+  /* Estilos para o ícone informativo */
+  .info-icon {
+    font-size: 0.8em; /* Define o tamanho do ícone */
+    background-color: #e4e6eb; /* Define a cor de fundo do ícone */
+    color: #606770; /* Define a cor do texto do ícone */
+    border-radius: 50%; /* Faz o ícone ser redondo */
+    width: 18px; /* Largura do ícone */
+    height: 18px; /* Altura do ícone */
+    display: inline-flex; /* Permite que o ícone se comporte como um elemento inline */
+    align-items: center; /* Alinha o conteúdo do ícone verticalmente */
+    justify-content: center; /* Centraliza o conteúdo do ícone horizontalmente */
+    margin-left: 5px; /* Espaçamento à esquerda do ícone */
+  }
+  
+  /* Estilos para o grupo de seletores */
+  .select-group {
+    display: flex; /* Usa layout flexível */
+    gap: 5px; /* Espaçamento entre os elementos do grupo */
+  }
+  
+  .select-group select {
+    flex: 1; /* Permite que o seletor ocupe todo o espaço disponível */
+    padding: 10px; /* Espaçamento interno */
+    border: 1px solid #ccd0d5; /* Borda com cor cinza */
+    border-radius: 5px; /* Arredonda os cantos do seletor */
+    background-color: #fff;
+    color: black;
+  }
+  
+  /* Estilos para o grupo de botões de gênero */
+  .radio-group {
+    display: flex; /* Usa layout flexível */
+    justify-content: space-between; /* Distribui os itens com espaço entre eles */
+  }
+  
+  /* Estilos para os rótulos dentro do grupo de botões de gênero */
+  .radio-group label {
+    font-size: 0.9em; /* Define o tamanho da fonte do rótulo */
+    color: #606770; /* Define a cor do texto do rótulo */
+  }
+  
+  /* Estilos para inputs de email e senha */
+  input[type="email"], input[type="password"] {
+    width: 100%; /* Cada input ocupa 100% do espaço disponível */
+    padding: 10px; /* Espaçamento interno */
+    border: 1px solid #ccd0d5; /* Borda com cor cinza */
+    border-radius: 5px; /* Arredonda os cantos do input */
+    margin-bottom: 10px; /* Espaçamento inferior */
+    background-color: #fff;
+    color: black;
+  }
+  
+  /* Estilos para textos informativos */
+  .info-text {
+    font-size: 0.8em; /* Define o tamanho da fonte do texto informativo */
+    color: #606770; /* Define a cor do texto informativo */
+    margin-bottom: 10px; /* Espaçamento inferior */
+  }
+  
+  /* Estilos para links dentro de textos informativos */
+  .info-text a {
+    color: #1877f2; /* Define a cor do link */
+    text-decoration: none; /* Remove o sublinhado do link */
+  }
+  
+  /* Estilos do botão de cadastro */
+  .submit-btn {
+    background-color: #A6F1F5; /* Define a cor de fundo do botão */
+    color: black; /* Define a cor do texto do botão */
+    padding: 12px; /* Espaçamento interno */
+    font-size: 1em; /* Define o tamanho da fonte */
+    border: none; /* Remove a borda do botão */
+    border-radius: 5px; /* Arredonda os cantos do botão */
+    cursor: pointer; /* Muda o cursor para uma mão quando sobre o botão */
+    width: 100%; /* O botão ocupa 100% do espaço disponível */
+    font-weight: bold; /* Deixa a fonte em negrito */
+    margin-top: 10px; /* Espaçamento superior */
+  }
+  
+  /* Efeitos do botão de cadastro ao passar o mouse */
+  .submit-btn:hover {
+    background-color: #36a420; /* Muda a cor do botão ao passar o mouse */
+  }
+  
+  /* Estilos para o link de login */
+  .login-link {
+    margin-top: 10px; /* Espaçamento superior */
+    font-size: 0.9em; /* Define o tamanho da fonte */
+    color: #1877f2; /* Define a cor do link */
+    cursor: pointer; /* Muda o cursor para uma mão quando sobre o link */
+  }
+  
+  /* Estilos para links dentro do link de login */
+  .login-link a {
+    color: #1877f2; /* Define a cor do link */
+    text-decoration: none; /* Remove o sublinhado do link */
+  }
+  
