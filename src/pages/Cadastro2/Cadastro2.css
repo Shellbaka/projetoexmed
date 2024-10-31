@@ -46,7 +46,7 @@
   .form-container p {
     color: #606770; /* Define a cor do texto */
     font-size: 0.9em; /* Define o tamanho da fonte */
-    margin-bottom: 10px; /* Espaçamento inferior */
+    margin-bottom: 22px; /* Espaçamento inferior */
   }
   
   /* Estilos para o grupo de inputs de nome */
@@ -123,44 +123,32 @@
   /* Estilos para inputs de email e senha */
   input[type="email"], input[type="password"] {
     width: 100%; /* Cada input ocupa 100% do espaço disponível */
-    padding: 10px; /* Espaçamento interno */
+    padding: 12px; /* Espaçamento interno */
     border: 1px solid #ccd0d5; /* Borda com cor cinza */
     border-radius: 5px; /* Arredonda os cantos do input */
     margin-bottom: 10px; /* Espaçamento inferior */
     background-color: #fff;
     color: black;
   }
-  
-  /* Estilos para textos informativos */
-  .info-text {
-    font-size: 0.8em; /* Define o tamanho da fonte do texto informativo */
-    color: #606770; /* Define a cor do texto informativo */
-    margin-bottom: 10px; /* Espaçamento inferior */
-  }
-  
-  /* Estilos para links dentro de textos informativos */
-  .info-text a {
-    color: #1877f2; /* Define a cor do link */
-    text-decoration: none; /* Remove o sublinhado do link */
-  }
-  
   /* Estilos do botão de cadastro */
   .submit-btn {
-    background-color: #A6F1F5; /* Define a cor de fundo do botão */
+    background-color: #99EAE1; /* Define a cor de fundo do botão */
     color: black; /* Define a cor do texto do botão */
     padding: 12px; /* Espaçamento interno */
     font-size: 1em; /* Define o tamanho da fonte */
     border: none; /* Remove a borda do botão */
-    border-radius: 5px; /* Arredonda os cantos do botão */
+    border-radius: 10px; /* Arredonda os cantos do botão */
     cursor: pointer; /* Muda o cursor para uma mão quando sobre o botão */
     width: 100%; /* O botão ocupa 100% do espaço disponível */
+    max-width: 400px; /* Define uma largura máxima para o botão */
     font-weight: bold; /* Deixa a fonte em negrito */
     margin-top: 10px; /* Espaçamento superior */
+    margin: 10px auto 0;
   }
   
   /* Efeitos do botão de cadastro ao passar o mouse */
   .submit-btn:hover {
-    background-color: #36a420; /* Muda a cor do botão ao passar o mouse */
+    background-color: #A6F1F5; /* Muda a cor do botão ao passar o mouse */
   }
   
   /* Estilos para o link de login */
@@ -174,6 +162,6 @@
   /* Estilos para links dentro do link de login */
   .login-link a {
     color: #1877f2; /* Define a cor do link */
-    text-decoration: none; /* Remove o sublinhado do link */
+    text-decoration: none; /* Remove a linha sublinhada do link */
   }
   

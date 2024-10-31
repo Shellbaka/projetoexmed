@@ -5,7 +5,7 @@ function Cadastro2() {
   return (
     <div className="app">
       <div className="facebook-logo">
-        <h1>Exmed</h1>
+        <h1>Exmed</h1> {/*<img src="public/logoexmed.svg" alt="imglog" className="imglog" /> SE EU QUISER COLOCAR IMAGEM EXMED*/}       
       </div>
       <div className="form-container">
         <h2>Criar uma nova conta</h2>
@@ -73,14 +73,6 @@ function Cadastro2() {
           {/* E-mail e Senha */}
           <input type="email" placeholder="Celular ou email" required />
           <input type="password" placeholder="Nova senha" required />
-
-          {/* Informações adicionais */}
-          <p className="info-text">
-            As pessoas que usam nosso serviço podem ter enviado suas informações de contato para o KWEEN. <a href="#">Saiba mais</a>
-          </p>
-          <p className="info-text">
-            Ao clicar em Cadastre-se, você concorda com nossos <a href="#">Termos</a>, <a href="#">Política de Privacidade</a> e <a href="#">Política de Cookies</a>. Você poderá receber notificações por SMS e cancelar isso quando quiser.
-          </p>
 
           {/* Botão de Cadastro */}
           <button type="submit" className="submit-btn">Cadastre-se</button>
