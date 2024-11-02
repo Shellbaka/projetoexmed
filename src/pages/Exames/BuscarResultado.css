@@ -1,5 +1,20 @@
-/* Pra me lembrar que este é como se fosse a div do Calendar */
-.react-calendar {
+/* Centralização e estilo geral */
+.BuscarResultado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo base para o calendário */
+.BuscarResultado .react-calendar {
     width: 100%;
     max-width: 450px;
     border: 1px solid #75808b;
@@ -10,127 +25,125 @@
     padding: 5px;
 }
 
-
-.react-calendar__navigation button {
+/* Navegação do calendário */
+.BuscarResultado .react-calendar__navigation button {
     background: none;
     color: #007bff;
     font-weight: bold;
-    /* Texto em negrito */
     font-size: 16px;
     padding: 10px;
+    margin: 0 5px;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
 }
 
+.BuscarResultado .react-calendar__navigation button:disabled {
+    color: #b0b0b0;
+}
 
-.react-calendar__tile {
+/* Estilos para os dias do calendário */
+.BuscarResultado .react-calendar__tile {
     padding: 12px;
     text-align: center;
     cursor: pointer;
     border-radius: 8px;
+    color: #333;
+    /* Garantir que todos os dias tenham cor de texto escura */
     transition: background-color 0.2s;
 }
 
-
-.react-calendar__tile--active {
+.BuscarResultado .react-calendar__tile--active {
     background-color: #007bff;
     color: white;
 }
 
+.BuscarResultado .react-calendar__tile--now {
+    background-color: #e0f0ff;
+    color: #007bff;
+    font-weight: bold;
+}
 
-.react-calendar__tile:hover {
+.BuscarResultado .react-calendar__tile:hover {
     background-color: rgba(0, 123, 255, 0.2);
 }
 
-
-.react-calendar__month-view__weekdays {
+/* Dias da semana no calendário */
+.BuscarResultado .react-calendar__month-view__weekdays {
     background-color: #f7f7f7;
     font-weight: bold;
     border-bottom: 2px solid #007bff;
 }
 
 
-.react-calendar__navigation button {
-    margin: 0 10px;
+.BuscarResultado .CaixaSelecaoExame {
+    margin-bottom: 20px;
+    
 }
 
 
-.data-atual {
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 10px;
-    font-weight: 600;
-    text-align: center;
-}
-
-
-.BuscarResultado {
-    margin-top: 40px;
-    margin-bottom: 40px;
-    padding: 20px;
-    font-size: 30px;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+.BuscarResultado .CaixaDeBusca {
     display: flex;
     flex-direction: column;
-    color: black;
-    background-color: #B1EFE8;
-    border-radius: 20px;
-    border: 2px solid rgba(0, 0, 0, 0.555);
-    z-index: 1;
+    align-items: center;
+    margin-top: 20px;
+    
 }
 
-.CaixaDeBusca {
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    width: 400px;
-    font-size: 30px;
-}
-
-.Procurar {
-    align-items: center;
-    justify-content: center;
-    border: none;
-    padding: 10px;
-    border: 2px solid rgba(0, 0, 0, 0.555);
-    border-radius: 20px 20px;
-    width: 400px;
-    outline: none;
+.BuscarResultado .CaixaDeBusca input {
     font-size: 20px;
-    background-color: #ffffff;
+    text-align: center;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    
 }
 
-.BotaoProcura {
+
+.BuscarResultado .Procurar {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 300px;
+    
+}
+
+.BuscarResultado .BotaoProcura {
+    padding: 10px 20px;
     border: none;
+    border-radius: 5px;
     background-color: #007bff;
     color: white;
-    padding: 7px 13px;
-    border-radius: 20px;
     cursor: pointer;
-    margin: 10px;
-    transition: background-color 0.2s;
-    
+    transition: background-color 0.2s ease;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.BotaoProcura:hover {
+.BuscarResultado .BotaoProcura:hover {
     background-color: #0056b3;
+}
+
+
+.BuscarResultado .Resultados {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.CaixaSelecaoExame p {
+
+    font-size: 40px;
+    color: black;
+
+}
+
+.CaixaSelecaoExame option {
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
     
 }
 
-.CaixaSelecaoExame {
-    border: 1px solid black;
-    border-radius: 20px;
-    padding: 20px;
-    align-items: center;
-    justify-content: center;
-}
-
-.ExameTipo {
-    color: rgb(0, 0, 0);
-    font-size: 20px;
-    background-color: rgb(138, 200, 255);
-}
-
-.Resultados {
-    margin-top: 10px;
+.BuscarResultado p {
+    font-size: 30px;
+    color: black;
 }

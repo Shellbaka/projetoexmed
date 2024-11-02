@@ -28,8 +28,9 @@ export default function AgendarExame() {
                     <h2>Selecione o serviço desejado</h2>
                     <button onClick={() => { setExame('Agendar'); avancarEtapa(); }}>Agendar Exame</button>
                     <Link to="/resultado">
-                        <button>Buscar Resultado</button>
+                        <button>Meus Exames</button>
                     </Link>
+
                 </div>
             )}
 

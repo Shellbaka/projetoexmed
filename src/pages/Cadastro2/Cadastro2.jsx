@@ -5,7 +5,7 @@ function Cadastro2() {
   return (
     <div className="app">
       <div className="facebook-logo">
-        <h1>Exmed</h1> {/*<img src="public/logoexmed.svg" alt="imglog" className="imglog" /> SE EU QUISER COLOCAR IMAGEM EXMED*/}       
+        <h1>Exmed</h1> {/*<img src="public/logoexmed.svg" alt="imglog" className="imglog" /> SE EU QUISER COLOCAR IMAGEM EXMED*/}
       </div>
       <div className="form-container">
         <h2>Criar uma nova conta</h2>
@@ -64,15 +64,12 @@ function Cadastro2() {
               <label>
                 <input type="radio" name="gender" value="Masculino" /> Masculino
               </label>
-              <label>
-                <input type="radio" name="gender" value="Personalizado" /> Personalizado
-              </label>
             </div>
           </div>
 
           {/* E-mail e Senha */}
-          <input type="email" placeholder="Celular ou email" required />
-          <input type="password" placeholder="Nova senha" required />
+          <input type="email" class="input-email" placeholder="Celular ou email" required />
+          <input type="password" class="input-password" placeholder="Nova senha" required />
 
           {/* Botão de Cadastro */}
           <button type="submit" className="submit-btn">Cadastre-se</button>

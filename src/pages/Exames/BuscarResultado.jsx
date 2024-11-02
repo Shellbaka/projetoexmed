@@ -17,8 +17,8 @@ export default function BuscarResultado() {
                     <option>Vacinação</option>
                 </select>
             </div>
+                <p>Selecione a Data do Exame Marcado:</p>
             <div className='calendario-container'>
-                <p>Selecione a Data do Exame:</p>
                 <Calendar
                     onChange={setSelectedDate}
                     value={selectedDate}
@@ -31,13 +31,13 @@ export default function BuscarResultado() {
                 <input
                     type="text"
                     className="Procurar"
-                    placeholder="Pesquisar Seu Nome..."
+                    placeholder="Buscar por nome ou ID..."
                 />
-                <button type="submit" className="BotaoProcura">Buscar Nome</button>
+                <button type="submit" className="BotaoProcura">Buscar Resultados</button>
             </form>
 
             <div className='Resultados'>
-                <p>Resultados para {selectedDate.toLocaleDateString('pt-BR')}:</p>
+                <p>Resultados na data {selectedDate.toLocaleDateString('pt-BR')}:</p>
             </div>
         </div>
     );
