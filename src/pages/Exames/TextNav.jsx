@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import { Link } from 'react-router-dom';
+import BuscarExames from './BuscarExames';
 import './TextNav.css';
 
 export default function AgendarExame() {
-    const [step, setStep] = useState(1);
+    const [step, setStep] = useState(1); // 1 para seleção do serviço
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [exame, setExame] = useState('');
     const [vacina, setVacina] = useState('');
@@ -21,8 +21,7 @@ export default function AgendarExame() {
             return prevStep + 1;
         });
     };
-    
-    console.log("Avançou uma etapa" + step + 1)
+
     const voltarEtapa = () => setStep((prevStep) => Math.max(prevStep - 1, 1));
 
     const salvarNome = (e) => {
@@ -33,25 +32,22 @@ export default function AgendarExame() {
     return (
         <div className="AgendarExame">
             {/* Etapa 1: Seleção entre Agendar ou Buscar Resultado */}
-
             {step === 1 && (
                 <div>
                     <h2>Selecione o serviço desejado</h2>
-                    <button onClick={() => { setExame('Agendar'); avancarEtapa(); }}>Agendar Exame</button>
-                    <Link to="/resultado">
-                        <button>Meus Exames</button>
-                    </Link>
+                    <button onClick={() => setStep(2)}>Agendar Exame</button> {/* Avança para agendar */}
+                    <button onClick={() => setStep(5)}>Meus Exames</button> {/* Avança para Buscar Exames */}
                 </div>
             )}
 
-            {/* Etapa 2: Escolha do tipo de exame */}
+            {/* Etapa 2: Agendamento de exames */}
             {step === 2 && (
                 <div>
                     <h2>Escolha o tipo de exame</h2>
                     <button onClick={() => { setExame('Sangue'); avancarEtapa(); }}>Exame de Sangue</button>
                     <button onClick={() => { setExame('Urina/Fezes'); avancarEtapa(); }}>Urina e Fezes</button>
                     <button onClick={() => { setExame('Vacinação'); setStep(2.5); }}>Vacinação</button>
-                    <button onClick={() => { setExame(''); voltarEtapa(); }}>Anterior</button>
+                    <button onClick={() => voltarEtapa()}>Anterior</button>
                 </div>
             )}
 
@@ -59,22 +55,20 @@ export default function AgendarExame() {
             {step === 2.5 && exame === 'Vacinação' && (
                 <div>
                     <h2>Escolha o tipo de vacinação</h2>
-                    {['Hepatite', 'Antitetânica', 'Pneumocócica', 'HPV', 'Meningocócica C', 'Hepatite B', 'Penta',
-                        'VIP/VOP', 'Tetra Viral'].map((vacinaTipo) => (
-                            <div key={vacinaTipo}>
-                                <button onClick={() => { setVacina(vacinaTipo); avancarEtapa(); }}>
-                                    {vacinaTipo}
-                                </button>
-                                <p>Breve descrição de {vacinaTipo}</p>
-                            </div>
-                        ))}
-                    <button onClick={() => setStep(2)}>Anterior</button>
+                    {['Hepatite', 'Antitetânica', 'Pneumocócica', 'HPV', 'Meningocócica C', 'Hepatite B', 'Penta', 'VIP/VOP', 'Tetra Viral'].map((vacinaTipo) => (
+                        <div key={vacinaTipo}>
+                            <button onClick={() => { setVacina(vacinaTipo); avancarEtapa(); }}>
+                                {vacinaTipo}
+                            </button>
+                            <p>Breve descrição de {vacinaTipo}</p>
+                        </div>
+                    ))}
+                    <button onClick={() => setStep(2)}>Anterior</button> {/* Volta para a etapa 2 */}
                 </div>
-                
             )}
 
-
-            {step === 3 && exame &&  (
+            {/* Etapa 3: Agendamento */}
+            {step === 3 && (
                 <div>
                     <h2 className="agendar-titulo">Agendar data e Hora para {exame} {vacina && `- ${vacina}`}</h2>
 
@@ -106,11 +100,9 @@ export default function AgendarExame() {
                         </select>
                     </div>
                     <button onClick={avancarEtapa}>Próximo</button>
-                    {/* Volta para a etapa 2.5 se a origem foi "Vacinação" */}
                     <button onClick={() => { vacina ? setStep(2.5) : voltarEtapa(); }}>Anterior</button>
                 </div>
             )}
-
 
             {/* Etapa 4: Confirmação do agendamento */}
             {step === 4 && (
@@ -125,6 +117,9 @@ export default function AgendarExame() {
                     <button onClick={voltarEtapa}>Anterior</button>
                 </div>
             )}
+
+            {/* Exibe BuscarExames apenas na etapa 5 */}
+            {step === 5 && <BuscarExames />}
         </div>
     );
 }

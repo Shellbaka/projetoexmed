@@ -1,0 +1,105 @@
+/* Centralização e estilo geral */
+.BuscarExames {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Caixa de busca */
+.CaixaDeBusca {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.CaixaDeBusca input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Tabela de exames */
+.TabelaExames {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.TabelaExames table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.TabelaExames th,
+.TabelaExames td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    color: black;
+}
+
+.TabelaExames th {
+    background-color: #0864b2;
+    color: #ffffff;
+    
+}
+
+.TabelaExames td {
+    background-color: #ffffff;
+}
+
+/* Botões de ação */
+.btn-cancelar {
+    background-color: #d9534f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-cancelar:hover {
+    background-color: #c9302c;
+}
+
+/* Estilo dos cabeçalhos */
+.BuscarExames h2 {
+    color: #0864b2;
+    margin-bottom: 20px;
+}
+
+/* Estilo das mensagens */
+.BuscarExames p {
+    font-size: 18px;
+    color: black;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .BuscarExames {
+        padding: 15px;
+        width: 90%;
+    }
+
+    .BuscarExames h2 {
+        font-size: 18px;
+    }
+
+    .CaixaDeBusca input {
+        font-size: 14px;
+    }
+
+    .TabelaExames th, .TabelaExames td {
+        font-size: 14px;
+    }
+}
