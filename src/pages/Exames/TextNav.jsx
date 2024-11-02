@@ -8,11 +8,21 @@ export default function AgendarExame() {
     const [step, setStep] = useState(1);
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [exame, setExame] = useState('');
+    const [vacina, setVacina] = useState('');
     const [horario, setHorario] = useState('');
     const [coletor, setColetor] = useState('');
     const [nome, setNome] = useState(localStorage.getItem('nome') || '');
 
-    const avancarEtapa = () => setStep((prevStep) => prevStep + 1);
+    const avancarEtapa = () => {
+        setStep((prevStep) => {
+            if (prevStep === 2.5) {
+                return 3; // Garante que a etapa seja 3 após 2.5
+            }
+            return prevStep + 1;
+        });
+    };
+    
+    console.log("Avançou uma etapa" + step + 1)
     const voltarEtapa = () => setStep((prevStep) => Math.max(prevStep - 1, 1));
 
     const salvarNome = (e) => {
@@ -23,6 +33,7 @@ export default function AgendarExame() {
     return (
         <div className="AgendarExame">
             {/* Etapa 1: Seleção entre Agendar ou Buscar Resultado */}
+
             {step === 1 && (
                 <div>
                     <h2>Selecione o serviço desejado</h2>
@@ -30,7 +41,6 @@ export default function AgendarExame() {
                     <Link to="/resultado">
                         <button>Meus Exames</button>
                     </Link>
-
                 </div>
             )}
 
@@ -40,33 +50,48 @@ export default function AgendarExame() {
                     <h2>Escolha o tipo de exame</h2>
                     <button onClick={() => { setExame('Sangue'); avancarEtapa(); }}>Exame de Sangue</button>
                     <button onClick={() => { setExame('Urina/Fezes'); avancarEtapa(); }}>Urina e Fezes</button>
-                    <button onClick={() => { setExame('Vacinação'); avancarEtapa(); }}>Vacinação</button>
+                    <button onClick={() => { setExame('Vacinação'); setStep(2.5); }}>Vacinação</button>
                     <button onClick={() => { setExame(''); voltarEtapa(); }}>Anterior</button>
                 </div>
             )}
 
-            {/* Etapa 3: Seleção de data, horário e coletor */}
-            {step === 3 && exame && (
+            {/* Etapa 2.5: Escolha do tipo de vacina */}
+            {step === 2.5 && exame === 'Vacinação' && (
                 <div>
-                    <h2>Agendar Data e Hora para {exame}</h2>
+                    <h2>Escolha o tipo de vacinação</h2>
+                    {['Hepatite', 'Antitetânica', 'Pneumocócica', 'HPV', 'Meningocócica C', 'Hepatite B', 'Penta',
+                        'VIP/VOP', 'Tetra Viral'].map((vacinaTipo) => (
+                            <div key={vacinaTipo}>
+                                <button onClick={() => { setVacina(vacinaTipo); avancarEtapa(); }}>
+                                    {vacinaTipo}
+                                </button>
+                                <p>Breve descrição de {vacinaTipo}</p>
+                            </div>
+                        ))}
+                    <button onClick={() => setStep(2)}>Anterior</button>
+                </div>
+                
+            )}
+
+
+            {step === 3 && exame &&  (
+                <div>
+                    <h2 className="agendar-titulo">Agendar data e Hora para {exame} {vacina && `- ${vacina}`}</h2>
+
                     <input
                         type="text"
                         placeholder="Seu Nome"
                         value={nome}
                         onChange={salvarNome}
                     />
-                    
                     <div>
-    <p>Selecione a Data:</p>
-    <Calendar
-        onChange={setSelectedDate}
-        value={selectedDate}
-        locale="pt-BR"
-        className="react-calendar"  // Apenas para garantir que o CSS seja aplicado
-    />
-</div>
-
-                    
+                        <p>Selecione a Data:</p>
+                        <Calendar
+                            onChange={setSelectedDate}
+                            value={selectedDate}
+                            locale="pt-BR"
+                        />
+                    </div>
                     <div>
                         <p>Selecione o Horário:</p>
                         <input type="time" value={horario} onChange={(e) => setHorario(e.target.value)} />
@@ -81,16 +106,18 @@ export default function AgendarExame() {
                         </select>
                     </div>
                     <button onClick={avancarEtapa}>Próximo</button>
-                    <button onClick={voltarEtapa}>Anterior</button>
+                    {/* Volta para a etapa 2.5 se a origem foi "Vacinação" */}
+                    <button onClick={() => { vacina ? setStep(2.5) : voltarEtapa(); }}>Anterior</button>
                 </div>
             )}
+
 
             {/* Etapa 4: Confirmação do agendamento */}
             {step === 4 && (
                 <div className="ConfirmaAgenda">
                     <h2>{nome}, seu agendamento foi confirmado com sucesso!</h2>
                     <h3>Detalhes do Agendamento:</h3>
-                    <p>Exame: {exame}</p>
+                    <p>Exame: {exame} {vacina && `- ${vacina}`}</p>
                     <p>Data: {selectedDate.toLocaleDateString('pt-BR')}</p>
                     <p>Horário: {horario}</p>
                     <p>Coletor: {coletor}</p>
