@@ -14,17 +14,21 @@ import TextNav from './pages/Exames/TextNav';
 function App() {
   return (
     <Router>
-      <Header />
+   <Header />
+      
       <div className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/exame" element={<TextNav />} />
-          <Route path="/textnav" element={<TextNav />} />
-          <Route path="/buscar-resultado" element={<BuscarExames />} />
+          <Route path="/agendar-exame" element={<AgendarExame />} />
+          <Route path="/buscar-resultado" element={<BuscarResultado />} />
           <Route path="/cadastro" element={<Cadastro />} />
-          <Route path="/cadastro2" element={<Cadastro2 />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Exame />} />
+          <Route path="/agendar" element={<AgendarExame />} />
+          <Route path="/resultado" element={<BuscarResultado />} />
         </Routes>
+       
       </div>
       <Footer />
     </Router>
