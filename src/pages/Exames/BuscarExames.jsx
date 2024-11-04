@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './BuscarExames.css';
+import { Link } from 'react-router-dom';
 
 export default function BuscarExames() {
     const [pesquisa, setPesquisa] = useState('');
@@ -66,6 +67,10 @@ export default function BuscarExames() {
                     <p>Nenhum exame encontrado.</p>
                 )}
             </div>
+                
+            <Link to="/exame"> 
+                <button className="btn-voltar">Voltar</button>
+            </Link>
         </div>
     );
 }

@@ -20,13 +20,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/exame" element={<TextNav />} />
-          <Route path="/agendar-exame" element={<AgendarExame />} />
-          <Route path="/buscar-resultado" element={<BuscarResultado />} />
+          <Route path="/buscar-resultado" element={<BuscarExames />} />
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Exame />} />
-          <Route path="/agendar" element={<AgendarExame />} />
-          <Route path="/resultado" element={<BuscarResultado />} />
+          <Route path="/resultado" element={<BuscarExames />} />
         </Routes>
        
       </div>
