@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 
-const users = [];
+const users = []; 
 
 const User = {
   create: async (cpf, password) => {
