@@ -14,12 +14,93 @@
     font-family: Arial, sans-serif;
 }
 
+.agendar-titulo {
+    font-size: 24px;
+    color: #0864b2;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.AgendarExame .react-calendar {
+    width: 100%;
+    max-width: 450px;
+    border: 1px solid #75808b;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; 
+    padding: 5px;
+}
+
+input[type="text"], input[type="time"], select {
+    width: 80%; 
+    max-width: 350px; 
+    padding: 8px;
+    margin: 10px auto; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+    
+
+
+.AgendarExame .react-calendar__navigation button {
+    background: none;
+    color: #007bff;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px;
+    margin: 0 5px;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.AgendarExame .react-calendar__navigation button:disabled {
+    color: #b0b0b0;
+}
+
+
+.AgendarExame .react-calendar__tile {
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 8px;
+    color: #333;  
+    transition: background-color 0.2s;
+}
+
+.AgendarExame .react-calendar__tile--active {
+    background-color: #007bff;
+    color: white;
+}
+
+.AgendarExame .react-calendar__tile--now {
+    background-color: #e0f0ff;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.AgendarExame .react-calendar__tile:hover {
+    background-color: rgba(0, 123, 255, 0.2);
+}
+
+
+.AgendarExame .react-calendar__month-view__weekdays {
+    background-color: #f7f7f7;
+    font-weight: bold;
+    border-bottom: 2px solid #007bff;
+}
+
 h2, h3 {
     color: #0864b2;
     margin-bottom: 10px;
 }
 
-/* Botões principais */
+
 button {
     background-color: #0864b2;
     color: #fff;
@@ -36,7 +117,7 @@ button:hover {
     background-color: #064c8b;
 }
 
-/* Input e select */
+
 input[type="text"], input[type="time"], select {
     width: 100%;
     padding: 8px;
@@ -46,12 +127,7 @@ input[type="text"], input[type="time"], select {
     font-size: 16px;
 }
 
-/* Estilos específicos para o calendário */
-.Calendar {
-    margin: 10px 0;
-}
 
-/* Estilo da confirmação de agendamento */
 .ConfirmaAgenda {
     background-color: #e9f5fe;
     border: 1px solid #b3daff;
@@ -63,11 +139,12 @@ input[type="text"], input[type="time"], select {
     color: #0864b2;
     margin-bottom: 5px;
 }
+
 .ConfirmaAgenda p {
     color: black;
 }
 
-/* Responsividade */
+
 @media (max-width: 480px) {
     .AgendarExame {
         padding: 15px;
