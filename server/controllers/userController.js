@@ -1,34 +1,55 @@
 import { db } from "../db.js";
+import { v4 as uuidv4 } from 'uuid';
 
-export const getUsers = (_, res) => {
+export const getUsers = async (_, res) => {
   const query = 'SELECT * FROM cliente';
 
-  db.query(query, (err, data) => {
-    if (err) return res.status(500).json({ message: 'Erro ao buscar usuários', error: err });
-
+  try {
+    const [data] = await db.query(query);
     return res.status(200).json(data);
-  });
+  } catch (err) {
+    console.error('Erro ao buscar usuários:', err);
+    return res.status(500).json({ message: 'Erro ao buscar usuários', error: err });
+  }
 };
 
+export const postUser = async (req, res) => {
+  const query = `
+    INSERT INTO Cliente (ID_Cliente, CPF, Email, Telefone, Rua, Numero, Complemento, Bairro, Cidade, Estado, CEP, Nome_Cliente, Data_Nascimento, Genero)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `;
 
-// export const addUser = (req, res) => {
-//     const query = 'INSERT INTO cliente(`cpf`, `telefone`, `endereco`, `data_nascimento`) VALUES(?)';
+  const values = [
+      uuidv4(),
+      req.body.CPF,
+      req.body.Email,
+      req.body.Telefone,
+      req.body.Rua,
+      req.body.Numero,
+      req.body.Complemento,
+      req.body.Bairro,
+      req.body.Cidade,
+      req.body.Estado,
+      req.body.CEP,
+      req.body.Nome_Cliente,
+      req.body.Data_Nascimento,
+      req.body.Genero,
+  ];
 
-//     const values = [
-//         req.body.cpf,
-//         req.body.telefone,
-//         req.body.endereco,
-//         req.nome.data_nascimento,
-//     ];
+  const checkEmailQuery = 'SELECT * FROM Cliente WHERE Email = ?';
 
-//     const checkEmailQuery = 'SELECT * FROM usuarios WHERE email = ?';
-//     if (err) {
-//         console.error('Erro ao verificar o e-mail:', err);
-//         res.status(500).send('Erro ao verificar o e-mail.');
-//       } else if (results.length > 0) {
-//         // Se houver resultado, o e-mail já está em uso
-//         res.status(400).send('E-mail já está registrado.');
-//       } else {
-//         // Se o e-mail não estiver em uso, prossegue para a inserção
-//     }
-// }
+  try {
+    const [results] = await db.query(checkEmailQuery, [req.body.Email]);
+    
+    if (results.length > 0) {
+      return res.status(400).send('E-mail já está registrado.');
+    }
+
+    await db.query(query, values);
+    return res.status(200).json("Usuário criado com sucesso");
+
+  } catch (err) {
+    console.error('Erro na operação:', err);
+    return res.status(500).send('Erro ao processar a solicitação.');
+  }
+};
