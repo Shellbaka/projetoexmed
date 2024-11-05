@@ -10,7 +10,7 @@ import Cadastro2 from './pages/Cadastro2/Cadastro2';
 import Login from './pages/Login/Login';
 import TextoFlex from './components/h2/TextoFlex';
 import TextNav from './pages/Exames/TextNav';
-import ForgotPasswordPage from './pages/Login/ForgotPasswordPage'; /* Adição da germaria-branch */
+import ForgotPasswordPage from './pages/Login/ForgotPasswordPage'; /*Adição da germaria-branch*/
 
 function App() {
   return (
