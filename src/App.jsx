@@ -10,7 +10,7 @@ import Cadastro2 from './pages/Cadastro2/Cadastro2';
 import Login from './pages/Login/Login';
 import TextoFlex from './components/h2/TextoFlex';
 import TextNav from './pages/Exames/TextNav';
-import ForgotPasswordPage from './pages/Login/ForgotPasswordPage';
+import ForgotPasswordPage from './pages/Login/ForgotPasswordPage'; /* Adição da germaria-branch */
 
 function App() {
   return (
@@ -19,13 +19,14 @@ function App() {
       <div className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/exame" element={<TextNav />} />
-          <Route path="/textnav" element={<TextNav />} />
+          <Route path="/exame" element={<Exame />} /> {/* Da main */}
+          <Route path="/textnav" element={<TextNav />} /> {/* Da germaria-branch */}
           <Route path="/buscar-resultado" element={<BuscarExames />} />
           <Route path="/cadastro" element={<Cadastro />} />
-          <Route path="/cadastro2" element={<Cadastro2 />} />
+          <Route path="/cadastro2" element={<Cadastro2 />} /> {/* Da germaria-branch */}
           <Route path="/login" element={<Login />} />
-          <Route path="/forgot-password" element={<ForgotPasswordPage />} /> {/* Nova Rota */}
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} /> {/* Da germaria-branch */}
+          <Route path="/resultado" element={<BuscarExames />} /> {/* Da main */}
         </Routes>
       </div>
       <Footer />
