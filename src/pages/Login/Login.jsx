@@ -78,7 +78,7 @@ export default function LoginPage() {
                     <button type="submit" className="login-button login-button-primary">Entrar</button>
                     
                     <div className="forgot-password">
-                        <a href="/">Esqueceu a senha?</a>
+                        <a href="/forgot-password">Esqueceu a senha?</a>
                     </div>
                     
                     <button type="button" className="login-button login-button-secondary">Cadastre-se</button>
