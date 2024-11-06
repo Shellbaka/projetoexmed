@@ -15,8 +15,8 @@ export const getUsers = async (_, res) => {
 
 export const postUser = async (req, res) => {
   const query = `
-    INSERT INTO Cliente (ID_Cliente, CPF, Email, Telefone, Rua, Numero, Complemento, Bairro, Cidade, Estado, CEP, Nome_Cliente, Data_Nascimento, Genero)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO Cliente (ID_Cliente, CPF, Email, Telefone, Rua, Numero, Complemento, Bairro, Cidade, Estado, CEP, Nome_Cliente, Data_Nascimento, Genero, Senha)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
   const values = [
@@ -34,6 +34,7 @@ export const postUser = async (req, res) => {
       req.body.Nome_Cliente,
       req.body.Data_Nascimento,
       req.body.Genero,
+      req.body.Senha,
   ];
 
   const checkEmailQuery = 'SELECT * FROM Cliente WHERE Email = ?';
