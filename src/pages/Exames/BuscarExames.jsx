@@ -101,4 +101,4 @@ export default function BuscarExames() {
             </Link>
         </div>
     );
-}
+} 

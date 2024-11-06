@@ -108,7 +108,7 @@
 .forgot-password {
   text-align: center; /* Centraliza o texto */
   margin-bottom: 10px; /* Margem inferior */
-  border-bottom: 2px solid #c9ccd1; /* Linha cinza embaixo */
+  /*border-bottom: 2px solid #c9ccd1;  Linha cinza embaixo */
   padding-bottom: 17px; /* Padding inferior */
 }
 

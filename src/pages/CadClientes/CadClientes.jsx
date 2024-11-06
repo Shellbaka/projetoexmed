@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Cadastro2.css';
+import './CadClientes.css';
 
 function Cadastro2() {
   const [streetName, setStreetName] = useState('');
@@ -8,7 +8,7 @@ function Cadastro2() {
   const [telefone, setTelefone] = useState('');
   const [senha, setSenha] = useState('');
   const [cep, setCep] = useState('');
-  const [estado, setEstado] = useState(''); // Adicionando estado ao state
+  const [estado, setEstado] = useState('');
 
   const handleStreetNameChange = (event) => {
     setStreetName(event.target.value);
@@ -46,27 +46,30 @@ function Cadastro2() {
   };
 
   const handleEstadoChange = (event) => {
-    const value = event.target.value.toUpperCase(); // Transformando para maiúsculas
+    const value = event.target.value.toUpperCase();
     setEstado(value);
   };
 
   return (
     <div className="app">
       <div className="exmed-logo">
-        <h1>Exmed</h1>
+        <img src="public/logoexmed.svg" alt="imglog" className="imglog" />
       </div>
       <div className="form-container">
         <h2>Criar uma nova conta</h2>
         <p>Solução completa para a sua saúde e bem-estar!</p>
-        <hr className="title-line" /> {/* Linha horizontal abaixo do título */}
-        
+        <hr className="title-line" />
+
         <form>
           <input type="text" className="input-standard" placeholder="Nome Completo" required />
 
           <div className="input-group">
             <label>
               Data de nascimento
-              <span className="info-icon">?</span>
+              <span className="info-icon">
+                ?
+                <span className="tooltip-text">Selecione o dia, mês e ano. Exemplo: 15/03/1990</span>
+              </span>
             </label>
             <div className="select-group">
               <select className="input-standard">
@@ -96,10 +99,13 @@ function Cadastro2() {
             </div>
           </div>
 
-          <div className="input-group">
+          <div className="input-group genero">
             <label>
               Gênero
-              <span className="info-icon">?</span>
+              <span className="info-icon">
+                ?
+                <span className="tooltip-text">Selecione o gênero com o qual você se identifica.</span>
+              </span>
             </label>
             <div className="radio-group">
               <label className="radio-option">
@@ -113,65 +119,67 @@ function Cadastro2() {
             </div>
           </div>
 
-          <input
-            type="text"
-            className="input-standard"
-            placeholder="Telefone"
-            value={telefone}
-            onChange={handleTelefoneChange}
-            required
-          />
-
-          <input
-            type="text"
-            className="input-standard"
-            value={streetName}
-            onChange={handleStreetNameChange}
-            placeholder="Nome da Rua"
-            required
-          />
-
-          <input
-            type="text"
-            className="input-standard"
-            value={streetNumber}
-            onChange={handleStreetNumberChange}
-            placeholder="Número"
-            required
-          />
-
-          <input type="text" className="input-standard" placeholder="Complemento" />
-          <input type="text" className="input-standard" placeholder="Bairro" required />
-          <input type="text" className="input-standard" placeholder="Cidade" required />
-
-          {/* Campo de Estado com limitação de 2 caracteres */}
-          <input
-            type="text"
-            className="input-standard"
-            placeholder="Estado"
-            maxLength="2" // Limita a 2 caracteres
-            value={estado} // Adicionando o estado ao value
-            onChange={handleEstadoChange} // Chamando a função para atualizar o estado
-            required
-          />
-
-          <input
-            type="text"
-            className="input-standard"
-            placeholder="CEP"
-            value={cep}
-            onChange={handleCepChange}
-            required
-          />
-
-          <input
-            type="text"
-            className="input-standard"
-            value={cpf}
-            onChange={handleCpfChange}
-            placeholder="CPF"
-            required
-          />
+          <div className="input-group">
+            <label>
+              Dados
+              <span className="info-icon">
+                ?
+                <span className="tooltip-text">Preencha seus dados pessoais para cadastro.</span>
+              </span>
+            </label>
+            <input
+              type="text"
+              className="input-standard input-telefone"
+              placeholder="Telefone"
+              value={telefone}
+              onChange={handleTelefoneChange}
+              required
+            />
+            <input
+              type="text"
+              className="input-standard input-street-name"
+              value={streetName}
+              onChange={handleStreetNameChange}
+              placeholder="Nome da Rua"
+              required
+            />
+            <input
+              type="text"
+              className="input-standard input-street-number"
+              value={streetNumber}
+              onChange={handleStreetNumberChange}
+              placeholder="Número"
+              required
+            />
+            <input type="text" className="input-standard input-complemento" placeholder="Complemento" />
+            <input type="text" className="input-standard input-bairro" placeholder="Bairro" required />
+            <input type="text" className="input-standard input-cidade" placeholder="Cidade" required />
+            <input
+              type="text"
+              className="input-standard input-estado"
+              placeholder="Estado"
+              maxLength="2"
+              value={estado}
+              onChange={handleEstadoChange}
+              required
+            />
+            <input
+              type="text"
+              className="input-standard input-cep"
+              placeholder="CEP"
+              value={cep}
+              onChange={handleCepChange}
+              required
+            />
+            <input
+              type="text"
+              className="input-standard input-cpf"
+              value={cpf}
+              onChange={handleCpfChange}
+              placeholder="CPF"
+              required
+            />
+          </div>
 
           <input
             type="password"
