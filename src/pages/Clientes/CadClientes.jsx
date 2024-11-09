@@ -1,20 +1,8 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD:src/pages/Clientes/CadClientes.jsx
+import axios from 'axios';
 import './CadClientes.css';
 
-function CadColetores() {
-  const [streetName, setStreetName] = useState('');
-  const [streetNumber, setStreetNumber] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [telefone, setTelefone] = useState('');
-  const [senha, setSenha] = useState('');
-  const [cep, setCep] = useState('');
-  const [estado, setEstado] = useState('');
-=======
-import axios from 'axios';
-import './Cadastro2.css';
-
-function Cadastro2() {
+function CadClientes() {
   const [formData, setFormData] = useState({
     nomeCompleto: '',
     dataNascimento: { dia: '', mes: '', ano: '' },
@@ -31,7 +19,6 @@ function Cadastro2() {
     email: '',
     senha: '',
   });
->>>>>>> dc9954cfc2b8c480aded22918082d69a1ca200cf:src/pages/Cadastro2/Cadastro2.jsx
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -49,13 +36,20 @@ function Cadastro2() {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleCepChange = (event) => {
+    let value = event.target.value.replace(/\D/g, '').slice(0, 8);
+    setFormData((prevData) => ({ ...prevData, cep: value }));
+  };
+
+  const handleEstadoChange = (event) => {
+    const value = event.target.value.toUpperCase().slice(0, 2);
+    setFormData((prevData) => ({ ...prevData, estado: value }));
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Formatação da data de nascimento para o formato AAAA-MM-DD
     const dataNascimentoFormatada = `${formData.dataNascimento.ano}-${String(formData.dataNascimento.mes).padStart(2, '0')}-${String(formData.dataNascimento.dia).padStart(2, '0')}`;
 
-    // Estrutura de dados para enviar ao backend
     const dataToSend = {
       Nome_Cliente: formData.nomeCompleto,
       Data_Nascimento: dataNascimentoFormatada,
@@ -73,73 +67,43 @@ function Cadastro2() {
       Senha: formData.senha,
     };
 
-<<<<<<< HEAD:src/pages/Clientes/CadClientes.jsx
-  const handleCepChange = (event) => {
-    let value = event.target.value.replace(/\D/g, '');
-    value = value.slice(0, 8);
-    setCep(value);
-  };
-
-  const handleSenhaChange = (event) => {
-    const value = event.target.value.slice(0, 8);
-    setSenha(value);
-  };
-
-  const handleEstadoChange = (event) => {
-    const value = event.target.value.toUpperCase();
-    setEstado(value);
-=======
-    try {
-      const response = await axios.post('http://localhost:3000/cadastro2', dataToSend);
-      alert(response.data);
-    } catch (error) {
-      console.error('Erro no cadastro:', error);
-      alert('Erro ao realizar o cadastro');
-    }
->>>>>>> dc9954cfc2b8c480aded22918082d69a1ca200cf:src/pages/Cadastro2/Cadastro2.jsx
+    axios.post('http://localhost:3000/cadclientes', dataToSend)
+      .then((response) => {
+        console.log(response.data);
+        alert("Usuário criado com sucesso!");
+      })
+      .catch((error) => {
+        console.error('Erro ao cadastrar usuário:', error);
+        alert("Erro ao cadastrar usuário.");
+      });
   };
 
   return (
     <div className="app">
       <div className="exmed-logo">
-        <img src="public/logoexmed.svg" alt="imglog" className="imglog" />
+        <img src="logoexmed.svg" alt="imglog" className="imglog" />
       </div>
       <div className="form-container">
         <h2>Criar uma nova conta</h2>
         <p>Solução completa para a sua saúde e bem-estar!</p>
         <hr className="title-line" />
 
-<<<<<<< HEAD:src/pages/Clientes/CadClientes.jsx
-        <form>
-          <input type="text" className="input-standard" placeholder="Nome Completo" required />
-
-          <div className="input-group">
-            <label>
-              Data de nascimento
-              <span className="info-icon">
-                ?
-                <span className="tooltip-text">Selecione o dia, mês e ano. Exemplo: 15/03/1990</span>
-              </span>
-            </label>
-=======
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            name="nomeCompleto"
             className="input-standard"
             placeholder="Nome Completo"
+            name="nomeCompleto"
             value={formData.nomeCompleto}
             onChange={handleInputChange}
             required
           />
-
+          
           <div className="input-group">
             <label>Data de nascimento</label>
->>>>>>> dc9954cfc2b8c480aded22918082d69a1ca200cf:src/pages/Cadastro2/Cadastro2.jsx
             <div className="select-group">
               <select
                 name="dia"
-                className="input-standard"
                 value={formData.dataNascimento.dia}
                 onChange={handleDataNascimentoChange}
                 required
@@ -153,21 +117,19 @@ function Cadastro2() {
               </select>
               <select
                 name="mes"
-                className="input-standard"
                 value={formData.dataNascimento.mes}
                 onChange={handleDataNascimentoChange}
                 required
               >
                 <option value="">Mês</option>
-                {["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"].map((month) => (
-                  <option key={month} value={month}>
-                    {month}
+                {[...Array(12).keys()].map((month) => (
+                  <option key={month + 1} value={month + 1}>
+                    {month + 1}
                   </option>
                 ))}
               </select>
               <select
                 name="ano"
-                className="input-standard"
                 value={formData.dataNascimento.ano}
                 onChange={handleDataNascimentoChange}
                 required
@@ -182,25 +144,15 @@ function Cadastro2() {
             </div>
           </div>
 
-<<<<<<< HEAD:src/pages/Clientes/CadClientes.jsx
           <div className="input-group genero">
-            <label>
-              Gênero
-              <span className="info-icon">
-                ?
-                <span className="tooltip-text">Selecione o gênero com o qual você se identifica.</span>
-              </span>
-            </label>
-=======
-          <div className="input-group">
             <label>Gênero</label>
->>>>>>> dc9954cfc2b8c480aded22918082d69a1ca200cf:src/pages/Cadastro2/Cadastro2.jsx
             <div className="radio-group">
               <label className="radio-option">
                 <input
                   type="radio"
                   name="genero"
                   value="Feminino"
+                  checked={formData.genero === 'Feminino'}
                   onChange={handleInputChange}
                   required
                 />
@@ -211,6 +163,7 @@ function Cadastro2() {
                   type="radio"
                   name="genero"
                   value="Masculino"
+                  checked={formData.genero === 'Masculino'}
                   onChange={handleInputChange}
                   required
                 />
@@ -219,184 +172,99 @@ function Cadastro2() {
             </div>
           </div>
 
-<<<<<<< HEAD:src/pages/Clientes/CadClientes.jsx
-          <div className="input-group">
-            <label>
-              Dados
-              <span className="info-icon">
-                ?
-                <span className="tooltip-text">Preencha seus dados pessoais para cadastro.</span>
-              </span>
-            </label>
-            <input
-              type="text"
-              className="input-standard input-telefone"
-              placeholder="Telefone"
-              value={telefone}
-              onChange={handleTelefoneChange}
-              required
-            />
-            <input
-              type="text"
-              className="input-standard input-street-name"
-              value={streetName}
-              onChange={handleStreetNameChange}
-              placeholder="Nome da Rua"
-              required
-            />
-            <input
-              type="text"
-              className="input-standard input-street-number"
-              value={streetNumber}
-              onChange={handleStreetNumberChange}
-              placeholder="Número"
-              required
-            />
-            <input type="text" className="input-standard input-complemento" placeholder="Complemento" />
-            <input type="text" className="input-standard input-bairro" placeholder="Bairro" required />
-            <input type="text" className="input-standard input-cidade" placeholder="Cidade" required />
-            <input
-              type="text"
-              className="input-standard input-estado"
-              placeholder="Estado"
-              maxLength="2"
-              value={estado}
-              onChange={handleEstadoChange}
-              required
-            />
-            <input
-              type="text"
-              className="input-standard input-cep"
-              placeholder="CEP"
-              value={cep}
-              onChange={handleCepChange}
-              required
-            />
-            <input
-              type="text"
-              className="input-standard input-cpf"
-              value={cpf}
-              onChange={handleCpfChange}
-              placeholder="CPF"
-              required
-            />
-          </div>
-=======
-          <input
-            type="tel"
-            name="telefone"
-            className="input-standard"
-            placeholder="Telefone"
-            value={formData.telefone}
-            onChange={handleInputChange}
-            required
-          />
-
-          <input
-            type="text"
-            name="rua"
-            className="input-standard"
-            placeholder="Nome da Rua"
-            value={formData.rua}
-            onChange={handleInputChange}
-            required
-          />
-
-          <input
-            type="text"
-            name="numero"
-            className="input-standard"
-            placeholder="Número"
-            value={formData.numero}
-            onChange={handleInputChange}
-            required
-          />
-
-          <input
-            type="text"
-            name="complemento"
-            className="input-standard"
-            placeholder="Complemento"
-            value={formData.complemento}
-            onChange={handleInputChange}
-          />
-
-          <input
-            type="text"
-            name="bairro"
-            className="input-standard"
-            placeholder="Bairro"
-            value={formData.bairro}
-            onChange={handleInputChange}
-            required
-          />
-
-          <input
-            type="text"
-            name="cidade"
-            className="input-standard"
-            placeholder="Cidade"
-            value={formData.cidade}
-            onChange={handleInputChange}
-            required
-          />
-
-          <input
-            type="text"
-            name="estado"
-            className="input-standard"
-            placeholder="Estado"
-            maxLength="2"
-            value={formData.estado}
-            onChange={handleInputChange}
-            required
-          />
-
-          <input
-            type="text"
-            name="cep"
-            className="input-standard"
-            placeholder="CEP"
-            value={formData.cep}
-            onChange={handleInputChange}
-            required
-          />
-
           <input
             type="text"
             name="cpf"
-            className="input-standard"
             placeholder="CPF"
             value={formData.cpf}
             onChange={handleInputChange}
             required
           />
-
           <input
             type="email"
             name="email"
-            className="input-standard"
             placeholder="Email"
             value={formData.email}
             onChange={handleInputChange}
             required
           />
->>>>>>> dc9954cfc2b8c480aded22918082d69a1ca200cf:src/pages/Cadastro2/Cadastro2.jsx
-
+          <input
+            type="text"
+            name="telefone"
+            placeholder="Telefone"
+            value={formData.telefone}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            type="text"
+            name="rua"
+            placeholder="Rua"
+            value={formData.rua}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            type="text"
+            name="numero"
+            placeholder="Número"
+            value={formData.numero}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            type="text"
+            name="complemento"
+            placeholder="Complemento"
+            value={formData.complemento}
+            onChange={handleInputChange}
+          />
+          <input
+            type="text"
+            name="bairro"
+            placeholder="Bairro"
+            value={formData.bairro}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            type="text"
+            name="cidade"
+            placeholder="Cidade"
+            value={formData.cidade}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            type="text"
+            name="estado"
+            placeholder="Estado"
+            value={formData.estado}
+            onChange={handleEstadoChange}
+            required
+          />
+          <input
+            type="text"
+            name="cep"
+            placeholder="CEP"
+            value={formData.cep}
+            onChange={handleCepChange}
+            required
+          />
           <input
             type="password"
             name="senha"
-            className="input-standard input-password"
             placeholder="Senha"
             value={formData.senha}
             onChange={handleInputChange}
             required
           />
 
-          <button type="submit" className="submit-btn">Cadastre-se</button>
-
+          <button type="submit" className="submit-btn">
+            Cadastre-se
+          </button>
           <p className="login-link">
-            Já tem uma conta? <a href="#">Entrar</a>
+            Já tem uma conta? <a href="/login">Entrar</a>
           </p>
         </form>
       </div>
@@ -404,8 +272,4 @@ function Cadastro2() {
   );
 }
 
-<<<<<<< HEAD:src/pages/Clientes/CadClientes.jsx
-export default CadColetores;
-=======
-export default Cadastro2;
->>>>>>> dc9954cfc2b8c480aded22918082d69a1ca200cf:src/pages/Cadastro2/Cadastro2.jsx
+export default CadClientes;

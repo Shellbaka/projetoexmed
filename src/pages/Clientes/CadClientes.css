@@ -4,53 +4,53 @@
   box-sizing: border-box;
 }
 
-/* Fundo claro para a página */
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
 .app {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: Arial, sans-serif;
-  background-color: #fff;
+  justify-content: flex-start;
+  background-color: #f5f5f5;
   height: 100vh;
   padding-top: 25px;
-  justify-content: flex-start;
 }
 
 .exmed-logo {
-  font-size: 3em; /* Tamanho do logotipo */
-  color: black; /* Cor do texto do logotipo */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 3em;
+  color: #333;
   font-weight: bold;
-  margin-bottom: 20px; /* Aumente esse valor para mais espaço */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 25px;
 }
 
-/* Ajuste da largura e altura do formulário */
 .form-container {
   width: 400px;
   background-color: #fff;
-  padding: 20px;
-  border: 1px solid #ddd; /* Adiciona borda */
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  padding: 25px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   text-align: center;
-  margin-top: 4px;
+  margin-top: 10px;
 }
 
 .form-container h2 {
-  font-size: 1.6em;
+  font-size: 1.8em;
   font-weight: bold;
-  margin-bottom: 4px;
-  color: black;
+  color: #333;
+  margin-bottom: 8px;
 }
 
 .form-container p {
   color: #606770;
-  font-size: 0.9em;
-  margin-bottom: 16px;
-  margin-top: 3px;
+  font-size: 1em;
+  margin-bottom: 18px;
 }
 
-/* Linha horizontal abaixo do título */
 .title-line {
   width: calc(100% + 40px);
   border: none;
@@ -58,94 +58,71 @@
   margin: 8px -20px;
 }
 
-/* Padronização da largura do campo de senha */
 .input-standard {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd; /* Borda aplicada */
-  border-radius: 5px; /* Cantos arredondados */
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
   background-color: #fff;
-  color: black;
   font-size: 14px;
-  margin-bottom: 8px;
+  color: #333;
+  margin-bottom: 10px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Efeito de foco para o campo de entrada */
 .input-standard:focus {
-  border-color: #007bff; /* Cor da borda em azul no foco */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
   outline: none;
 }
 
-/* Estilos específicos para o campo de senha */
-.input-password {
-  width: 350px;
-}
-
-/* Alinhamento horizontal e proximidade dos campos de data */
 .select-group {
   display: flex;
   justify-content: space-between;
-  gap: 5px;
+  gap: 8px;
 }
 
 .select-group .input-standard {
   width: 32%;
-  margin-bottom: 0;
 }
 
-/* Estilos de layout para grupos de elementos */
 .input-group label {
   font-size: 0.85em;
   color: #606770;
   display: flex;
   align-items: center;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
-/* Ajuste específico para o label "Gênero" */
-.input-group.genero {
-  margin-top: 10px;
-}
-
-/* Centralização do grupo de gênero */
 .radio-group {
   display: flex;
   justify-content: center;
-  gap: 5px;
+  gap: 10px;
 }
 
 .radio-option {
   display: flex;
   align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
   cursor: pointer;
-  padding: 8px;
-  border: 1px solid #ddd; /* Borda aplicada */
-  border-radius: 5px; /* Cantos arredondados */
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
-/* Efeito de foco para a opção de rádio */
+.radio-option:hover,
 .radio-option:focus-within {
   border-color: #007bff;
+  background-color: #e6f7ff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
 }
 
-.radio-option:hover {
-  background-color: #e6f7ff;
-}
-
 .radio-option input[type="radio"] {
-  margin-right: 8px;
+  margin-right: 6px;
   cursor: pointer;
-}
-
-.radio-option input[type="radio"]:checked {
   accent-color: #1877f2;
 }
 
-/* Estilo refinado para o ícone de informação */
 .info-icon {
   position: relative;
   display: inline-block;
@@ -158,16 +135,15 @@
   font-size: 10px;
   line-height: 14px;
   font-weight: normal;
-  margin-left: 6px;
+  margin-left: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-.info-icon:hover {
-  background-color: #0056b3;
+.info-icon:hover .tooltip-text {
+  opacity: 1;
+  visibility: visible;
 }
 
-/* Tooltip específico para cada info-icon */
 .tooltip-text {
   position: absolute;
   width: max-content;
@@ -176,10 +152,9 @@
   transform: translateX(-50%);
   background-color: #333;
   color: #fff;
-  padding: 5px;
+  padding: 6px;
   border-radius: 4px;
   font-size: 10px;
-  white-space: nowrap;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s;
@@ -187,46 +162,41 @@
   z-index: 1;
 }
 
-.info-icon:hover .tooltip-text {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Estilos para o botão de cadastro */
 .submit-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1em;
+  color: #333;
   background-color: #99EAE1;
-  color: black;
-  padding: 10px;
-  font-size: 0.9em;
-  border: 1px solid #ddd; /* Borda aplicada */
-  border-radius: 10px;
-  cursor: pointer;
-  width: 350px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
   font-weight: bold;
-  margin: 8px auto 0;
+  cursor: pointer;
+  margin-top: 12px;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Efeito de foco para o botão de envio */
-.submit-btn:focus {
-  border-color: #007bff; /* Cor da borda em azul no foco */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
-  outline: none;
 }
 
 .submit-btn:hover {
   background-color: #A6F1F5;
 }
 
-/* Estilos para o link de login */
+.submit-btn:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
 .login-link {
-  margin-top: 8px;
+  margin-top: 15px;
   font-size: 0.85em;
   color: #1877f2;
-  cursor: pointer;
 }
 
 .login-link a {
   color: #1877f2;
   text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
 }

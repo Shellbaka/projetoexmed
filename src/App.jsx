@@ -5,17 +5,31 @@ import Footer from './components/footer/Footer';
 import Home from './pages/home/Home';
 import Exame from './pages/Exames/Exame';
 import BuscarExames from './pages/Exames/BuscarExames';
-import Coletores from './pages/Coletores/CadColetores';
-import Clientes from './pages/Clientes/CadClientes';
+import CadClientes from './pages/Clientes/CadClientes';
+import CadColetores from './pages/Coletores/CadColetores';
 import Login from './pages/Login/LoginClientes';
-import TextoFlex from './components/h2/TextoFlex';
 import TextNav from './pages/Exames/TextNav';
+import ForgotPasswordPage from './pages/Login/ForgotPasswordPage';
 
 
 function App() {
   return (
     <Router>
-   
+      <Header />
+      <div className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/exame" element={<Exame />} /> {/* Da main */}
+          <Route path="/textnav" element={<TextNav />} /> {/* Da germaria-branch */}
+          <Route path="/buscar-resultado" element={<BuscarExames />} />
+          <Route path="/cadcoletores" element={<CadColetores />} />
+          <Route path="/cadclientes" element={<CadClientes />} /> {/* Da germaria-branch */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} /> {/* Da germaria-branch */}
+          <Route path="/resultado" element={<BuscarExames />} /> {/* Da main */}
+        </Routes>
+      </div>
+      <Footer />
     </Router>
   );
 }

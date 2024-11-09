@@ -7,7 +7,7 @@ function ListaColetores({ coletores }) {
     <div className="app">
       {/* Logo da Exmed sempre visível no topo */}
       <div className="exmed-logo">
-        <img src="public/logoexmed.svg" alt="Exmed Logo" className="imglog" />
+        <img src="logoexmed.svg" alt="Exmed Logo" className="imglog" />
       </div>
 
       <div className="list-container">

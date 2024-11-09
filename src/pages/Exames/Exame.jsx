@@ -10,7 +10,7 @@ export default function Exame() {
                 </button>
                 <div className='Agendar'>
                     <Link to="/agendar">
-                        <img className='Agenda' src="public/exame.png" alt="Solicitar Exame" />
+                        <img className='Agenda' src="exame.png" alt="Solicitar Exame" />
                     </Link>
                 </div>
             </div>
@@ -20,7 +20,7 @@ export default function Exame() {
                 </button>
                 <div className='Buscar'>
                     <Link to="/resultado">
-                        <img className='Busca' src="public/exame2.jpeg" alt="Resultado Exames" />
+                        <img className='Busca' src="exame2.jpeg" alt="Resultado Exames" />
                     </Link>
                 </div>
             </div>

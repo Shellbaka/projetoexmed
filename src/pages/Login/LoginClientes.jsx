@@ -40,7 +40,7 @@ function LoginClientes() {
       </div>
       <div className="form-section">
         <h2>Faça seu Login</h2>
-        <p>Conecte-se à sua saúde com a Exmed.</p>
+        <p>Conecte-se com sua saúde através da Exmed.</p>
         <form onSubmit={handleSubmit}>
           <input 
             type="email" 

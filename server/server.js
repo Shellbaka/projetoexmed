@@ -14,7 +14,7 @@ app.use(cors());
 
 app.use('/auth', authRoutes);
 app.get('/users', getUsers);
-app.post('/cadastro2', postUser);
+app.post('/cadclientes', postUser);
 app.get('/employees', getEmployees);
 app.post('/cadastroemp', postEmployee);
 

@@ -19,7 +19,7 @@ function CadColetores() {
   return (
     <div className="app">
       <div className="exmed-logo">
-        <img src="public/logoexmed.svg" alt="imglog" className="imglog" />
+        <img src="logoexmed.svg" alt="imglog" className="imglog" />
       </div>
 
       <div className="form-list-container">

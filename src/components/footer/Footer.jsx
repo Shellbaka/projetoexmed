@@ -7,7 +7,7 @@ export default function Footer() {
 
             <div>
 
-                <img className='exmed' src="public/logoexmed.svg" alt="Logo" />
+                <img className='exmed' src="logoexmed.svg" alt="Logo" />
             </div>
 
             <nav>
