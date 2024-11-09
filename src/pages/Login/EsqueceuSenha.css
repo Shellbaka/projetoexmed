@@ -1,0 +1,118 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #fff; /* Cor de fundo suave para contraste */
+}
+
+.form-box {
+  max-width: 400px;
+  width: 100%; /* Para garantir que a caixinha ocupe espaço adequado */
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.form-box h2 {
+  color: #007bff;
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+.form-box p {
+  font-size: 1em;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.input-field {
+  width: 344px; /* Para ocupar toda a largura da caixinha */
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  color: #333;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-field::placeholder {
+  color: #999;
+}
+
+.input-field:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+
+.btn-primary {
+  width: 345px; /* Para ocupar toda a largura da caixinha */
+  margin-left: -1px; /* Move o botão 10px para a esquerda */
+  padding: 12px;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  background-color: #00d8cc;
+}
+
+.btn-primary:hover {
+  background-color: #00b8b8;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.back-to-login {
+  font-size: 0.85em;
+  margin-top: 15px;
+  color: #007bff;
+}
+
+.back-to-login a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.back-to-login a:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 15px;
+}
+
+.success-message {
+  display: block; /* Garante que a mensagem ocupe espaço */
+  margin: 15px auto; /* Centraliza a mensagem */
+  padding: 10px; /* Espaçamento interno */
+  background-color: #d4edda; /* Cor de fundo verde claro */
+  color: #155724; /* Cor do texto verde escuro */
+  border: 1px solid #c3e6cb; /* Borda verde clara */
+  border-radius: 5px; /* Bordas arredondadas */
+  text-align: center; /* Centraliza o texto */
+  animation: fadeIn 0.5s; /* Animação de aparecimento */
+}
+
+/* Animação de fadeIn */
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Começa invisível */
+  }
+  to {
+    opacity: 1; /* Termina visível */
+  }
+}
