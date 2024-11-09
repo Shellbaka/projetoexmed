@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './CadClientes.css';
 
-function Cadastro2() {
+function CadColetores() {
   const [streetName, setStreetName] = useState('');
   const [streetNumber, setStreetNumber] = useState('');
   const [cpf, setCpf] = useState('');
@@ -199,4 +199,4 @@ function Cadastro2() {
   );
 }
 
-export default Cadastro2;
+export default CadColetores;

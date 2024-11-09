@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './CadColetores.css';
 
-function CadastroColetores() {
+function CadColetores() {
   const [nome, setNome] = useState('');
   const [especialidade, setEspecialidade] = useState('');
   const [vinculacaoCentro, setVinculacaoCentro] = useState('');
@@ -75,4 +75,4 @@ function CadastroColetores() {
   );
 }
 
-export default CadastroColetores;
+export default CadColetores;
