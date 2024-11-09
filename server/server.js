@@ -2,7 +2,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import authRoutes from './routes/authRoutes.js';
-import { getUsers } from './controllers/userController.js';
+import { getUsers, postUser } from './controllers/userController.js';
+import { getEmployees, postEmployee } from './controllers/employeeController.js';
 
 dotenv.config();
 const app = express();
@@ -13,6 +14,9 @@ app.use(cors());
 
 app.use('/auth', authRoutes);
 app.get('/users', getUsers);
+app.post('/cadastro2', postUser);
+app.get('/employees', getEmployees);
+app.post('/cadastroemp', postEmployee);
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
