@@ -19,8 +19,7 @@ function App() {
       <div className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/exame" element={<Exame />} /> {/* Da main */}
-          <Route path="/textnav" element={<TextNav />} /> {/* Da germaria-branch */}
+          <Route path="/exame" element={<TextNav />} /> {/* Da main */}
           <Route path="/buscar-resultado" element={<BuscarExames />} />
           <Route path="/cadcoletores" element={<CadColetores />} />
           <Route path="/cadclientes" element={<CadClientes />} /> {/* Da germaria-branch */}

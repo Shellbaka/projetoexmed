@@ -96,7 +96,7 @@ export default function BuscarExames() {
                 </div>
             )}
                 
-            <Link to="/exame"> 
+            <Link to="/"> 
                 <button className="btn-voltar">Voltar</button>
             </Link>
         </div>
