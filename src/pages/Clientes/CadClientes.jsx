@@ -1,96 +1,115 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './CadClientes.css';
 
-
 function CadClientes() {
-  const [streetName, setStreetName] = useState('');
-  const [streetNumber, setStreetNumber] = useState('');
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
   const [cpf, setCpf] = useState('');
   const [telefone, setTelefone] = useState('');
-  const [senha, setSenha] = useState('');
-  const [cep, setCep] = useState('');
+  const [streetName, setStreetName] = useState('');
+  const [streetNumber, setStreetNumber] = useState('');
+  const [complemento, setComplemento] = useState('');
+  const [bairro, setBairro] = useState('');
+  const [cidade, setCidade] = useState('');
   const [estado, setEstado] = useState('');
-
-  const handleStreetNameChange = (event) => {
-    setStreetName(event.target.value);
-  };
-
-  const handleStreetNumberChange = (event) => {
-    const value = event.target.value.slice(0, 5);
-    setStreetNumber(value);
-  };
-
-  const handleTelefoneChange = (event) => {
-    let value = event.target.value.replace(/\D/g, '');
-    value = value.slice(0, 11);
-    setTelefone(value);
-  };
+  const [cep, setCep] = useState('');
+  const [senha, setSenha] = useState('');
+  const [genero, setGenero] = useState('');
+  const [diaNascimento, setDiaNascimento] = useState('');
+  const [mesNascimento, setMesNascimento] = useState('');
+  const [anoNascimento, setAnoNascimento] = useState('');
 
   const handleCpfChange = (event) => {
-    let value = event.target.value.replace(/\D/g, '');
-    value = value.slice(0, 11);
-    value = value.replace(/(\d{3})(\d)/, '$1.$2');
-    value = value.replace(/(\d{3})(\d)/, '$1.$2');
-    value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-    setCpf(value);
+    const rawCpf = event.target.value.replace(/\D/g, '').slice(0, 11);
+    setCpf(formatarCpf(rawCpf));
   };
 
-  const handleCepChange = (event) => {
-    let value = event.target.value.replace(/\D/g, '');
-    value = value.slice(0, 8);
-    setCep(value);
+  const formatarCpf = (cpf) => {
+    return cpf
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
   };
 
-  const handleSenhaChange = (event) => {
-    const value = event.target.value.slice(0, 8);
-    setSenha(value);
-  };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-  const handleEstadoChange = (event) => {
-    const value = event.target.value.toUpperCase();
-    setEstado(value);
+    const dataNascimento = `${anoNascimento}-${mesNascimento}-${diaNascimento}`;
+    const cpfSemMascara = cpf.replace(/\D/g, '');
+
+    try {
+      const response = await axios.post('http://localhost:3000/cadclientes', {
+        Nome_Cliente: nome,
+        CPF: cpfSemMascara,
+        Email: email,
+        Telefone: telefone,
+        Rua: streetName,
+        Numero: streetNumber,
+        Complemento: complemento,
+        Bairro: bairro,
+        Cidade: cidade,
+        Estado: estado,
+        CEP: cep,
+        Data_Nascimento: dataNascimento,
+        Genero: genero,
+        Senha: senha,
+      });
+      alert(response.data);
+    } catch (error) {
+      alert(error.response?.data || 'Erro ao cadastrar');
+    }
   };
 
   return (
     <div className="app">
       <div className="exmed-logo">
-        <img src="public/logoexmed.svg" alt="imglog" className="imglog" />
+        <img src="logoexmed.svg" alt="imglog" className="imglog" />
       </div>
       <div className="form-container">
         <h2>Criar uma nova conta</h2>
         <p>Solução completa para a sua saúde e bem-estar!</p>
         <hr className="title-line" />
 
-        <form>
-          <input type="text" className="input-standard" placeholder="Nome Completo" required />
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            className="input-standard"
+            placeholder="Nome Completo"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+            required
+          />
+          <input
+            type="email"
+            className="input-standard"
+            placeholder="E-mail"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
           <div className="input-group">
-            <label>
-              Data de nascimento
-              <span className="info-icon">
-                ?
-                <span className="tooltip-text">Selecione o dia, mês e ano. Exemplo: 15/03/1990</span>
-              </span>
-            </label>
+            <label>Data de nascimento</label>
             <div className="select-group">
-              <select className="input-standard">
-                <option>Dia</option>
+              <select className="input-standard" onChange={(e) => setDiaNascimento(e.target.value)} required>
+                <option value="">Dia</option>
                 {[...Array(31).keys()].map(day => (
-                  <option key={day + 1} value={day + 1}>
+                  <option key={day + 1} value={String(day + 1).padStart(2, '0')}>
                     {day + 1}
                   </option>
                 ))}
               </select>
-              <select className="input-standard">
-                <option>Mês</option>
-                {["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"].map((month, idx) => (
-                  <option key={idx} value={month.toLowerCase()}>
-                    {month}
+              <select className="input-standard" onChange={(e) => setMesNascimento(e.target.value)} required>
+                <option value="">Mês</option>
+                {["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"].map((month, idx) => (
+                  <option key={idx} value={month}>
+                    {["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"][idx]}
                   </option>
                 ))}
               </select>
-              <select className="input-standard">
-                <option>Ano</option>
+              <select className="input-standard" onChange={(e) => setAnoNascimento(e.target.value)} required>
+                <option value="">Ano</option>
                 {Array.from({ length: 100 }, (_, i) => 2024 - i).map(year => (
                   <option key={year} value={year}>
                     {year}
@@ -101,99 +120,86 @@ function CadClientes() {
           </div>
 
           <div className="input-group genero">
-            <label>
-              Gênero
-              <span className="info-icon">
-                ?
-                <span className="tooltip-text">Selecione o gênero com o qual você se identifica.</span>
-              </span>
-            </label>
+            <label>Gênero</label>
             <div className="radio-group">
               <label className="radio-option">
-                <input type="radio" name="gender" value="Feminino" required />
+                <input type="radio" name="gender" value="Feminino" onChange={(e) => setGenero(e.target.value)} required />
                 Feminino
               </label>
               <label className="radio-option">
-                <input type="radio" name="gender" value="Masculino" required />
+                <input type="radio" name="gender" value="Masculino" onChange={(e) => setGenero(e.target.value)} required />
                 Masculino
               </label>
             </div>
           </div>
 
           <div className="input-group">
-            <label>
-              Dados
-              <span className="info-icon">
-                ?
-                <span className="tooltip-text">Preencha seus dados pessoais para cadastro.</span>
-              </span>
-            </label>
+            <label>Dados</label>
             <input
               type="text"
-              className="input-standard input-telefone"
+              className="input-standard"
+              placeholder="CPF"
+              value={cpf}
+              onChange={handleCpfChange}
+              required
+            />
+            <input
+              type="text"
+              className="input-standard"
               placeholder="Telefone"
               value={telefone}
-              onChange={handleTelefoneChange}
+              onChange={(e) => setTelefone(e.target.value.replace(/\D/g, '').slice(0, 11))}
               required
             />
             <input
               type="text"
-              className="input-standard input-street-name"
-              value={streetName}
-              onChange={handleStreetNameChange}
+              className="input-standard"
               placeholder="Nome da Rua"
+              value={streetName}
+              onChange={(e) => setStreetName(e.target.value)}
               required
             />
             <input
               type="text"
-              className="input-standard input-street-number"
-              value={streetNumber}
-              onChange={handleStreetNumberChange}
+              className="input-standard"
               placeholder="Número"
+              value={streetNumber}
+              onChange={(e) => setStreetNumber(e.target.value.slice(0, 5))}
               required
             />
-            <input type="text" className="input-standard input-complemento" placeholder="Complemento" />
-            <input type="text" className="input-standard input-bairro" placeholder="Bairro" required />
-            <input type="text" className="input-standard input-cidade" placeholder="Cidade" required />
+            <input type="text" className="input-standard" placeholder="Complemento" value={complemento} onChange={(e) => setComplemento(e.target.value)} />
+            <input type="text" className="input-standard" placeholder="Bairro" value={bairro} onChange={(e) => setBairro(e.target.value)} required />
+            <input type="text" className="input-standard" placeholder="Cidade" value={cidade} onChange={(e) => setCidade(e.target.value)} required />
             <input
               type="text"
-              className="input-standard input-estado"
+              className="input-standard"
               placeholder="Estado"
               maxLength="2"
               value={estado}
-              onChange={handleEstadoChange}
+              onChange={(e) => setEstado(e.target.value.toUpperCase())}
               required
             />
             <input
               type="text"
-              className="input-standard input-cep"
+              className="input-standard"
               placeholder="CEP"
               value={cep}
-              onChange={handleCepChange}
-              required
-            />
-            <input
-              type="text"
-              className="input-standard input-cpf"
-              value={cpf}
-              onChange={handleCpfChange}
-              placeholder="CPF"
+              onChange={(e) => setCep(e.target.value.replace(/\D/g, '').slice(0, 8))}
               required
             />
           </div>
 
           <input
             type="password"
-            className="input-standard input-password"
+            className="input-standard"
             placeholder="Senha"
             value={senha}
-            onChange={handleSenhaChange}
+            onChange={(e) => setSenha(e.target.value.slice(0, 8))}
             required
           />
 
           <button type="submit" className="submit-btn">Cadastre-se</button>
-
-          <p className="login-link">Já tem uma conta? <a href="#">Entrar</a></p>
+          <p className="login-link">Já tem uma conta? <a href="/login">Entrar</a></p>
         </form>
       </div>
     </div>
