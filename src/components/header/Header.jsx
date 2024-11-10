@@ -13,7 +13,10 @@ export default function Header() {
         <Link to="/exame">Exames</Link>
         <Link to="/sobre-nos">Sobre Nós</Link>
         <Link to="/central-de-ajuda">Central de Ajuda</Link>
+        <Link to="/CadClientes">Clientes</Link>
         <Link to="/login">Acessar</Link>
+        <Link to="/CadColetores">Coletores</Link>
+        <Link to="/lista-coletores">Lista de Coletores</Link>
       </nav>
     </header>
   );

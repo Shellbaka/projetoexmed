@@ -6,6 +6,8 @@ function LoginClientes() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [attemptCount, setAttemptCount] = useState(0);
+  const maxAttempts = 4;
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -17,26 +19,32 @@ function LoginClientes() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Verifica se o e-mail está exatamente no formato "11digitos@exmed.com"
+
+    if (attemptCount >= maxAttempts) {
+      setError(''); // Limpa a mensagem de erro quando o limite é atingido
+      return;
+    }
+
     const emailPattern = /^\d{11}@exmed\.com$/;
     if (!emailPattern.test(email)) {
       setError('E-mail deve estar no formato "CPF@exmed.com"');
+      setAttemptCount(prevCount => prevCount + 1); 
       return;
     }
-    
-    // Limpa a mensagem de erro se o formato estiver correto
-    setError('');
 
-    // Aqui você pode adicionar a lógica de autenticação, como enviar para uma API
+    setError('');
+    setAttemptCount(0);
+
     console.log('E-mail:', email);
     console.log('Senha:', password);
   };
 
+  const attemptsRemaining = maxAttempts - attemptCount;
+
   return (
     <div className="container">
       <div className="image-section">
-        <img src="LoginClientes.jpg" alt="Teamwork" className="image" /> 
+        <img src="LoginClientes.jpg" alt="Teamwork" className="image" />
       </div>
       <div className="form-section">
         <h2>Faça seu Login</h2>
@@ -49,6 +57,7 @@ function LoginClientes() {
             value={email}
             onChange={handleEmailChange}
             required 
+            disabled={attemptCount >= maxAttempts} 
           />
           <input 
             type="password" 
@@ -58,9 +67,18 @@ function LoginClientes() {
             onChange={handlePasswordChange}
             maxLength="8" 
             required 
+            disabled={attemptCount >= maxAttempts} 
           />
-          {error && <p className="error-message">{error}</p>}
-          <button type="submit" className="btn-primary">Entrar</button>
+          {error && attemptsRemaining > 0 && <p className="error-message">{error}</p>}
+          {attemptCount > 0 && attemptsRemaining > 0 && (
+            <p className="attempt-message">Tentativas restantes: {attemptsRemaining}</p>
+          )}
+          {attemptsRemaining === 0 && (
+            <p className="error-message">Número máximo de tentativas alcançado. Tente novamente mais tarde.</p>
+          )}
+          <button type="submit" className="btn-primary" disabled={attemptCount >= maxAttempts}>
+            Entrar
+          </button>
           <p className="forgot-password">
             <Link to="/esqueceu-senha">Esqueceu a senha?</Link>
           </p>
