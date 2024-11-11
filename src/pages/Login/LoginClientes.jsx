@@ -21,14 +21,14 @@ function LoginClientes() {
     e.preventDefault();
 
     if (attemptCount >= maxAttempts) {
-      setError(''); // Limpa a mensagem de erro quando o limite é atingido
+      setError('');
       return;
     }
 
     const emailPattern = /^\d{11}@exmed\.com$/;
     if (!emailPattern.test(email)) {
       setError('E-mail deve estar no formato "CPF@exmed.com"');
-      setAttemptCount(prevCount => prevCount + 1); 
+      setAttemptCount((prevCount) => prevCount + 1); 
       return;
     }
 
@@ -82,6 +82,12 @@ function LoginClientes() {
           <p className="forgot-password">
             <Link to="/esqueceu-senha">Esqueceu a senha?</Link>
           </p>
+          <div className="separator"></div>
+          <Link to="/criar-conta">
+            <button type="button" className="btn-secondary">
+              Criar nova conta
+            </button>
+          </Link>
         </form>
       </div>
     </div>
