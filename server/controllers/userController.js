@@ -47,7 +47,7 @@ export const postUser = async (req, res) => {
     }
 
     await db.query(query, values);
-    return res.status(200).json("Usuário criado com sucesso");
+    return res.status(200).json("Usuário criado com sucesso. Confira o seu e-mail registrado!");
 
   } catch (err) {
     console.error('Erro na operação:', err);

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './CadClientes.css';
 
 function CadClientes() {
@@ -19,6 +20,8 @@ function CadClientes() {
   const [diaNascimento, setDiaNascimento] = useState('');
   const [mesNascimento, setMesNascimento] = useState('');
   const [anoNascimento, setAnoNascimento] = useState('');
+
+  const navigate = useNavigate();
 
   const handleCpfChange = (event) => {
     const rawCpf = event.target.value.replace(/\D/g, '').slice(0, 11);
@@ -56,6 +59,7 @@ function CadClientes() {
         Senha: senha,
       });
       alert(response.data);
+      navigate('/login');
     } catch (error) {
       alert(error.response?.data || 'Erro ao cadastrar');
     }
