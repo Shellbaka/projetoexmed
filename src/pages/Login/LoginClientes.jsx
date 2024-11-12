@@ -83,7 +83,11 @@ function LoginClientes() {
             <Link to="/esqueceu-senha">Esqueceu a senha?</Link>
           </p>
           <div className="separator"></div>
+<<<<<<< HEAD
           <Link to="/criar-conta">
+=======
+          <Link to="/cadclientes">
+>>>>>>> 1dd2764517d2f5badc929c590cb0867c51546d26
             <button type="button" className="btn-secondary">
               Criar nova conta
             </button>

@@ -1,4 +1,5 @@
 .container {
+<<<<<<< HEAD
     display: flex;
     align-items: center;
     justify-content: center;
@@ -144,30 +145,176 @@
     border-top: 1px solid #ddd; /* Cor da linha */
     margin: 15px; /* Espaçamento acima e abaixo e centralização */
   }  
+=======
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+}
+>>>>>>> 1dd2764517d2f5badc929c590cb0867c51546d26
 
-  /* Estilo para a mensagem de erro */
-.form-section .error-message {
-  color: red !important;  /* Garante que a cor vermelha seja aplicada */
-  font-size: 0.9em;
-  margin-top: 10px;
+.image-section {
+  flex: 1;
+  max-width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+.form-section {
+  flex: 1;
+  max-width: 400px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-section h2 {
+  color: #007bff;
+  font-size: 1.8em;
+  margin-bottom: 10px;
   text-align: center;
 }
 
+.form-section p {
+  font-size: 1em;
+  color: #666;
+  margin-bottom: 20px;
+  text-align: center;
+}
 
-  /* Media queries para responsividade */
-  @media (max-width: 768px) {
-    .container {
-      flex-direction: column;
-      padding: 10px;
-    }
-  
-    .image-section, .form-section {
-      max-width: 100%;
-      margin: 0;
-    }
-  
-    .form-section {
-      margin-top: 20px;
-    }
+.input-field {
+  width: 350px;
+  padding: 10px 15px;
+  margin: 0 auto 15px auto;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  color: #333;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-field::placeholder {
+  color: #999;
+}
+
+.input-field:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+
+.btn-primary, .btn-secondary {
+  width: 350px;
+  padding: 12px;
+  margin: 0 auto 15px auto;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn-primary {
+  background-color: #00d8cc;
+}
+
+.btn-primary:hover {
+  background-color: #00b8b8;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  background-color: #4b4bfc;
+}
+
+.btn-secondary:hover {
+  background-color: #3838d6;
+}
+
+.btn-secondary:active {
+  transform: scale(0.98);
+}
+
+.forgot-password {
+  text-align: center;
+  font-size: 0.85em;
+  margin-top: -5px;
+  color: #007bff;
+}
+
+.forgot-password a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+/* Estilo para o botão de retorno no componente de esqueci a senha */
+.back-button {
+  margin-top: 15px;
+  background-color: transparent;
+  color: #007bff;
+  font-size: 0.85em;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+}
+
+.back-button:hover {
+  text-decoration: underline;
+}
+
+.separator {
+  width: 100%;
+  max-width: 350px; /* Ajuste a largura para alinhar com os outros elementos */
+  border-top: 1px solid #ddd; /* Cor da linha */
+  margin: 15px; /* Espaçamento acima e abaixo e centralização */
+}  
+
+/* Estilo para a mensagem de erro */
+.form-section .error-message {
+color: red !important;  /* Garante que a cor vermelha seja aplicada */
+font-size: 0.9em;
+margin-top: 10px;
+text-align: center;
+}
+
+
+/* Media queries para responsividade */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 10px;
   }
-  
+
+  .image-section, .form-section {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .form-section {
+    margin-top: 20px;
+  }
+}
