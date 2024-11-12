@@ -110,7 +110,7 @@
   .forgot-password {
     text-align: center;
     font-size: 0.85em;
-    margin-top: 5px;
+    margin-top: -5px;
     color: #007bff;
   }
   
@@ -139,11 +139,11 @@
   }
   
   .separator {
-    width: 350px;
-    border-top: 1px solid #ddd;
-    margin: 15px 0;
-    margin-top: -20px;
-  }
+    width: 100%;
+    max-width: 350px; /* Ajuste a largura para alinhar com os outros elementos */
+    border-top: 1px solid #ddd; /* Cor da linha */
+    margin: 15px; /* Espaçamento acima e abaixo e centralização */
+  }  
 
   /* Estilo para a mensagem de erro */
 .form-section .error-message {
