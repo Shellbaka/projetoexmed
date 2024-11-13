@@ -13,6 +13,24 @@ export const getEmployees = async (_, res) => {
   }
 };
 
+export const getEmployeeById = async (req, res) => {
+  const query = 'SELECT * FROM Funcionario WHERE ID_Funcionario = ?';
+  const userId = req.params.id;
+
+  try {
+    const [data] = await db.query(query, [userId]);
+    
+    if (data.length === 0) {
+      return res.status(404).json({ message: 'Usuário não encontrado' });
+    }
+
+    return res.status(200).json(data[0]);
+  } catch (err) {
+    console.error('Erro ao buscar usuário por ID:', err);
+    return res.status(500).json({ message: 'Erro ao buscar usuário', error: err });
+  }
+};
+
 export const postEmployee = async (req, res) => {
     const query = `
       INSERT INTO Funcionario (ID_Funcionario, CPF, Email, Cargo_Funcionario, Nome_Funcionario, Descricao_Setor_Funcionario, Telefone, Genero, Senha)
