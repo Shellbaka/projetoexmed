@@ -33,14 +33,15 @@ export const getEmployeeById = async (req, res) => {
 
 export const postEmployee = async (req, res) => {
     const query = `
-      INSERT INTO Funcionario (ID_Funcionario, CPF, Email, Cargo_Funcionario, Nome_Funcionario, Descricao_Setor_Funcionario, Telefone, Genero, Senha)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO Funcionario (ID_Funcionario, CPF, Email, Data_Nascimento, Cargo_Funcionario, Nome_Funcionario, Descricao_Setor_Funcionario, Telefone, Genero, Senha)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `;
   
     const values = [
         uuidv4(),
         req.body.CPF,
         req.body.Email,
+        req.body.Data_Nascimento,
         req.body.Cargo_Funcionario,
         req.body.Nome_Funcionario,
         req.body.Descricao_Setor_Funcionario,
@@ -59,7 +60,7 @@ export const postEmployee = async (req, res) => {
       }
   
       await db.query(query, values);
-      return res.status(200).json("Usuário criado com sucesso");
+      return res.status(200).json("Usuário criado com sucesso. Confira o seu e-mail registrado!");
   
     } catch (err) {
       console.error('Erro na operação:', err);

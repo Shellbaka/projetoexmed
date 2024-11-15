@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './CadColetores.css';
 
 function CadColetores() {
@@ -11,6 +12,11 @@ function CadColetores() {
   const [telefone, setTelefone] = useState('');
   const [genero, setGenero] = useState('');
   const [senha, setSenha] = useState('');
+  const [diaNascimento, setDiaNascimento] = useState('');
+  const [mesNascimento, setMesNascimento] = useState('');
+  const [anoNascimento, setAnoNascimento] = useState('');
+
+  const navigate = useNavigate();
 
   const handleCpfChange = (event) => {
     const rawCpf = event.target.value.replace(/\D/g, '').slice(0, 11);
@@ -26,12 +32,15 @@ function CadColetores() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const dataNascimento = `${anoNascimento}-${mesNascimento}-${diaNascimento}`;
     const cpfSemMascara = cpf.replace(/\D/g, '');
 
     try {
       const response = await axios.post('http://localhost:3000/cadcoletores', {
         CPF: cpfSemMascara,
         Email: email,
+        Data_Nascimento: dataNascimento,
         Cargo_Funcionario: cargoFuncionario,
         Nome_Funcionario: nomeFuncionario,
         Descricao_Setor_Funcionario: descricaoSetorFuncionario,
@@ -40,6 +49,7 @@ function CadColetores() {
         Senha: senha,
       });
       alert(response.data);
+      navigate('/login');
     } catch (error) {
       alert(error.response?.data || 'Erro ao cadastrar');
     }
@@ -81,6 +91,36 @@ function CadColetores() {
             required
           />
 
+          <div className="input-group">
+            <label>Data de nascimento:<span className="info-icon" title="Escolha o dia, mês e ano de seu nascimento.">?</span></label>
+            <div className="select-group">
+              <select className="input-standard" onChange={(e) => setDiaNascimento(e.target.value)} required>
+                <option value="">Dia</option>
+                {[...Array(31).keys()].map(day => (
+                  <option key={day + 1} value={String(day + 1).padStart(2, '0')}>
+                    {day + 1}
+                  </option>
+                ))}
+              </select>
+              <select className="input-standard" onChange={(e) => setMesNascimento(e.target.value)} required>
+                <option value="">Mês</option>
+                {["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"].map((month, idx) => (
+                  <option key={idx} value={month}>
+                    {["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"][idx]}
+                  </option>
+                ))}
+              </select>
+              <select className="input-standard" onChange={(e) => setAnoNascimento(e.target.value)} required>
+                <option value="">Ano</option>
+                {Array.from({ length: 100 }, (_, i) => 2024 - i).map(year => (
+                  <option key={year} value={year}>
+                    {year}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
           <div className="input-group genero">
           <label>Gênero:<span className="info-icon" title="Escolha seu gênero conforme identificação.">?</span></label>
             <div className="radio-group">
@@ -97,6 +137,7 @@ function CadColetores() {
 
           <div className="input-group">
           <label>Dados:<span className="info-icon" title="Insira seus dados de identificação.">?</span></label>
+
             <input
               type="text"
               className="input-standard2"

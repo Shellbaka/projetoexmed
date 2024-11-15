@@ -20,7 +20,7 @@ app.post('/cadclientes', postUser);
 
 app.get('/employees', getEmployees);
 app.get('/employees/:id', getEmployeeById);
-app.post('/cadastroemp', postEmployee);
+app.post('/cadcoletores', postEmployee);
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
