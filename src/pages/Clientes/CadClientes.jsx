@@ -94,7 +94,7 @@ function CadClientes() {
           />
 
           <div className="input-group">
-            <label>Data de nascimento</label>
+            <label>Data de nascimento:<span className="info-icon" title="Escolha o dia, mês e ano de seu nascimento.">?</span></label>
             <div className="select-group">
               <select className="input-standard" onChange={(e) => setDiaNascimento(e.target.value)} required>
                 <option value="">Dia</option>
@@ -124,7 +124,7 @@ function CadClientes() {
           </div>
 
           <div className="input-group genero">
-            <label>Gênero</label>
+          <label>Gênero:<span className="info-icon" title="Escolha seu gênero conforme identificação.">?</span></label>
             <div className="radio-group">
               <label className="radio-option">
                 <input type="radio" name="gender" value="Feminino" onChange={(e) => setGenero(e.target.value)} required />
@@ -138,7 +138,7 @@ function CadClientes() {
           </div>
 
           <div className="input-group">
-            <label>Dados</label>
+            <label>Dados:<span className="info-icon" title="Insira seus dados de identificação.">?</span></label>
             <input
               type="text"
               className="input-standard"
@@ -203,7 +203,7 @@ function CadClientes() {
           />
 
           <button type="submit" className="submit-btn">Cadastre-se</button>
-          <p className="login-link">Já tem uma conta? <a href="/login">Entrar</a></p>
+         <p className="login-link">Já tem uma conta? <a href="/login">Entrar</a></p>
         </form>
       </div>
     </div>

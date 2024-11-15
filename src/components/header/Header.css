@@ -48,6 +48,14 @@
     cursor: pointer;
 }
 
+/* Menu hamburger para telas pequenas */
+.hamburger {
+    display: none; /* Esconde o ícone do menu em telas grandes */
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Media Query para telas médias */
 @media (max-width: 1190px) {
     .header {
         padding: 10px;
@@ -74,6 +82,7 @@
     }
 }
 
+/* Media Query para telas pequenas */
 @media (max-width: 767px) {
     .logo img {
         width: 80px;
@@ -85,6 +94,34 @@
     }
 }
 
+/* Menu hamburger em telas menores (exemplo: max-width de 767px) */
+@media (max-width: 767px) {
+    .hamburger {
+        display: block; /* Mostra o menu hamburger */
+        color: #000000;
+    }
+
+    .nav {
+        display: none; /* Esconde o menu inicialmente */
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .nav a {
+        font-size: 16px;
+        padding: 10px 15px;
+        margin: 5px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav.show {
+        display: flex; /* Exibe o menu ao clicar no hamburger */
+    }
+}
+
+/* Media Query para telas muito pequenas */
 @media (max-width: 479px) {
     .logo img {
         width: 70px;

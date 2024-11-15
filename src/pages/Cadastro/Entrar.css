@@ -1,0 +1,79 @@
+/* Estilo principal para centralizar a caixinha */
+.entrar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh; /* Altura mínima para ocupar a tela inteira */
+    background-color: #fff; /* Fundo da página */
+}
+
+/* Estilo da caixinha */
+.entrar-box {
+    background-color: #ffffff; /* Fundo branco */
+    padding: 40px; /* Espaçamento interno */
+    border-radius: 10px; /* Cantos arredondados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+    text-align: center; /* Centraliza o texto */
+    max-width: 400px; /* Largura máxima da caixinha */
+    width: 100%; /* Largura de 100% até o limite de 400px */
+}
+
+/* Estilos para o título e descrição */
+.entrar-box h1 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.entrar-box p {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Estilo para os botões */
+.entrar-opcoes {
+    display: flex;
+    justify-content: center; /* Centraliza os botões horizontalmente */
+    gap: 20px; /* Espaçamento entre os botões */
+}
+
+.btn-opcao {
+    padding: 16px 30px; /* Aumenta o espaçamento interno do botão */
+    font-size: 1.2em; /* Texto maior */
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px; /* Cantos mais arredondados */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-width: 150px; /* Largura mínima maior */
+}
+
+/* Efeito de hover nos botões */
+.btn-opcao:hover {
+    background-color: #0056b3;
+    transform: scale(1.1); /* Aumenta mais no hover */
+}
+
+.btn-opcao:active {
+    transform: scale(1.05);
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .entrar-box {
+        padding: 30px;
+        max-width: 300px;
+    }
+
+    .entrar-opcoes {
+        flex-direction: column; /* Empilha os botões em telas menores */
+        align-items: center; /* Centraliza os botões empilhados */
+    }
+
+    .btn-opcao {
+        width: 100%;
+        text-align: center;
+    }
+}
