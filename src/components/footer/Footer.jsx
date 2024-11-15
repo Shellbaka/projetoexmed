@@ -1,6 +1,19 @@
 import React from 'react';
 import './Footer.css';
 
+function Footer() {
+  return (
+    <footer>
+      <p>&copy; 2024 Exmed. Todos os direitos reservados.</p>
+    </footer>
+  );
+}
+
+export default Footer;
+
+/*import React from 'react';
+import './Footer.css';
+
 export default function Footer() {
     return (
         <footer className='footer'>
@@ -39,4 +52,4 @@ export default function Footer() {
             </nav>
         </footer>
     );
-};
+};*/

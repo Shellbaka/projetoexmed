@@ -1,11 +1,13 @@
+/* Estilos gerais do container */
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 70vh;
+  height: 100vh;
   width: 100%;
-  background-color: #fff;
+  background-color: #f7f8fa;
   padding: 20px;
+  flex-direction: row;
 }
 
 .image-section {
@@ -50,9 +52,9 @@
 }
 
 .input-field {
-  width: 350px;
+  width: 100%;
   padding: 10px 15px;
-  margin: 0 auto 15px auto;
+  margin-bottom: 15px;
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -72,15 +74,15 @@
 }
 
 .btn-primary, .btn-secondary {
-  width: 350px;
+  width: 100%;
   padding: 12px;
-  margin: 0 auto 15px auto;
   color: white;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
   transition: background-color 0.3s ease, transform 0.1s ease;
+  border: none;
 }
 
 .btn-primary {
@@ -123,38 +125,43 @@
   text-decoration: underline;
 }
 
-/* Estilo para o botão de retorno no componente de esqueci a senha */
-.back-button {
-  margin-top: 15px;
-  background-color: transparent;
-  color: #007bff;
-  font-size: 0.85em;
-  text-align: center;
-  cursor: pointer;
-  border: none;
-}
-
-.back-button:hover {
-  text-decoration: underline;
-}
-
 .separator {
   width: 100%;
-  max-width: 350px; /* Ajuste a largura para alinhar com os outros elementos */
-  border-top: 1px solid #ddd; /* Cor da linha */
-  margin: 15px; /* Espaçamento acima e abaixo e centralização */
-}  
-
-/* Estilo para a mensagem de erro */
-.form-section .error-message {
-color: red !important;  /* Garante que a cor vermelha seja aplicada */
-font-size: 0.9em;
-margin-top: 10px;
-text-align: center;
+  border-top: 1px solid #ddd;
+  margin: 15px 0;
 }
 
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 10px;
+  text-align: center;
+}
 
-/* Media queries para responsividade */
+.attempt-message {
+  color: #666;
+  font-size: 0.85em;
+  text-align: center;
+}
+
+.user-type-selector {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.user-type-selector label {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #333;
+}
+
+.user-type-selector input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* Responsividade para dispositivos menores */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
