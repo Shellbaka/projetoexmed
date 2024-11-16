@@ -24,7 +24,7 @@ export default function Header() {
         <a href="/CadClientes">Cadastro</a>
         <a href="/login">Login</a>
         <a href="/CadColetores">Coletores</a>
-        <a href="/Entrar">Entrar</a>
+        {/* <a href="/Entrar">Entrar</a>*/}
         {/* <a href="/lista-coletores">Lista de Coletores</a>*/}
       </nav>
     </header>
