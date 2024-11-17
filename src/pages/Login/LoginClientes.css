@@ -135,12 +135,12 @@
 .error-message {
   color: red; /* Define a cor da letra como vermelho */
   font-size: 1em; /* Tamanho padrão da mensagem */
-  margin-top: 10px; /* Espaçamento acima da mensagem */
+  margin-top: -5px; /* Espaçamento acima da mensagem */
   text-align: center; /* Centraliza o texto */
 }
 
 .attempt-message {
-  color: red;
+  color: red !important;
   font-size: 0.85em;
   text-align: center;
 }

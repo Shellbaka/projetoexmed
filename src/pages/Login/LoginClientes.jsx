@@ -29,7 +29,7 @@ function LoginClientes() {
 
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailPattern.test(email)) {
-      setError('Insira um e-mail válido no formato "usuario@exemplo.com".');
+      setError('Por favor, insira um e-mail válido no formato usuario@exmed.com');
       setAttemptCount((prevCount) => prevCount + 1);
       return;
     }
@@ -89,7 +89,7 @@ function LoginClientes() {
         <form onSubmit={handleSubmit}>
           <input
             type="email"
-            placeholder="usuario@exemplo.com"
+            placeholder="usuario@exmed.com"
             className="input-field"
             value={email}
             onChange={handleEmailChange}
