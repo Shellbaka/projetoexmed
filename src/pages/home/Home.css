@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 10%;
+    padding: 20px 10%;
     background-color: #ffffff;
     color: #000;
     gap: 20px;
@@ -13,24 +13,26 @@
 }
 
 .content h1 {
-    font-size: 88px;
+    font-size: 64px; /* Tamanho da fonte */
     font-weight: 500;
-    margin-bottom: 32px;
-    line-height: 85px;
+    margin-bottom: 5px; /* Quase sem espaçamento inferior */
+    line-height: 1; /* Altura da linha bem compacta */
     color: #000;
 }
 
 .content .highlight {
     color: rgb(38, 186, 169);
-    font-size: 88px;
+    font-size: 64px;
     font-weight: 600;
-    margin-bottom: 32px;
-    line-height: 85px;
+    line-height: 1; /* Altura da linha mínima */
+    margin-bottom: 0; /* Sem espaço extra abaixo */
 }
 
+
 .content p {
-    font-size: 18px;
-    margin: 20px 0;
+    font-size: 20px; /* Fonte maior */
+    margin: 10px 0; /* Menos espaçamento vertical */
+    line-height: 1.4; /* Altura da linha reduzida */
     color: #333;
 }
 
@@ -38,7 +40,7 @@
     background-color: #b2f5ea;
     color: #000;
     font-size: 18px;
-    padding: 15px 30px;
+    padding: 15px 80px;
     border: none;
     border-radius: 30px;
     cursor: pointer;
@@ -71,6 +73,22 @@
 
     .content {
         max-width: 100%;
+    }
+
+    .content h1 {
+        font-size: 48px;
+        line-height: 56px;
+    }
+
+    .content .highlight {
+        font-size: 48px;
+        line-height: 56px;
+    }
+
+    .content p {
+        font-size: 18px;
+        margin: 8px 0; /* Ajuste menor em telas pequenas */
+        line-height: 1.4; /* Reduzido para telas menores */
     }
 
     .promo-image {
