@@ -13,6 +13,24 @@ export const getUsers = async (_, res) => {
   }
 };
 
+export const getUserById = async (req, res) => {
+  const query = 'SELECT * FROM Cliente WHERE ID_Cliente = ?';
+  const userId = req.params.id;
+
+  try {
+    const [data] = await db.query(query, [userId]);
+    
+    if (data.length === 0) {
+      return res.status(404).json({ message: 'Usuário não encontrado' });
+    }
+
+    return res.status(200).json(data[0]);
+  } catch (err) {
+    console.error('Erro ao buscar usuário por ID:', err);
+    return res.status(500).json({ message: 'Erro ao buscar usuário', error: err });
+  }
+};
+
 export const postUser = async (req, res) => {
   const query = `
     INSERT INTO Cliente (ID_Cliente, CPF, Email, Telefone, Rua, Numero, Complemento, Bairro, Cidade, Estado, CEP, Nome_Cliente, Data_Nascimento, Genero, Senha)
@@ -47,7 +65,7 @@ export const postUser = async (req, res) => {
     }
 
     await db.query(query, values);
-    return res.status(200).json("Usuário criado com sucesso");
+    return res.status(200).json("Usuário criado com sucesso. Confira o seu e-mail registrado!");
 
   } catch (err) {
     console.error('Erro na operação:', err);

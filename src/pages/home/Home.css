@@ -1,173 +1,97 @@
 .home {
-    align-items: center;
     display: flex;
-    flex-direction: row;
-    color: black;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10%;
     background-color: #ffffff;
-    width: auto;
-    height: auto;
-    font-size: 20px;
-    
+    color: #000;
+    gap: 20px;
 }
 
-.ConteinerText {
-    display: flex;
-    flex-direction: column; 
-    align-items: flex-start; 
-    color: black;
-    margin-right: 20px; 
+.content {
+    max-width: 40%;
 }
 
-.preto {
-    text-align: left;
-    color: black;
-    font-size: 70px;
-    margin: 0px;
-    padding-left: 20px;
+.content h1 {
+    font-size: 64px; /* Tamanho da fonte */
+    font-weight: 500;
+    margin-bottom: 5px; /* Quase sem espaçamento inferior */
+    line-height: 1; /* Altura da linha bem compacta */
+    color: #000;
 }
 
-.vermeio {
-    text-align: left;
-    color: rgb(80, 214, 255);
-    font-size: 50px;
-    margin: 0px;
-    padding-left: 20px;
+.content .highlight {
+    color: rgb(38, 186, 169);
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 1; /* Altura da linha mínima */
+    margin-bottom: 0; /* Sem espaço extra abaixo */
 }
 
-.ExmedP {
-    width: 500px;
-    height: 300px;
+
+.content p {
+    font-size: 20px; /* Fonte maior */
+    margin: 10px 0; /* Menos espaçamento vertical */
+    line-height: 1.4; /* Altura da linha reduzida */
+    color: #333;
+}
+
+.cta-button {
+    background-color: #b2f5ea;
+    color: #000;
+    font-size: 18px;
+    padding: 15px 80px;
+    border: none;
     border-radius: 30px;
-    
-    margin: 10px;
-}
-
-.ConteinerText p {
-    text-align: center;
-    align-items: center;
-    color: rgb(0, 0, 0);
-    margin-top: 10px;
-    
-}
-
-
-.Seja {
-    text-align: center;
-    color: black;
-    font-size: 25px;
-    background-color: #d4d4d4;
-    width: 250px;
-    z-index: 1;
-    transition: all 0.3s ease;
-    border-radius: 30px;
-    text-decoration: none;
-    margin-top: 30px; /* Adiciona espaçamento entre o botão e os textos acima */
-}
-
-.Seja a {
-    color: black;
-}
-
-.Seja:hover {
-    background-color: #B1EFE8;
-    color: black;
-    z-index: 10;
-    transform: scale(1.03);
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-@media (max-width: 1600px) {
-    .home {
-        font-size: 18px;
-    }
-    .preto {
-        font-size: 65px;
-    }
-    .vermeio {
-        font-size: 45px;
-    }
+.cta-button:hover {
+    background-color: #81e6d9;
 }
 
-@media (max-width: 1440px) {
-    .home {
-        font-size: 16px;
-    }
-    .ExmedP {
-        width: 600px;
-        height: 400px;
-    }
-    .Seja {
-        width: 220px;
-    }
+.image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-@media (max-width: 1280px) {
-    .home {
-        flex-direction: column;
-        align-items: center;
-    }
-    .ExmedP {
-        width: 550px;
-        height: 350px;
-    }
-}
-
-@media (max-width: 1024px) {
-    .home {
-        font-size: 15px;
-    }
-    .preto {
-        font-size: 60px;
-    }
-    .vermeio {
-        font-size: 40px;
-    }
-    .ExmedP {
-        width: 500px;
-        height: 300px;
-    }
-    .Seja {
-        width: 200px;
-    }
+.promo-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
 }
 
 @media (max-width: 768px) {
     .home {
-        font-size: 14px;
-    }
-    .preto {
-        font-size: 50px;
-    }
-    .vermeio {
-        font-size: 35px;
-    }
-    .ExmedP {
-        width: 400px;
-        height: 250px;
-    }
-    .ConteinerText {
-        align-items: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .home {
-        font-size: 12px;
         flex-direction: column;
+        text-align: center;
+        gap: 30px;
     }
-    .preto {
-        font-size: 40px;
+
+    .content {
+        max-width: 100%;
     }
-    .vermeio {
-        font-size: 30px;
+
+    .content h1 {
+        font-size: 48px;
+        line-height: 56px;
     }
-    .ExmedP {
-        width: 100%;
-        height: auto;
-        margin: 0;
+
+    .content .highlight {
+        font-size: 48px;
+        line-height: 56px;
     }
-    .Seja {
-        width: 180px;
+
+    .content p {
+        font-size: 18px;
+        margin: 8px 0; /* Ajuste menor em telas pequenas */
+        line-height: 1.4; /* Reduzido para telas menores */
+    }
+
+    .promo-image {
+        max-width: 80%;
     }
 }
-

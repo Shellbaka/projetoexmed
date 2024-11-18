@@ -1,4 +1,18 @@
-.footer {
+footer {
+    background-color: #49eefa4b;
+    color: #333;
+    text-align: center;
+    padding: 10px 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+
+/* .footer {
     border: solid rgb(0, 0, 0) 1px;
     width: 100%;
     display: flex;
@@ -90,4 +104,4 @@ a:hover {
         margin: 5px 0;
         text-align: center;
     }
-}
+} */

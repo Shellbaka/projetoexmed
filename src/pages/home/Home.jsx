@@ -3,28 +3,23 @@ import './Home.css';
 export default function Home() {
     return (
         <div className="home">
-            <div className='ConteinerText'>
-                <h2 className='preto'>
-                    Cuidar da sua saúde
-                </h2>
-                <h2 className="vermeio">nunca foi tão fácil</h2>
-            <p >
-                Tenha acesso a uma nova experiência
-                de cuidados 
-            </p >
-            <p >
-            com a
-                saúde a partir de R$ 19,90/mês.
-            </p>
-            <button className='Seja'>
-                <a>
+            <div className="content">
+                <h1>
+                    Valorizar a sua saúde <br />
+                    <span className="highlight">nunca foi tão acessível.</span>
+                </h1>
+                <p>Tenha acesso a uma nova experiência de cuidados com a saúde a partir de <strong>R$ 24,90/mês</strong>.</p>
+                <button className="cta-button">
                     Seja Exmed
-                </a>
-            </button>
+                </button>
             </div>
-            <div>
-                <img className='ExmedP' src="https://www.valencis.com.br/wp-content/uploads/2017/05/Enfermagem-1.png" alt="Paciente Exmed" />
+            <div className="image-container">
+                <img
+                    src="https://www.exmed.com.br/_next/image/?url=%2F_next%2Fstatic%2Fmedia%2Fabout-us.9b743a11.jpg&w=828&q=75"
+                    alt="Paciente Exmed"
+                    className="promo-image"
+                />
             </div>
         </div>
     );
-};
+}
