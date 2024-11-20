@@ -1,0 +1,40 @@
+.agendamento-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+  
+.agendamento-item.atendido {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+  
+.botao-atendido {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+  
+.botao-atendido:hover {
+    background-color: #218838;
+}
+  
+.botao-desmarcar {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #ffc107;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+  
+.botao-desmarcar:hover {
+    background-color: #e0a800;
+}  

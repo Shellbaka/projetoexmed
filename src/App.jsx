@@ -10,7 +10,8 @@ import CadColetores from './pages/Coletores/CadColetores';
 import Login from './pages/Login/LoginClientes';
 import TextNav from './pages/Exames/TextNav';
 import ForgotPasswordPage from './pages/Login/ForgotPasswordPage';
-
+import Agendamentos from './pages/Agendamentos/Agendamentos';
+import Atendidos from './pages/Agendamentos/Atendidos';
 
 function App() {
   return (
