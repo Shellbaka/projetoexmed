@@ -19,9 +19,9 @@ const authController = {
 
   login: async (req, res) => {
     const { email, password, userType } = req.body;
-
     // Simulação de busca no banco com base no email e tipo de usuário
-    const user = await User.findOne({ email, userType });
+    const user = await User.findOne({ email, password, userType });
+    console.log("Usuário encontrado:", user);
     if (!user) {
       return res.status(401).json({ message: 'Usuário não encontrado ou tipo incorreto' });
     }
