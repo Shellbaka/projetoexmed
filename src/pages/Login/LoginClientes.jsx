@@ -41,13 +41,23 @@ function LoginClientes() {
         userType, // Envia o tipo de usuário no body da requisição
       });
 
-      const { token } = response.data; // Supondo que o backend retorna o token
+      const { token, userType: userTypeFromServer } = response.data;
+
+      // Salvar o token no localStorage
       localStorage.setItem('authToken', token);
+
+      // Limpar erros e tentativas
       setError('');
       setAttemptCount(0);
 
-      // Redireciona para a página inicial ou dashboard de acordo com o tipo de usuário
-      navigate(userType === 'cliente' ? '/dashboard-cliente' : '/dashboard-funcionario');
+      // Redirecionar para a página com base no tipo de usuário
+      if (userTypeFromServer === 'cliente') {
+        navigate('/dashboard-cliente');
+      } else if (userTypeFromServer === 'funcionario') {
+        navigate('/dashboard-funcionario');
+      } else {
+        setError('Erro ao determinar o tipo de usuário. Contate o suporte.');
+      }
     } catch (err) {
       setError('Credenciais inválidas. Verifique seu e-mail ou senha.');
       setAttemptCount((prevCount) => prevCount + 1);

@@ -3,7 +3,6 @@ import './App.css';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Home from './pages/home/Home';
-import Exame from './pages/Exames/Exame';
 import BuscarExames from './pages/Exames/BuscarExames';
 import CadClientes from './pages/Clientes/CadClientes';
 import CadColetores from './pages/Coletores/CadColetores';

@@ -18,14 +18,44 @@ const authController = {
   },
 
   login: async (req, res) => {
-    const { cpf, password } = req.body;
-    const user = User.findByCpf(cpf);
-    if (!user || !(await bcrypt.compare(password, user.password))) {
-      return res.status(401).json({ message: 'Credenciais inválidas' });
-    }
+    const { email, password, userType } = req.body;
 
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
-    res.json({ message: 'Login bem-sucedido', token });
+    // Verifique os dados recebidos na requisição
+    console.log("Dados recebidos no login:", email, userType);
+
+    try {
+      // Buscando usuário pelo email e userType
+      const user = await User.findOne({ email, userType });
+
+      // Se não encontrar o usuário, logue a mensagem
+      if (!user) {
+        console.log("Usuário não encontrado com os dados:", email, userType);
+        return res.status(401).json({ message: 'Usuário não encontrado ou tipo incorreto' });
+      }
+
+      // Verificando a senha
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+      if (!isPasswordValid) {
+        return res.status(401).json({ message: 'Credenciais inválidas' });
+      }
+
+      // Gerar token JWT com ID do usuário e tipo
+      const token = jwt.sign(
+        { id: user.id, userType: user.type },
+        process.env.JWT_SECRET,
+        { expiresIn: process.env.JWT_EXPIRES_IN }
+      );
+
+      res.status(200).json({
+        message: 'Login bem-sucedido',
+        token,
+        userType: user.type, // Retorna o tipo de usuário para redirecionamento
+      });
+
+    } catch (error) {
+      console.error("Erro no login:", error);
+      res.status(500).json({ message: 'Erro ao processar o login', error });
+    }
   },
 
   forgotPassword: async (req, res) => {

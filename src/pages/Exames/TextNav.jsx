@@ -1,25 +1,26 @@
+import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import BuscarExames from './BuscarExames';
 import './TextNav.css';
 
 export default function AgendarExame() {
-    const [step, setStep] = useState(1); // 1 para seleção do serviço
-    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [step, setStep] = useState(1);
+    const [selectedDate, setSelectedDate] = useState(null);
     const [exame, setExame] = useState('');
     const [vacina, setVacina] = useState('');
     const [horario, setHorario] = useState('');
-    const [coletor, setColetor] = useState('');
+    const [laboratorio, setLaboratorio] = useState('');
+    const [valor, setValor] = useState(0);
     const [nome, setNome] = useState(localStorage.getItem('nome') || '');
+    const [agendamentoFinalizado, setAgendamentoFinalizado] = useState(false);
 
     const avancarEtapa = () => {
-        setStep((prevStep) => {
-            if (prevStep === 2.5) {
-                return 3; // Garante que a etapa seja 3 após 2.5
-            }
-            return prevStep + 1;
-        });
+        if (step === 3 && (!selectedDate || !horario)) {
+            alert("Por favor, selecione uma data e um horário antes de prosseguir.");
+            return;
+        }
+        setStep((prevStep) => (prevStep === 2.5 ? 3 : prevStep + 1));
     };
 
     const voltarEtapa = () => setStep((prevStep) => Math.max(prevStep - 1, 1));
@@ -29,97 +30,202 @@ export default function AgendarExame() {
         localStorage.setItem('nome', e.target.value);
     };
 
+    const isDiaUtil = (date) => {
+        const day = date.getDay();
+        return day !== 0 && day !== 6;
+    };
+
+    const diasUteisAte5 = () => {
+        const hoje = new Date();
+        let diasUteis = [];
+        let contador = 0;
+
+        while (diasUteis.length < 5) {
+            const proximoDia = new Date(hoje);
+            proximoDia.setDate(hoje.getDate() + contador);
+            if (isDiaUtil(proximoDia)) diasUteis.push(proximoDia);
+            contador++;
+        }
+        return diasUteis;
+    };
+
+    const desabilitarDias = ({ date }) => {
+        const hoje = new Date();
+        const diasPermitidos = diasUteisAte5().map((d) => d.toDateString());
+        return date < hoje || !diasPermitidos.includes(date.toDateString());
+    };
+
+    const definirLaboratorioEValor = (tipo) => {
+        let lab, price;
+        switch (tipo) {
+            case 'Sangue':
+                lab = 'Laboratório Vida Sangue';
+                price = 150.0;
+                break;
+            case 'Urina/Fezes':
+                lab = 'Laboratório Bio Saúde';
+                price = 100.0;
+                break;
+            case 'Vacinação':
+                lab = 'Clínica Vacina Bem';
+                price = 0;
+                break;
+            default:
+                lab = '';
+                price = 0;
+        }
+        setLaboratorio(lab);
+        setValor(price);
+    };
+
+    const definirValorVacina = (vacinaTipo) => {
+        const valoresVacinas = {
+            Hepatite: 80.0,
+            Antitetânica: 50.0,
+            Pneumocócica: 200.0,
+            HPV: 300.0,
+            'Meningocócica C': 180.0,
+            'Hepatite B': 90.0,
+            Penta: 250.0,
+            'VIP/VOP': 70.0,
+            'Tetra Viral': 400.0,
+        };
+        setValor(valoresVacinas[vacinaTipo]);
+    };
+
+    const selecionarExame = (tipo) => {
+        setExame(tipo);
+        setVacina('');
+        definirLaboratorioEValor(tipo);
+        avancarEtapa();
+    };
+
+    const selecionarVacina = (tipo) => {
+        setVacina(tipo);
+        setExame('');
+        definirLaboratorioEValor('Vacinação');
+        setStep(2.5);
+    };
+
+    const finalizarAgendamento = () => {
+        setAgendamentoFinalizado(true);
+        setStep(4.5);
+    };
+
+    const resetarDados = () => {
+        setStep(1);
+        setSelectedDate(null);
+        setExame('');
+        setVacina('');
+        setHorario('');
+        setLaboratorio('');
+        setValor(0);
+        setAgendamentoFinalizado(false);
+    };
+
     return (
         <div className="AgendarExame">
-            {/* Etapa 1: Seleção entre Agendar ou Buscar Resultado */}
             {step === 1 && (
                 <div>
-                    <h2>Selecione o serviço desejado</h2>
-                    <button onClick={() => setStep(2)}>Agendar Exame</button> {/* Avança para agendar */}
-                    <button onClick={() => setStep(5)}>Meus Exames</button> {/* Avança para Buscar Exames */}
+                    <h2>Bem-vindo ao Agendamento</h2>
+                    <button onClick={() => setStep(2)}>Agendar Exame</button>
+                    <button onClick={() => setStep(5)}>Meus Exames</button>
                 </div>
             )}
 
-            {/* Etapa 2: Agendamento de exames */}
             {step === 2 && (
                 <div>
                     <h2>Escolha o tipo de exame</h2>
-                    <button onClick={() => { setExame('Sangue'); avancarEtapa(); }}>Exame de Sangue</button>
-                    <button onClick={() => { setExame('Urina/Fezes'); avancarEtapa(); }}>Urina e Fezes</button>
-                    <button onClick={() => { setExame('Vacinação'); setStep(2.5); }}>Vacinação</button>
-                    <button onClick={() => voltarEtapa()}>Anterior</button>
+                    <button onClick={() => selecionarExame('Sangue')}>Exame de Sangue</button>
+                    <button onClick={() => selecionarExame('Urina/Fezes')}>Urina e Fezes</button>
+                    <button onClick={() => selecionarVacina('Vacinação')}>Vacinação</button>
+                    <button onClick={voltarEtapa}>Anterior</button>
                 </div>
             )}
 
-            {/* Etapa 2.5: Escolha do tipo de vacina */}
-            {step === 2.5 && exame === 'Vacinação' && (
+            {step === 2.5 && vacina === 'Vacinação' && (
                 <div>
                     <h2>Escolha o tipo de vacinação</h2>
-                    {['Hepatite', 'Antitetânica', 'Pneumocócica', 'HPV', 'Meningocócica C', 'Hepatite B', 'Penta', 'VIP/VOP', 'Tetra Viral'].map((vacinaTipo) => (
-                        <div key={vacinaTipo}>
-                            <button onClick={() => { setVacina(vacinaTipo); avancarEtapa(); }}>
-                                {vacinaTipo}
-                            </button>
-                            <p>Breve descrição de {vacinaTipo}</p>
-                        </div>
+                    {Object.keys({
+                        Hepatite: 80.0,
+                        Antitetânica: 50.0,
+                        Pneumocócica: 200.0,
+                        HPV: 300.0,
+                        'Meningocócica C': 180.0,
+                        'Hepatite B': 90.0,
+                        Penta: 250.0,
+                        'VIP/VOP': 70.0,
+                        'Tetra Viral': 400.0,
+                    }).map((vacinaTipo) => (
+                        <button
+                            key={vacinaTipo}
+                            onClick={() => {
+                                setVacina(vacinaTipo);
+                                definirValorVacina(vacinaTipo);
+                                avancarEtapa();
+                            }}
+                        >
+                            {vacinaTipo}
+                        </button>
                     ))}
-                    <button onClick={() => setStep(2)}>Anterior</button> {/* Volta para a etapa 2 */}
+                    <button onClick={() => setStep(2)}>Anterior</button>
                 </div>
             )}
 
-            {/* Etapa 3: Agendamento */}
             {step === 3 && (
                 <div>
-                    <h2 className="agendar-titulo">Agendar data e Hora para {exame} {vacina && `- ${vacina}`}</h2>
-
+                    <h2>Agendar Data e Hora</h2>
                     <input
                         type="text"
                         placeholder="Seu Nome"
                         value={nome}
                         onChange={salvarNome}
                     />
-                    <div>
-                        <p>Selecione a Data:</p>
-                        <Calendar
-                            onChange={setSelectedDate}
-                            value={selectedDate}
-                            locale="pt-BR"
-                        />
-                    </div>
-                    <div>
-                        <p>Selecione o Horário:</p>
-                        <input type="time" value={horario} onChange={(e) => setHorario(e.target.value)} />
-                    </div>
-                    <div>
-                        <p>Selecione o Coletor:</p>
-                        <select value={coletor} onChange={(e) => setColetor(e.target.value)}>
-                            <option value="">Selecione o Coletor</option>
-                            <option value="João Silva">João Silva</option>
-                            <option value="Maria Oliveira">Maria Oliveira</option>
-                            <option value="Carlos Souza">Carlos Souza</option>
-                        </select>
-                    </div>
+                    <Calendar
+                        onChange={setSelectedDate}
+                        value={selectedDate}
+                        locale="pt-BR"
+                        tileDisabled={desabilitarDias}
+                    />
+                    {['08:00', '10:00', '14:00', '16:00'].map((hora) => (
+                        <button key={hora} onClick={() => setHorario(hora)}>
+                            {hora}
+                        </button>
+                    ))}
+                    <button onClick={voltarEtapa}>Anterior</button>
                     <button onClick={avancarEtapa}>Próximo</button>
-                    <button onClick={() => { vacina ? setStep(2.5) : voltarEtapa(); }}>Anterior</button>
                 </div>
             )}
 
-            {/* Etapa 4: Confirmação do agendamento */}
             {step === 4 && (
                 <div className="ConfirmaAgenda">
-                    <h2>{nome}, seu agendamento foi confirmado com sucesso!</h2>
-                    <h3>Detalhes do Agendamento:</h3>
-                    <p>Exame: {exame} {vacina && `- ${vacina}`}</p>
-                    <p>Data: {selectedDate.toLocaleDateString('pt-BR')}</p>
-                    <p>Horário: {horario}</p>
-                    <p>Coletor: {coletor}</p>
-                    <p>Aguarde a confirmação via email.</p>
+                    <h2>Confirmação de Agendamento</h2>
+                    {exame && <p>Exame: {exame}</p>}
+                    {vacina && <p>Vacina: {vacina}</p>}
+                    <p>Data: {selectedDate ? selectedDate.toLocaleDateString('pt-BR') : 'Não selecionada'}</p>
+                    <p>Horário: {horario || 'Não selecionado'}</p>
+                    <p>Laboratório: {laboratorio}</p>
+                    <p>Valor: R$ {valor.toFixed(2)}</p>
                     <button onClick={voltarEtapa}>Anterior</button>
+                    <button onClick={finalizarAgendamento}>Finalizar</button>
                 </div>
             )}
 
-            {/* Exibe BuscarExames apenas na etapa 5 */}
-            {step === 5 && <BuscarExames />}
+            {step === 4.5 && agendamentoFinalizado && (
+                <div className="ConfirmaSucesso">
+                    <h2>Agendamento Confirmado!</h2>
+                    <p>Obrigado, {nome}! Seu agendamento foi realizado com sucesso.</p>
+                    {exame && <p>Exame: {exame}</p>}
+                    {vacina && <p>Vacina: {vacina}</p>}
+                    <p>Data: {selectedDate.toLocaleDateString('pt-BR')}</p>
+                    <p>Horário: {horario}</p>
+                    <p>Laboratório: {laboratorio}</p>
+                    <p>Valor: R$ {valor.toFixed(2)}</p>
+                    <button onClick={resetarDados}>Voltar ao Início</button>
+                </div>
+            )}
+
+            {step === 5 && navigate("/resultado")}
         </div>
     );
 }

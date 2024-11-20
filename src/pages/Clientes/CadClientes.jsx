@@ -38,6 +38,8 @@ function CadClientes() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    
+
     const dataNascimento = `${anoNascimento}-${mesNascimento}-${diaNascimento}`;
     const cpfSemMascara = cpf.replace(/\D/g, '');
 
