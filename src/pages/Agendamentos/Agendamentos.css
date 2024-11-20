@@ -1,0 +1,107 @@
+/* Contêiner principal */
+.agendamentos-container {
+    width: 800px;
+    margin: -30px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+    /* Adicionando uma borda colorida */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+}
+
+.agendamentos-container:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Título (modificado para não usar <h1>) */
+.agendamento-titulo {
+    text-align: center;
+    font-size: 24px;
+    color: black;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #00d8cc;
+    padding-bottom: 10px;
+}
+
+/* Lista de agendamentos */
+.agendamentos-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Estilo de cada item */
+.agendamento-item {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fafafa;
+    /* Fundo cinza mais escuro */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.agendamento-item:hover {
+    background-color: #f1f1f1;
+    /* Fundo mais escuro no hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Informações dos agendamentos */
+.agendamento-item p {
+    margin: 10px 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+}
+
+.agendamento-item p strong {
+    font-weight: bold;
+    color: black;
+}
+
+/* Botão para ações futuras (opcional) */
+.agendamento-item button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.agendamento-item button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .agendamentos-container {
+        padding: 15px;
+    }
+
+    .agendamento-titulo {
+        font-size: 20px;
+    }
+
+    .agendamento-item {
+        padding: 15px;
+    }
+
+    .agendamento-item p {
+        font-size: 14px;
+    }
+
+    .agendamento-item button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+    }
+}
