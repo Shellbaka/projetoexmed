@@ -18,15 +18,33 @@ const authController = {
   },
 
   login: async (req, res) => {
-    const { cpf, password } = req.body;
-    const user = User.findByCpf(cpf);
-    if (!user || !(await bcrypt.compare(password, user.password))) {
+    const { email, password, userType } = req.body;
+
+    // Simulação de busca no banco com base no email e tipo de usuário
+    const user = await User.findOne({ email, userType });
+    if (!user) {
+      return res.status(401).json({ message: 'Usuário não encontrado ou tipo incorreto' });
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
       return res.status(401).json({ message: 'Credenciais inválidas' });
     }
 
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
-    res.json({ message: 'Login bem-sucedido', token });
+    // Gerar token JWT com ID do usuário e tipo
+    const token = jwt.sign(
+      { id: user.id, userType: user.type },
+      process.env.JWT_SECRET,
+      { expiresIn: process.env.JWT_EXPIRES_IN }
+    );
+
+    res.status(200).json({
+      message: 'Login bem-sucedido',
+      token,
+      userType: user.type, // Retorna o tipo de usuário para redirecionamento
+    });
   },
+
 
   forgotPassword: async (req, res) => {
     const { cpf } = req.body;
