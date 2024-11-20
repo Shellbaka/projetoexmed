@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './CadClientes.css';
+import zxcvbn from 'zxcvbn'; // Importação do zxcvbn
 
 function CadClientes() {
   const [nome, setNome] = useState('');
@@ -16,6 +17,7 @@ function CadClientes() {
   const [estado, setEstado] = useState('');
   const [cep, setCep] = useState('');
   const [senha, setSenha] = useState('');
+  const [senhaForca, setSenhaForca] = useState(0); // Novo estado
   const [genero, setGenero] = useState('');
   const [diaNascimento, setDiaNascimento] = useState('');
   const [mesNascimento, setMesNascimento] = useState('');
@@ -35,11 +37,17 @@ function CadClientes() {
       .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
   };
 
+  const handleSenhaChange = (event) => {
+    const senhaInput = event.target.value.slice(0, 8);
+    setSenha(senhaInput);
+
+    // Avaliar a força da senha com zxcvbn
+    const avaliacao = zxcvbn(senhaInput);
+    setSenhaForca(avaliacao.score); // Define a força da senha (0 a 4)
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    
-
     const dataNascimento = `${anoNascimento}-${mesNascimento}-${diaNascimento}`;
     const cpfSemMascara = cpf.replace(/\D/g, '');
 
@@ -65,6 +73,12 @@ function CadClientes() {
     } catch (error) {
       alert(error.response?.data || 'Erro ao cadastrar');
     }
+  };
+
+  // Função para mapear força da senha
+  const getSenhaForcaLabel = () => {
+    const labels = ['Muito Fraca', 'Fraca', 'Razoável', 'Forte', 'Muito Forte'];
+    return labels[senhaForca];
   };
 
   return (
@@ -200,12 +214,15 @@ function CadClientes() {
             className="input-standard"
             placeholder="Senha"
             value={senha}
-            onChange={(e) => setSenha(e.target.value.slice(0, 8))}
+            onChange={handleSenhaChange}
             required
           />
+          <div className="senha-strength">
+            Força da senha: {getSenhaForcaLabel()}
+          </div>
 
           <button type="submit" className="submit-btn">Cadastre-se</button>
-         <p className="login-link">Já tem uma conta? <a href="/login">Entrar</a></p>
+          <p className="login-link">Já tem uma conta? <a href="/login">Entrar</a></p>
         </form>
       </div>
     </div>

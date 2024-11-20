@@ -50,6 +50,31 @@
     transform: scale(1.05); /* Aumenta o botão em 5% */
 }
 
+.nav-button {
+    transition: 0.25s;
+    border-radius: 100px;
+    border: none;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    align-items: center;
+    width: 160px;
+    font-size: 18px;
+    font-weight: 400;
+    height: 30px;
+    background-color: rgb(240, 240, 240); /* Cinza muito claro */
+    color: rgb(20, 20, 20);
+    margin: 0 10px;
+    cursor: pointer;
+  }
+  
+  .nav-button:hover {
+    background-color: #B1EFE8; /* Azul claro */
+    transform: scale(1.05); /* Aumenta o botão em 5% */
+  }
+  
+
 /* Efeito ao passar o mouse sobre o logo */
 .logo img:hover {
     transform: scale(1.1); /* Aumenta o tamanho do logo em 10% */

@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './LoginClientes.css';
 
 function LoginClientes() {
-  const [userType, setUserType] = useState('cliente'); // Tipo de usuário
+  const [userType, setUserType] = useState('cliente');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -16,7 +16,7 @@ function LoginClientes() {
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handleUserTypeChange = (e) => {
     setUserType(e.target.value);
-    setEmail(''); // Limpa os campos ao trocar o tipo de usuário
+    setEmail('');
     setPassword('');
   };
 
@@ -35,26 +35,23 @@ function LoginClientes() {
     }
 
     try {
-      const response = await axios.post('http://localhost:3000/auth/login', {
+      const response = await axios.post('http://localhost:3000/login', {
         email,
         password,
-        userType, // Envia o tipo de usuário no body da requisição
+        userType,
       });
 
       const { token, userType: userTypeFromServer } = response.data;
 
-      // Salvar o token no localStorage
       localStorage.setItem('authToken', token);
 
-      // Limpar erros e tentativas
       setError('');
       setAttemptCount(0);
 
-      // Redirecionar para a página com base no tipo de usuário
       if (userTypeFromServer === 'cliente') {
-        navigate('/dashboard-cliente');
+        navigate('/');
       } else if (userTypeFromServer === 'funcionario') {
-        navigate('/dashboard-funcionario');
+        navigate('/');
       } else {
         setError('Erro ao determinar o tipo de usuário. Contate o suporte.');
       }

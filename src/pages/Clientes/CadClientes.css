@@ -192,3 +192,8 @@
 .login-link a:hover {
   text-decoration: underline;
 }
+.senha-strength {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #555;
+}

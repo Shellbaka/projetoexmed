@@ -27,6 +27,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} /> {/* Da germaria-branch */}
           <Route path="/resultado" element={<BuscarExames />} /> {/* Da main */}
+          <Route path='/Atendidos' element={<Atendidos/>}/>
         </Routes>
       </div>
       <Footer />

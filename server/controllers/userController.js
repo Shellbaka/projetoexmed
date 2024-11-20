@@ -1,5 +1,6 @@
 import { db } from "../db.js";
 import { v4 as uuidv4 } from 'uuid';
+import bcrypt from 'bcrypt';
 
 export const getUsers = async (_, res) => {
   const query = 'SELECT * FROM cliente';
@@ -35,31 +36,32 @@ export const postUser = async (req, res) => {
   const query = `
     INSERT INTO Cliente (ID_Cliente, CPF, Email, Telefone, Rua, Numero, Complemento, Bairro, Cidade, Estado, CEP, Nome_Cliente, Data_Nascimento, Genero, Senha)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `;
+  `;
+
+  const hashedPassword = await bcrypt.hash(req.body.Senha, 10);
 
   const values = [
-      uuidv4(),
-      req.body.CPF,
-      req.body.Email,
-      req.body.Telefone,
-      req.body.Rua,
-      req.body.Numero,
-      req.body.Complemento,
-      req.body.Bairro,
-      req.body.Cidade,
-      req.body.Estado,
-      req.body.CEP,
-      req.body.Nome_Cliente,
-      req.body.Data_Nascimento,
-      req.body.Genero,
-      req.body.Senha,
+    uuidv4(),
+    req.body.CPF,
+    req.body.Email,
+    req.body.Telefone,
+    req.body.Rua,
+    req.body.Numero,
+    req.body.Complemento,
+    req.body.Bairro,
+    req.body.Cidade,
+    req.body.Estado,
+    req.body.CEP,
+    req.body.Nome_Cliente,
+    req.body.Data_Nascimento,
+    req.body.Genero,
+    hashedPassword,
   ];
 
-  const checkEmailQuery = 'SELECT * FROM Cliente WHERE Email = ?';
-
   try {
+    const checkEmailQuery = 'SELECT * FROM Cliente WHERE Email = ?';
     const [results] = await db.query(checkEmailQuery, [req.body.Email]);
-    
+
     if (results.length > 0) {
       return res.status(400).send('E-mail já está registrado.');
     }

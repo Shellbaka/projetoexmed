@@ -180,3 +180,9 @@
   pointer-events: none;
   z-index: 1;
 }
+
+.senha-strength {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #555;
+}

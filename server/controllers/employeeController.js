@@ -1,5 +1,6 @@
 import { db } from "../db.js";
 import { v4 as uuidv4 } from 'uuid';
+import bcrypt from 'bcrypt';
 
 export const getEmployees = async (_, res) => {
   const query = 'SELECT * FROM funcionario';
@@ -36,7 +37,9 @@ export const postEmployee = async (req, res) => {
       INSERT INTO Funcionario (ID_Funcionario, CPF, Email, Data_Nascimento, Cargo_Funcionario, Nome_Funcionario, Descricao_Setor_Funcionario, Telefone, Genero, Senha)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `;
-  
+
+    const hashedPassword = await bcrypt.hash(req.body.Senha, 10);
+
     const values = [
         uuidv4(),
         req.body.CPF,
@@ -47,12 +50,11 @@ export const postEmployee = async (req, res) => {
         req.body.Descricao_Setor_Funcionario,
         req.body.Telefone,
         req.body.Genero,
-        req.body.Senha,
+        hashedPassword,
     ];
-  
-    const checkEmailQuery = 'SELECT * FROM Funcionario WHERE Email = ?';
-  
+
     try {
+      const checkEmailQuery = 'SELECT * FROM Funcionario WHERE Email = ?';
       const [results] = await db.query(checkEmailQuery, [req.body.Email]);
       
       if (results.length > 0) {
