@@ -1,11 +1,12 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { jwtDecode } from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
 import './Header.css';
 import { AuthContext } from '../../AuthContext';
 
 export default function Header() {
   const { userType, setUserType } = useContext(AuthContext);
+  const [userName, setUserName] = useState(''); // Estado para o nome do usuário
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,8 +15,33 @@ export default function Header() {
       try {
         const decodedToken = jwtDecode(token);
         setUserType(decodedToken.userType);
+
+        // Faz a requisição para buscar o nome do usuário
+        fetch('http://localhost:3000/user-data', {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error('Erro ao buscar os dados do usuário.');
+            }
+            return response.json();
+          })
+          .then((data) => {
+            if (data.Nome_Cliente) {
+              setUserName(data.Nome_Cliente);
+            } else {
+              setUserName('Usuário');
+            }
+          })
+          .catch((error) => {
+            console.error('Erro ao buscar os dados do usuário:', error);
+          });
       } catch (error) {
         console.error('Erro ao decodificar o token:', error);
+        setUserType(null); // Garante que o estado seja ajustado
       }
     }
   }, [setUserType]);
@@ -23,6 +49,7 @@ export default function Header() {
   const handleLogout = () => {
     localStorage.clear();
     setUserType(null);
+    setUserName(''); // Reseta o nome do usuário ao sair
     navigate('/');
   };
 
@@ -34,6 +61,12 @@ export default function Header() {
         </Link>
       </div>
       <nav className="nav">
+        {userType && (
+          <div className="user-info">
+            <p>{userType === 'cliente' ? 'Cliente' : 'Funcionário'}</p>
+            <p>{userName}</p>
+          </div>
+        )}
         {userType === 'cliente' && (
           <>
             <Link to="/">Home</Link>
