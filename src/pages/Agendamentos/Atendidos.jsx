@@ -40,12 +40,12 @@ function Atendidos() {
               {item.status === 'Negado' && (
                 <p><strong>Negado por:</strong> {item.motivoNegado}</p>
               )}
+              <p><strong>Nome:</strong> {item.nome}</p>
               <p><strong>Data:</strong> {item.data}</p>
               <p><strong>Hora:</strong> {item.hora}</p>
-              <p><strong>Nome:</strong> {item.nome}</p>
+              <p><strong>Valor:</strong> {item.valor}</p> {/* Campo valor adicionado */}
               <p><strong>Telefone:</strong> {item.telefone}</p>
               <p><strong>Endereço:</strong> {item.endereco}</p>
-              <p><strong>Valor:</strong> {item.valor}</p> {/* Campo valor adicionado */}
             </div>
           ))
         ) : (
