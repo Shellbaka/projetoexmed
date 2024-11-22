@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import bcrypt from 'bcrypt';
 
 export const getEmployees = async (_, res) => {
-  const query = 'SELECT * FROM funcionario';
+  const query = 'SELECT * FROM Funcionario';
 
   try {
     const [data] = await db.query(query);
@@ -68,4 +68,23 @@ export const postEmployee = async (req, res) => {
       console.error('Erro na operação:', err);
       return res.status(500).send('Erro ao processar a solicitação.');
     }
-  };
+};
+
+export const updatePurchaseStatus = async (req, res) => {
+  const { purchaseId, status } = req.body; /* 'status' será 'atendido' ou 'rejeitado' */
+
+  const query = 'UPDATE Compras SET Status = ? WHERE ID_Compra = ?';
+
+  try {
+    const [result] = await db.query(query, [status, purchaseId]);
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: 'Compra não encontrada.' });
+    }
+
+    return res.status(200).json({ message: 'Status da compra atualizado com sucesso.' });
+  } catch (err) {
+    console.error('Erro ao atualizar status da compra:', err);
+    return res.status(500).json({ message: 'Erro ao processar a solicitação.', error: err });
+  }
+};
