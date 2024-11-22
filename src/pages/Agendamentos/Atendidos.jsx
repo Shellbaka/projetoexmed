@@ -44,6 +44,8 @@ function Atendidos() {
               <p><strong>Hora:</strong> {item.hora}</p>
               <p><strong>Nome:</strong> {item.nome}</p>
               <p><strong>Telefone:</strong> {item.telefone}</p>
+              <p><strong>Endereço:</strong> {item.endereco}</p>
+              <p><strong>Valor:</strong> {item.valor}</p> {/* Campo valor adicionado */}
             </div>
           ))
         ) : (
