@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './CadColetores.css';
 import zxcvbn from 'zxcvbn';
+import { useNavigate } from 'react-router-dom';
 
 function CadColetores() {
   const [cpf, setCpf] = useState('');
@@ -16,6 +17,8 @@ function CadColetores() {
   const [diaNascimento, setDiaNascimento] = useState('');
   const [mesNascimento, setMesNascimento] = useState('');
   const [anoNascimento, setAnoNascimento] = useState('');
+  
+  const navigate = useNavigate();
 
   const handleCpfChange = (event) => {
     const rawCpf = event.target.value.replace(/\D/g, '').slice(0, 11);
@@ -57,6 +60,7 @@ function CadColetores() {
         Senha: senha,
       });
       alert(response.data);
+      navigate('/');
     } catch (error) {
       alert(error.response?.data || 'Erro ao cadastrar');
     }
