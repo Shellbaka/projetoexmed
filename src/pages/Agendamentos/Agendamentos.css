@@ -1,4 +1,4 @@
-
+/* Container principal */
 .agendamentos-container {
   display: flex;
   flex-direction: column;
@@ -13,7 +13,6 @@
   background-color: #fff;
   overflow: visible; 
 }
-
 
 h2 {
   font-size: 32px;
@@ -38,22 +37,16 @@ h2 {
   border: 2px solid #28a745;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #f9f9f9;
+  background-color: #ffffff; /* Fundo branco para o calendário */
   padding: 20px;
   width: auto;
   max-width: 800px;
   margin: 0 auto;
 }
 
-.data-selecionada {
-  margin-top: 10px;
-  font-size: 16px;
-  color: #555;
-}
-
-/* Botões do calendário */
+/* Botões de navegação do calendário */
 .react-calendar__navigation button {
-  background-color: #28a745;
+  background-color: #28a745; /* Cor verde para botões */
   color: white;
   border: none;
   padding: 10px 15px;
@@ -64,12 +57,12 @@ h2 {
 }
 
 .react-calendar__navigation button:hover {
-  background-color: #218838;
+  background-color: #218838; /* Tom mais escuro para hover */
 }
 
 /* Estilo para o dia atual no calendário */
 .react-calendar__tile--now {
-  background-color: #ff9800; /* Laranja escuro */
+  background-color: #ff9800; /* Laranja escuro para o dia atual */
   color: white;
   border-radius: 8px;
   font-weight: bold;
@@ -77,21 +70,46 @@ h2 {
 }
 
 .react-calendar__tile--now:hover {
-  background-color: #e68900; 
+  background-color: #e68900;
   color: white;
 }
 
+/* Estilo para o dia selecionado no calendário */
+.react-calendar__tile--active {
+  background-color: #28a745; /* Verde para o dia selecionado */
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para os dias no calendário */
+.react-calendar__tile {
+  color: #333; /* Texto escuro para dias */
+}
+
+.react-calendar__tile:hover {
+  background-color: #f1f1f1; /* Cor clara para hover sobre os dias */
+  color: #333;
+}
+
+/* Cabeçalhos de navegação do calendário */
 .react-calendar__navigation__label {
   font-size: 18px;
   padding: 8px 16px;
   text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  background-color: #f1f1f1; /* Cor suave para os cabeçalhos */
+  color: #333; /* Texto escuro */
   border-radius: 5px;
 }
 
+/* Texto da data selecionada */
+.data-selecionada {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #555;
+}
 
+/* Lista de agendamentos */
 .agendamentos-list {
   display: flex;
   flex-wrap: wrap;
@@ -102,7 +120,7 @@ h2 {
   margin-top: 50px; 
 }
 
-
+/* Cards */
 .agendamento-card {
   background-color: #fff;
   border: 1px solid #ddd;
@@ -128,7 +146,7 @@ h2 {
   margin-bottom: 10px;
 }
 
-
+/* Botões */
 button {
   background-color: #28a745;
   color: white;
@@ -159,7 +177,6 @@ button:hover {
   cursor: not-allowed;
 }
 
-
 input {
   padding: 8px;
   font-size: 14px;
@@ -179,7 +196,7 @@ input {
   background-color: #c82333;
 }
 
-
+/* Responsividade */
 @media (max-width: 768px) {
   .agendamento-card {
     width: 100%;

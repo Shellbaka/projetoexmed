@@ -1,4 +1,4 @@
-
+/* Container principal */
 .atendidos-container {
   display: flex;
   flex-direction: column;
@@ -12,7 +12,6 @@
   text-align: center;
   background-color: #fff;
 }
-
 
 h2 {
   font-size: 32px;
@@ -28,7 +27,7 @@ h2 {
   border: 2px solid #28a745;
   border-radius: 8px;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-  background-color: rgb(54, 51, 51);
+  background-color: #333; /* Alterei para um fundo escuro para contrastar com o texto */
   padding: 40px;
   margin: 10px;
   position: relative;
@@ -39,31 +38,31 @@ h2 {
 
 /* Botões de navegação no calendário */
 .react-calendar__navigation button {
-  background-color: #28a745;
+  background-color: #28a745; /* Cor verde para os botões */
   color: white;
   border: none;
-  padding: 12px 16px; 
+  padding: 12px 16px;
   border-radius: 5px;
   font-size: 16px;
   transition: background-color 0.3s ease;
   margin: 5px;
-  white-space: nowrap; 
+  white-space: nowrap;
 }
 
 .react-calendar__navigation button:hover {
-  background-color: #218838;
+  background-color: #218838; /* Tom mais escuro para o hover */
 }
 
 /* Botão central no calendário */
 .react-calendar__navigation__label {
-  background-color: #28a745;
+  background-color: #28a745; /* Cor verde para o cabeçalho */
   color: white;
   padding: 12px 16px;
   font-size: 18px;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; 
+  text-overflow: ellipsis;
   border-radius: 5px;
   display: inline-block;
   max-width: 100%;
@@ -74,7 +73,40 @@ h2 {
   background-color: #218838;
 }
 
+/* Estilo para os dias no calendário */
+.react-calendar__tile {
+  color: #fff; /* Cor branca para os números dos dias */
+  background-color: transparent; /* Sem fundo para os dias */
+}
 
+.react-calendar__tile:hover {
+  background-color: #f1f1f1; /* Cor de fundo suave para os dias ao passar o mouse */
+  color: #333; /* Cor escura para contraste */
+}
+
+/* Estilo para o dia atual no calendário */
+.react-calendar__tile--now {
+  background-color: #ff9800; /* Laranja escuro para o dia atual */
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.react-calendar__tile--now:hover {
+  background-color: #e68900; 
+  color: white;
+}
+
+/* Estilo para o dia selecionado */
+.react-calendar__tile--active {
+  background-color: #28a745; /* Verde para o dia selecionado */
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Cards de atendimentos */
 .cards-container {
   display: flex;
   flex-wrap: wrap;
@@ -105,7 +137,7 @@ h2 {
   color: #333;
 }
 
-
+/* Status dos atendimentos */
 .status-aceito {
   color: #28a745;
   font-weight: bold;
@@ -116,7 +148,7 @@ h2 {
   font-weight: bold;
 }
 
-
+/* Botões */
 button {
   background-color: #28a745;
   color: white;
@@ -142,7 +174,7 @@ button:hover {
   background-color: #c82333;
 }
 
-
+/* Responsividade */
 @media (max-width: 768px) {
   .atendido-card {
     width: 100%;
