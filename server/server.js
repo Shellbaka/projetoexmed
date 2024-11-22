@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import { loginUser } from './controllers/authController.js';
 import { getUsers, postUser, getUserById } from './controllers/userController.js';
-import { getEmployees, postEmployee, getEmployeeById} from './controllers/employeeController.js';
+import { getEmployees, postEmployee, getEmployeeById } from './controllers/employeeController.js';
 
 dotenv.config();
 const app = express();

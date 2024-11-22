@@ -8,8 +8,6 @@ import CadClientes from './pages/Clientes/CadClientes';
 import CadColetores from './pages/Coletores/CadColetores';
 import Login from './pages/Login/LoginClientes';
 import TextNav from './pages/Exames/TextNav';
-import ForgotPasswordPage from './pages/Login/ForgotPasswordPage';
-import Agendamentos from './pages/Agendamentos/Agendamentos';
 import Atendidos from './pages/Agendamentos/Atendidos';
 
 function App() {
@@ -19,15 +17,15 @@ function App() {
       <div className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/exame" element={<TextNav/>} /> {/* Da main */}
-          <Route path="/textnav" element={<TextNav />} /> {/* Da germaria-branch */}
+          <Route path="/exame" element={<TextNav/>} />
+          <Route path="/textnav" element={<TextNav />} />
           <Route path="/buscar-resultado" element={<BuscarExames />} />
           <Route path="/cadcoletores" element={<CadColetores />} />
-          <Route path="/cadclientes" element={<CadClientes />} /> {/* Da germaria-branch */}
+          <Route path="/cadclientes" element={<CadClientes />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/forgot-password" element={<ForgotPasswordPage />} /> {/* Da germaria-branch */}
-          <Route path="/resultado" element={<BuscarExames />} /> {/* Da main */}
+          <Route path="/resultado" element={<BuscarExames />} />
           <Route path='/Atendidos' element={<Atendidos/>}/>
+          <Route path='/Resultado' element={<BuscarExames/>}/>
         </Routes>
       </div>
       <Footer />

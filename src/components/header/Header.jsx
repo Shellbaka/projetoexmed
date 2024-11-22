@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import './Header.css';
@@ -6,6 +6,7 @@ import { AuthContext } from '../../AuthContext';
 
 export default function Header() {
   const { userType, setUserType } = useContext(AuthContext);
+  const [userName, setUserName] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,16 +15,19 @@ export default function Header() {
       try {
         const decodedToken = jwtDecode(token);
         setUserType(decodedToken.userType);
+        setUserName(decodedToken.name);
       } catch (error) {
         console.error('Erro ao decodificar o token:', error);
       }
     }
-  }, [setUserType]);
+  });
 
   const handleLogout = () => {
     localStorage.clear();
     setUserType(null);
+    setUserName('');
     navigate('/');
+    alert('Você foi desconectado com sucesso.');
   };
 
   return (
@@ -41,6 +45,7 @@ export default function Header() {
             <button className="nav-button" onClick={handleLogout}>
               Sair
             </button>
+            <button className="nav-button">{userName || 'Cliente'}</button>
           </>
         )}
         {userType === 'funcionario' && (
@@ -51,6 +56,7 @@ export default function Header() {
             <button className="nav-button" onClick={handleLogout}>
               Sair
             </button>
+            <button className="nav-button">{userName || 'Funcionário'}</button>
           </>
         )}
         {!userType && (

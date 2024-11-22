@@ -1,104 +1,60 @@
-import React, { useState } from 'react';
-import './BuscarExames.css';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "./BuscarExames.css";
 
 export default function BuscarExames() {
-    const [pesquisa, setPesquisa] = useState('');
-    const [exames, setExames] = useState([
-        { id: 1, nome: 'Exame de Sangue', data: '2024-11-15', status: 'Agendado', paciente: 'João Silva', coletor: 'Carlos Souza' },
-        { id: 2, nome: 'Vacinação - Hepatite', data: '2024-11-20', status: 'Confirmado', paciente: 'Maria Oliveira', coletor: 'Ana Lima' },
-        // Adicione mais exames simulados conforme necessário
-    ]);
-    const [exameParaCancelar, setExameParaCancelar] = useState(null);
+    const [agendamentos, setAgendamentos] = useState([]);
 
-    const handlePesquisaChange = (e) => {
-        setPesquisa(e.target.value);
+    useEffect(() => {
+        const agendamentosSalvos = JSON.parse(localStorage.getItem("agendamentos")) || [];
+        setAgendamentos(agendamentosSalvos);
+    }, []);
+
+    const cancelarAgendamento = (index) => {
+        const atualizados = [...agendamentos];
+        atualizados.splice(index, 1);
+        setAgendamentos(atualizados);
+        localStorage.setItem("agendamentos", JSON.stringify(atualizados));
     };
-
-    const handleCancelarExame = (id) => {
-        setExames(exames.filter(exame => exame.id !== id));
-        setExameParaCancelar(null);
-        alert('Exame cancelado com sucesso!');
-    };
-
-    const handleAbrirModal = (id) => {
-        setExameParaCancelar(id);
-    };
-
-    const handleFecharModal = () => {
-        setExameParaCancelar(null);
-    };
-
-    const examesFiltrados = exames.filter(exame =>
-        exame.nome.toLowerCase().includes(pesquisa.toLowerCase())
-    );
 
     return (
         <div className="BuscarExames">
-            <h2>Buscar e Cancelar Exames</h2>
-            <div className="CaixaDeBusca">
-                <input
-                    type="text"
-                    placeholder="Pesquise seu exame..."
-                    value={pesquisa}
-                    onChange={handlePesquisaChange}
-                />
-            </div>
-            <div className="TabelaExames">
-                {examesFiltrados.length > 0 ? (
+            <h2>Meus Exames</h2>
+            {agendamentos.length > 0 ? (
+                <div className="TabelaExames">
                     <table>
                         <thead>
                             <tr>
-                                <th>Nome do Exame</th>
+                                <th>Exame</th>
                                 <th>Data</th>
-                                <th>Status</th>
-                                <th>Paciente</th>
-                                <th>Coletor</th>
-                                <th>Ações</th>
+                                <th>Horário</th>
+                                <th>Laboratório</th>
+                                <th>Valor</th>
+                                <th>Ação</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {examesFiltrados.map(exame => (
-                                <tr key={exame.id}>
-                                    <td>{exame.nome}</td>
-                                    <td>{exame.data}</td>
-                                    <td>{exame.status}</td>
-                                    <td>{exame.paciente}</td>
-                                    <td>{exame.coletor}</td>
+                            {agendamentos.map((agendamento, index) => (
+                                <tr key={index}>
+                                    <td>{agendamento.exame}</td>
+                                    <td>{agendamento.data}</td>
+                                    <td>{agendamento.horario}</td>
+                                    <td>{agendamento.laboratorio}</td>
+                                    <td>R$ {agendamento.valor.toFixed(2)}</td>
                                     <td>
-                                        <button
-                                            className="btn-cancelar"
-                                            onClick={() => handleAbrirModal(exame.id)}
-                                        >
-                                            Cancelar
-                                        </button>
+                                        <button className="btn-cancelar" onClick={() => cancelarAgendamento(index)}>Cancelar</button>
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
-                ) : (
-                    <p>Nenhum exame encontrado.</p>
-                )}
-            </div>
-
-            {exameParaCancelar && (
-                <div className="modal">
-                    <div className="modal-content">
-                        <p>Você tem certeza dessa decisão?</p>
-                        <button className="btn-confirmar" onClick={() => handleCancelarExame(exameParaCancelar)}>
-                            Sim
-                        </button>
-                        <button className="btn-cancelar" onClick={handleFecharModal}>
-                            Não
-                        </button>
-                    </div>
                 </div>
+            ) : (
+                <p>Sem exames agendados.</p>
             )}
-                
-            <Link to="/"> 
+            <Link to="/">
                 <button className="btn-voltar">Voltar</button>
             </Link>
         </div>
     );
-} 
+}
