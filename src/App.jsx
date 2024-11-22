@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState } from 'react';
 import './App.css';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
@@ -13,21 +14,34 @@ import Agendamentos from './pages/Agendamentos/Agendamentos';
 import Atendidos from './pages/Agendamentos/Atendidos';
 
 function App() {
+  const [atendimentosSalvos, setAtendimentosSalvos] = useState([]);
+
+  const adicionarAtendido = (novoAtendimento) => {
+    setAtendimentosSalvos((prev) => [...prev, novoAtendimento]);
+  };
+
   return (
     <Router>
       <Header />
       <div className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/exame" element={<TextNav/>} /> {/* Da main */}
-          <Route path="/textnav" element={<TextNav />} /> {/* Da germaria-branch */}
+          <Route path="/exame" element={<TextNav />} />
+          <Route path="/textnav" element={<TextNav />} />
           <Route path="/buscar-resultado" element={<BuscarExames />} />
           <Route path="/cadcoletores" element={<CadColetores />} />
-          <Route path="/cadclientes" element={<CadClientes />} /> {/* Da germaria-branch */}
+          <Route path="/cadclientes" element={<CadClientes />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/forgot-password" element={<ForgotPasswordPage />} /> {/* Da germaria-branch */}
-          <Route path="/resultado" element={<BuscarExames />} /> {/* Da main */}
-          <Route path='/Atendidos' element={<Atendidos/>}/>
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="/resultado" element={<BuscarExames />} />
+          <Route
+            path="/atendidos"
+            element={<Atendidos atendimentosSalvos={atendimentosSalvos} />}
+          />
+          <Route
+            path="/agendamentos"
+            element={<Agendamentos adicionarAtendido={adicionarAtendido} />}
+          />
         </Routes>
       </div>
       <Footer />

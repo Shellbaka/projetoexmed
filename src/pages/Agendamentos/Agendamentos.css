@@ -1,107 +1,170 @@
-/* Contêiner principal */
+/* Container principal */
 .agendamentos-container {
-    width: 800px;
-    margin: -30px auto;
+    display: flex;
+    align-items: center; /* Centraliza os itens horizontalmente */
+    justify-content: center; /* Centraliza os itens verticalmente */
     padding: 20px;
-    background-color: #ffffff;
-    border: 2px solid #e0e0e0;
-    /* Adicionando uma borda colorida */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    transition: box-shadow 0.3s ease;
-}
-
-.agendamentos-container:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Título (modificado para não usar <h1>) */
-.agendamento-titulo {
-    text-align: center;
-    font-size: 24px;
-    color: black;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #00d8cc;
-    padding-bottom: 10px;
-}
-
-/* Lista de agendamentos */
-.agendamentos-lista {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-/* Estilo de cada item */
-.agendamento-item {
-    padding: 20px;
-    margin-bottom: 20px;
-    background-color: #fafafa;
-    /* Fundo cinza mais escuro */
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.agendamento-item:hover {
-    background-color: #f1f1f1;
-    /* Fundo mais escuro no hover */
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Informações dos agendamentos */
-.agendamento-item p {
-    margin: 10px 0;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #555;
-}
-
-.agendamento-item p strong {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    height: 100vh; /* Garante que ocupe a altura total da tela */
+    text-align: center; /* Centraliza o texto */
+    background-color: #fff; /* Fundo claro para o container geral */
+  }
+  
+  /* Título principal */
+  h2 {
+    font-size: 32px;
     font-weight: bold;
-    color: black;
-}
-
-/* Botão para ações futuras (opcional) */
-.agendamento-item button {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: #ffffff;
+    color: #333; /* Cor do título */
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    width: 100%;
+  }
+  
+  /* Estilo do calendário e sua centralização */
+  .calendario-container {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center; /* Centraliza o calendário horizontalmente */
+    width: 100%;
+  }
+  
+  /* Estilo do calendário com fundo mais escuro e maior área */
+  .custom-calendar {
+    border: 2px solid #28a745;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgb(54, 51, 51); /* Fundo escuro do calendário */
+    padding: 40px; /* Aumentado o padding para dar mais espaço */
+    margin: 10px;
+    position: relative; /* Garante que os botões fiquem dentro do calendário */
+    width: 100%; /* Aumenta a largura do calendário */
+    max-width: 800px; /* Limita a largura máxima do calendário */
+    box-sizing: border-box; /* Garantir que o padding não afete a largura total */
+  }
+  
+  /* Data Selecionada abaixo do calendário */
+  .data-selecionada {
+    font-size: 18px;
+    font-weight: bold;
+    color: #28a745;
+    margin-top: 15px;
+    text-align: center;
+    width: 100%;
+  }
+  
+  /* Estilo dos botões de navegação no calendário */
+  .react-calendar__navigation button {
+    background-color: #28a745;
+    color: white;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
+    padding: 12px 24px; /* Botões um pouco maiores */
+    border-radius: 5px;
+    font-size: 16px;
     transition: background-color 0.3s ease;
-}
-
-.agendamento-item button:hover {
-    background-color: #0056b3;
-}
-
-/* Responsividade */
-@media (max-width: 600px) {
-    .agendamentos-container {
-        padding: 15px;
+  }
+  
+  .react-calendar__navigation button:hover {
+    background-color: #218838;
+  }
+  
+  /* Ajustes para o botão do meio (mês atual) */
+  .react-calendar__navigation__label {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 24px; /* Botão central maior */
+    font-size: 18px;
+    text-align: center;
+    width: auto; /* Deixa o botão aumentar de largura conforme necessário */
+    white-space: nowrap;
+    border-radius: 5px;
+  }
+  
+  /* Botões da esquerda e direita */
+  .react-calendar__navigation__prev2,
+  .react-calendar__navigation__next2 {
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 50%;
+    padding: 12px; /* Botões laterais maiores */
+    font-size: 18px;
+  }
+  
+  .react-calendar__navigation__prev2:hover,
+  .react-calendar__navigation__next2:hover {
+    background-color: #218838;
+  }
+  
+  /* Card de agendamento */
+  .agendamento-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 45%;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  /* Hover nos cards */
+  .agendamento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Títulos e textos dentro dos cards */
+  .agendamento-card h3 {
+    margin-top: 0;
+    font-size: 22px;
+    color: #333;
+  }
+  
+  .agendamento-card p {
+    font-size: 16px;
+    color: #555;
+    margin: 10px 0;
+  }
+  
+  /* Estilo dos botões dentro dos cards */
+  button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 24px; /* Botões dentro dos cards maiores */
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    width: 100%; /* Botão ocupa toda a largura disponível no card */
+  }
+  
+  button:hover {
+    background-color: #218838;
+  }
+  
+  .button-recusar {
+    background-color: #dc3545;
+  }
+  
+  .button-recusar:hover {
+    background-color: #c82333;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .agendamento-card {
+      width: 100%; /* Faz os cards ocuparem toda a largura em telas menores */
     }
-
-    .agendamento-titulo {
-        font-size: 20px;
+  
+    /* Ajusta o tamanho do calendário em telas menores */
+    .custom-calendar {
+      padding: 20px; /* Menos padding em telas menores */
+      max-width: 100%; /* Permite que o calendário ocupe toda a largura */
     }
-
-    .agendamento-item {
-        padding: 15px;
-    }
-
-    .agendamento-item p {
-        font-size: 14px;
-    }
-
-    .agendamento-item button {
-        width: 100%;
-        padding: 12px;
-        font-size: 16px;
-    }
-}
+  }
+  
