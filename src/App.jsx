@@ -10,7 +10,8 @@ import CadColetores from './pages/Coletores/CadColetores';
 import Login from './pages/Login/LoginClientes';
 import TextNav from './pages/Exames/TextNav';
 import Atendidos from './pages/Agendamentos/Atendidos';
-import Agendamentos from './pages/Agendamentos/Agendamentos'
+import Agendamentos from './pages/Agendamentos/Agendamentos';
+import AceitaAtendimentos from './pages/Agendamentos/AceitaAtendimentos';
 
 function App() {
   const [atendimentosSalvos, setAtendimentosSalvos] = useState([]);
@@ -31,7 +32,6 @@ function App() {
           <Route path="/cadcoletores" element={<CadColetores />} />
           <Route path="/cadclientes" element={<CadClientes />} />
           <Route path="/login" element={<Login />} />
-
           <Route path="/resultado" element={<BuscarExames />} />
           <Route
             path="/atendidos"
@@ -40,6 +40,10 @@ function App() {
           <Route
             path="/agendamentos"
             element={<Agendamentos adicionarAtendido={adicionarAtendido} />}
+          />
+          <Route
+            path="/aceita-atendimentos" // Nova rota
+            element={<AceitaAtendimentos />}
           />
         </Routes>
       </div>

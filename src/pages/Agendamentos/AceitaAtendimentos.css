@@ -1,0 +1,57 @@
+.aceita-atendimentos-container {
+    padding: 20px;
+  }
+  
+  .pedidos-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .pedido-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    width: calc(100% / 3 - 20px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pedido-card h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .pedido-card p {
+    margin: 5px 0;
+  }
+  
+  .button-aceitar {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-right: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-aceitar:hover {
+    background-color: #45a049;
+  }
+  
+  .button-recusar {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-recusar:hover {
+    background-color: #d32f2f;
+  }
+  
