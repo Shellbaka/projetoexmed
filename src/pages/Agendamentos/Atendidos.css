@@ -27,7 +27,7 @@ h2 {
   border: 2px solid #28a745;
   border-radius: 8px;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-  background-color: #333; /* Alterei para um fundo escuro para contrastar com o texto */
+  background-color: #333; 
   padding: 40px;
   margin: 10px;
   position: relative;
@@ -36,9 +36,9 @@ h2 {
   box-sizing: border-box;
 }
 
-/* Botões de navegação no calendário */
+
 .react-calendar__navigation button {
-  background-color: #28a745; /* Cor verde para os botões */
+  background-color: #28a745; 
   color: white;
   border: none;
   padding: 12px 16px;
@@ -50,7 +50,7 @@ h2 {
 }
 
 .react-calendar__navigation button:hover {
-  background-color: #218838; /* Tom mais escuro para o hover */
+  background-color: #218838; 
 }
 
 /* Botão central no calendário */
