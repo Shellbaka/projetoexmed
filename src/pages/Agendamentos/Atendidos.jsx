@@ -7,7 +7,7 @@ function Atendidos() {
   const [dataSelecionada, setDataSelecionada] = useState(new Date());
   const [atendimentos, setAtendimentos] = useState([]);
 
-  // Carregar atendimentos do localStorage, sem duplicações
+  // Carregar atendimentos do localStorage
   useEffect(() => {
     const dadosSalvos = JSON.parse(localStorage.getItem('atendimentos')) || [];
     setAtendimentos(dadosSalvos);
@@ -36,14 +36,21 @@ function Atendidos() {
           atendimentosFiltrados.map((item) => (
             <div key={item.id} className="atendido-card">
               <h3>{item.tipo}</h3>
-              <p><strong>Status:</strong> {item.status}</p>
-              {item.status === 'Negado' && (
-                <p><strong>Negado por:</strong> {item.motivoNegado}</p>
+              <p>
+                <strong>Status:</strong>{' '}
+                {item.status === 'Atendido'
+                  ? 'Atendimento Concluído'
+                  : 'Atendimento Não Concluído'}
+              </p>
+              {item.status === 'Não Atendido' && item.motivoNegado && (
+                <p>
+                  <strong>Motivo:</strong> {item.motivoNegado}
+                </p>
               )}
               <p><strong>Nome:</strong> {item.nome}</p>
               <p><strong>Data:</strong> {item.data}</p>
               <p><strong>Hora:</strong> {item.hora}</p>
-              <p><strong>Valor:</strong> {item.valor}</p> {/* Campo valor adicionado */}
+              <p><strong>Valor:</strong> {item.valor}</p>
               <p><strong>Telefone:</strong> {item.telefone}</p>
               <p><strong>Endereço:</strong> {item.endereco}</p>
             </div>

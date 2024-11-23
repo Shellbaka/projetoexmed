@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css'; 
+import 'react-calendar/dist/Calendar.css';
 import './Agendamentos.css';
 
 function Agendamentos() {
   const [agendamentos, setAgendamentos] = useState([
+    // Dados de exemplo
     {
       id: 1,
       tipo: 'Vacina Variola',
@@ -83,10 +84,11 @@ function Agendamentos() {
       status: 'Pendente',
       motivoNegado: '',
     },
+    // Outros agendamentos
   ]);
 
-  const [motivoNegado, setMotivoNegado] = useState('');
   const [dataSelecionada, setDataSelecionada] = useState(new Date());
+  const [motivosNegados, setMotivosNegados] = useState({});
 
   const salvarNoLocalStorage = (id, status, motivo = '') => {
     const itemAtualizado = agendamentos.find((item) => item.id === id);
@@ -105,17 +107,22 @@ function Agendamentos() {
     }
   };
 
-  const aceitarAgendamento = (id) => {
-    salvarNoLocalStorage(id, 'Aceito');
+  const marcarComoAtendido = (id) => {
+    salvarNoLocalStorage(id, 'Atendido');
   };
 
-  const recusarAgendamento = (id) => {
-    if (!motivoNegado.trim()) {
-      alert('Por favor, forneça um motivo para recusar.');
+  const marcarComoNaoAtendido = (id) => {
+    const motivo = motivosNegados[id];
+    if (!motivo || motivo.trim() === '') {
+      alert('Por favor, forneça um motivo para marcar como Não Atendido.');
       return;
     }
-    salvarNoLocalStorage(id, 'Negado', motivoNegado);
-    setMotivoNegado('');
+    salvarNoLocalStorage(id, 'Não Atendido', motivo);
+    setMotivosNegados((prev) => ({ ...prev, [id]: '' })); // Limpa o motivo do input após salvar
+  };
+
+  const handleMotivoChange = (id, valor) => {
+    setMotivosNegados((prev) => ({ ...prev, [id]: valor }));
   };
 
   const formatarData = (data) => new Date(data).toISOString().split('T')[0];
@@ -127,7 +134,7 @@ function Agendamentos() {
   return (
     <div className="agendamentos-container">
       <h2>Status de Agendamentos</h2>
-      
+
       <div className="calendario-container">
         <Calendar
           onChange={setDataSelecionada}
@@ -151,31 +158,27 @@ function Agendamentos() {
             <p><strong>Telefone:</strong> {agendamento.telefone}</p>
             <p><strong>Endereço:</strong> {agendamento.endereco}</p>
             <p><strong>Status:</strong> {agendamento.status}</p>
+            {agendamento.motivoNegado && (
+              <p><strong>Motivo:</strong> {agendamento.motivoNegado}</p>
+            )}
 
             {agendamento.status === 'Pendente' && (
               <>
-                <button onClick={() => aceitarAgendamento(agendamento.id)}>Aceitar</button>
-                <button
-                  onClick={() => recusarAgendamento(agendamento.id)}
-                  className={motivoNegado.trim() ? 'button-recusar' : 'button-recusar-disabled'}
-                >
-                  Recusar
+                <button onClick={() => marcarComoAtendido(agendamento.id)} className="button-aceitar">
+                  Atendido
                 </button>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Informe o motivo"
-                    value={motivoNegado}
-                    onChange={(e) => setMotivoNegado(e.target.value)}
-                  />
-                  <button
-                    onClick={() => recusarAgendamento(agendamento.id)}
-                    disabled={!motivoNegado.trim()}
-                    className="confirmar-recusa"
-                  >
-                    Confirmar Recusa
-                  </button>
-                </div>
+                <button
+                  onClick={() => marcarComoNaoAtendido(agendamento.id)}
+                  className="button-recusar"
+                >
+                  Não Atendido
+                </button>
+                <input
+                  type="text"
+                  placeholder="Informe o motivo"
+                  value={motivosNegados[agendamento.id] || ''}
+                  onChange={(e) => handleMotivoChange(agendamento.id, e.target.value)}
+                />
               </>
             )}
           </div>
