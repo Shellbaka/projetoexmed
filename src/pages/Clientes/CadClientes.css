@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: flex-start;
   background-color: #fff;
-  min-height: 100vh; /* Ajuste para altura total */
+  min-height: 100vh; 
 
 }
 
@@ -25,7 +25,6 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   text-align: center;
   margin-top: 1px;
-  /* Opcional: Adiciona espaçamento acima, se necessário */
   flex-grow: 1;
 }
 

@@ -4,12 +4,12 @@
   justify-content: center;
   height: 100vh;
   width: 100%;
-  background-color: #fff; /* Cor de fundo suave para contraste */
+  background-color: #fff; 
 }
 
 .form-box {
   max-width: 400px;
-  width: 100%; /* Para garantir que a caixinha ocupe espaço adequado */
+  width: 100%; 
   padding: 30px;
   background-color: #fff;
   border-radius: 10px;
@@ -33,7 +33,7 @@
 }
 
 .input-field {
-  width: 344px; /* Para ocupar toda a largura da caixinha */
+  width: 344px; 
   padding: 10px 15px;
   margin: 0 auto 10px auto;
   background-color: #ffffff;
@@ -55,8 +55,8 @@
 }
 
 .btn-primary {
-  width: 345px; /* Para ocupar toda a largura da caixinha */
-  margin-left: -1px; /* Move o botão 10px para a esquerda */
+  width: 345px; 
+  margin-left: -1px;
   padding: 12px;
   color: white;
   font-weight: bold;
@@ -96,23 +96,22 @@
 }
 
 .success-message {
-  display: block; /* Garante que a mensagem ocupe espaço */
-  margin: 15px auto; /* Centraliza a mensagem */
-  padding: 10px; /* Espaçamento interno */
-  background-color: #d4edda; /* Cor de fundo verde claro */
-  color: #155724; /* Cor do texto verde escuro */
-  border: 1px solid #c3e6cb; /* Borda verde clara */
-  border-radius: 5px; /* Bordas arredondadas */
-  text-align: center; /* Centraliza o texto */
-  animation: fadeIn 0.5s; /* Animação de aparecimento */
+  display: block; 
+  margin: 15px auto;
+  padding: 10px; 
+  background-color: #d4edda; 
+  color: #155724; 
+  border: 1px solid #c3e6cb; 
+  border-radius: 5px; 
+  text-align: center; 
+  animation: fadeIn 0.5s; 
 }
 
-/* Animação de fadeIn */
 @keyframes fadeIn {
   from {
-    opacity: 0; /* Começa invisível */
+    opacity: 0; 
   }
   to {
-    opacity: 1; /* Termina visível */
+    opacity: 1; 
   }
 }

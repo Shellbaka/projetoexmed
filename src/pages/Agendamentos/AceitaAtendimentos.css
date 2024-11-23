@@ -1,57 +1,122 @@
 .aceita-atendimentos-container {
-    padding: 20px;
-  }
-  
-  .pedidos-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto; 
+}
+
+.pedidos-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; 
+}
+
+.pedido-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  width: calc(33.33% - 20px); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.pedido-card h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.pedido-card p {
+  margin: 5px 0;
+}
+
+.button-aceitar {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-right: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.button-aceitar:hover {
+  background-color: #45a049;
+}
+
+.button-recusar {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.button-recusar:hover {
+  background-color: #d32f2f;
+}
+
+@media (min-width: 1440px) {
   .pedido-card {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    width: calc(100% / 3 - 20px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: calc(33.33% - 20px); 
   }
-  
+}
+
+@media (max-width: 1024px) {
+  .pedido-card {
+      width: calc(50% - 20px); 
+  }
+
   .pedido-card h3 {
-    margin-bottom: 10px;
-    font-size: 18px;
+      font-size: 22px;
   }
-  
+
   .pedido-card p {
-    margin: 5px 0;
+      font-size: 20px;
   }
-  
-  .button-aceitar {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    margin-right: 10px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+  .button-aceitar, .button-recusar {
+    padding: 8px 10px;
+    font-size: 22px;
+}
+}
+
+@media (max-width: 768px) {
+  .pedido-card {
+      width: 100%; 
   }
-  
-  .button-aceitar:hover {
-    background-color: #45a049;
+
+  .pedido-card h3 {
+      font-size: 20px;
   }
-  
-  .button-recusar {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+
+  .pedido-card p {
+      font-size: 18px;
   }
-  
-  .button-recusar:hover {
-    background-color: #d32f2f;
+
+  .button-aceitar, .button-recusar {
+      padding: 8px 10px;
+      font-size: 18px;
   }
-  
+}
+
+@media (max-width: 480px) {
+  .pedido-card {
+      padding: 10px;
+  }
+
+  .pedido-card h3 {
+      font-size: 17px;
+  }
+
+  .pedido-card p {
+      font-size: 15px;
+  }
+
+  .button-aceitar, .button-recusar {
+      padding: 6px 8px;
+      font-size: 17px;
+  }
+}

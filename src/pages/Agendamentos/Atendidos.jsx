@@ -7,7 +7,6 @@ function Atendidos() {
   const [dataSelecionada, setDataSelecionada] = useState(new Date());
   const [atendimentos, setAtendimentos] = useState([]);
 
-  // Carregar atendimentos do localStorage
   useEffect(() => {
     const dadosSalvos = JSON.parse(localStorage.getItem('atendimentos')) || [];
     setAtendimentos(dadosSalvos);

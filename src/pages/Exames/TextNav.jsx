@@ -72,7 +72,7 @@ export default function AgendarExame() {
     const desativarDias = ({ date }) => {
         const hoje = new Date();
         const maxData = new Date();
-        maxData.setDate(hoje.getDate() + 10); // Inclui 10 dias para contabilizar finais de semana.
+        maxData.setDate(hoje.getDate() + 10); 
 
         const diffTime = Math.abs(date - hoje);
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));

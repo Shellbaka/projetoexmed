@@ -3,14 +3,14 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #fff; /* Cor de fundo para a tela */
+  background-color: #fff; 
 }
 
 .confirmacao-box {
   background-color: #fff;
   padding: 30px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar destaque */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
   text-align: center;
   max-width: 400px;
   width: 100%;
@@ -27,7 +27,7 @@
 }
 
 .go-to-login-btn {
-  background-color: #4CAF50; /* Cor do botão */
+  background-color: #4CAF50; 
   color: white;
   padding: 10px 20px;
   border: none;
@@ -38,5 +38,5 @@
 }
 
 .go-to-login-btn:hover {
-  background-color: #45a049; /* Cor ao passar o mouse */
+  background-color: #45a049; 
 }

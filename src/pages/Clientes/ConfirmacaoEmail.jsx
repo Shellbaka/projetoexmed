@@ -6,7 +6,7 @@ function ConfirmacaoEmail() {
   const navigate = useNavigate();
 
   const handleGoToLogin = () => {
-    navigate('/login'); // Redireciona para a tela de login
+    navigate('/login');
   };
 
   return (

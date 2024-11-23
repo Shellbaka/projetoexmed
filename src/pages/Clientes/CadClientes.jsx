@@ -41,9 +41,8 @@ function CadClientes() {
     const senhaInput = event.target.value.slice(0, 8);
     setSenha(senhaInput);
 
-    // Avaliar a força da senha com zxcvbn
     const avaliacao = zxcvbn(senhaInput);
-    setSenhaForca(avaliacao.score); // Define a força da senha (0 a 4)
+    setSenhaForca(avaliacao.score); 
   };
 
   const handleSubmit = async (event) => {
@@ -75,7 +74,6 @@ function CadClientes() {
     }
   };
 
-  // Função para mapear força da senha
   const getSenhaForcaLabel = () => {
     const labels = ['Muito Fraca', 'Fraca', 'Razoável', 'Forte', 'Muito Forte'];
     return labels[senhaForca];

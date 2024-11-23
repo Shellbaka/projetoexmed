@@ -13,10 +13,10 @@
 }
 
 .content h1 {
-    font-size: 64px; /* Tamanho da fonte */
+    font-size: 64px; 
     font-weight: 500;
-    margin-bottom: 5px; /* Quase sem espaçamento inferior */
-    line-height: 1; /* Altura da linha bem compacta */
+    margin-bottom: 5px;
+    line-height: 1; 
     color: #000;
 }
 
@@ -24,15 +24,15 @@
     color: rgb(38, 186, 169);
     font-size: 64px;
     font-weight: 600;
-    line-height: 1; /* Altura da linha mínima */
-    margin-bottom: 0; /* Sem espaço extra abaixo */
+    line-height: 1; 
+    margin-bottom: 0; 
 }
 
 
 .content p {
-    font-size: 20px; /* Fonte maior */
-    margin: 10px 0; /* Menos espaçamento vertical */
-    line-height: 1.4; /* Altura da linha reduzida */
+    font-size: 20px; 
+    margin: 10px 0; 
+    line-height: 1.4; 
     color: #333;
 }
 
@@ -87,8 +87,8 @@
 
     .content p {
         font-size: 18px;
-        margin: 8px 0; /* Ajuste menor em telas pequenas */
-        line-height: 1.4; /* Reduzido para telas menores */
+        margin: 8px 0; 
+        line-height: 1.4; 
     }
 
     .promo-image {

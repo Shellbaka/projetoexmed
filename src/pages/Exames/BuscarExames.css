@@ -1,4 +1,3 @@
-/* Centralização e estilo geral */
 .BuscarExames {
     display: flex;
     flex-direction: column;
@@ -7,36 +6,22 @@
     background-color: #f8f9fa;
     border-radius: 8px;
     padding: 20px;
-    max-width: 800px;
+    max-width: 90%;
     margin: auto;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
 }
 
-/* Caixa de busca */
-.CaixaDeBusca {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 400px;
-}
-
-.CaixaDeBusca input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-/* Tabela de exames */
 .TabelaExames {
     width: 100%;
     margin-top: 20px;
+    overflow-x: auto;
 }
 
 .TabelaExames table {
     width: 100%;
     border-collapse: collapse;
+    min-width: 600px;
 }
 
 .TabelaExames th,
@@ -50,14 +35,12 @@
 .TabelaExames th {
     background-color: #0864b2;
     color: #ffffff;
-    
 }
 
 .TabelaExames td {
     background-color: #ffffff;
 }
 
-/* Botões de ação */
 .btn-cancelar {
     background-color: #d9534f;
     color: #fff;
@@ -72,34 +55,97 @@
     background-color: #c9302c;
 }
 
-/* Estilo dos cabeçalhos */
 .BuscarExames h2 {
     color: #0864b2;
     margin-bottom: 20px;
 }
 
-/* Estilo das mensagens */
 .BuscarExames p {
     font-size: 18px;
     color: black;
 }
 
-/* Responsividade */
-@media (max-width: 480px) {
+@media (min-width: 1440px) {
+    .BuscarExames {
+        max-width: 1200px;
+        padding: 30px;
+    }
+
+    .TabelaExames th, .TabelaExames td {
+        font-size: 16px;
+    }
+
+    .btn-cancelar {
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .BuscarExames {
+        padding: 20px;
+    }
+
+    .TabelaExames th, .TabelaExames td {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 768px) {
     .BuscarExames {
         padding: 15px;
-        width: 90%;
+        max-width: 90%;
+    }
+
+    .BuscarExames h2 {
+        font-size: 20px;
+    }
+
+    .TabelaExames th, .TabelaExames td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .btn-cancelar {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .BuscarExames {
+        padding: 10px;
     }
 
     .BuscarExames h2 {
         font-size: 18px;
     }
 
-    .CaixaDeBusca input {
-        font-size: 14px;
+    .TabelaExames table {
+        min-width: 400px; 
     }
 
     .TabelaExames th, .TabelaExames td {
-        font-size: 14px;
+        font-size: 12px;
+    }
+
+    .btn-cancelar {
+        padding: 5px 8px;
+    }
+}
+
+@media (max-width: 300px) {
+    .BuscarExames h2 {
+        font-size: 16px;
+    }
+
+    .TabelaExames th, .TabelaExames td {
+        font-size: 10px;
+        padding: 4px;
+    }
+
+    .btn-cancelar {
+        font-size: 10px;
+        padding: 4px 6px;
     }
 }

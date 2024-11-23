@@ -5,7 +5,6 @@ import axios from 'axios';
 function ListaColetores({ coletores }) {
   const [compras, setCompras] = useState([]);
 
-  /* Busca as compras pendentes */
   useEffect(() => {
     axios.get('/api/purchases')
       .then((response) => {
@@ -16,7 +15,6 @@ function ListaColetores({ coletores }) {
       });
   }, []);
 
-  /* Atualiza o status de uma compra */
   const handleStatusChange = (purchaseId, status) => {
     axios.post('/updatePurchaseStatus', { purchaseId, status })
       .then((response) => {
