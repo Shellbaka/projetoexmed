@@ -46,7 +46,7 @@
 }
 
 .button-recusar {
-  background-color: #a21106;
+  background-color: #cfcfcf;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -56,7 +56,7 @@
 }
 
 .button-recusar:hover {
-  background-color: #d32f2f;
+  background-color: #cfcfcf;
 }
 
 @media (min-width: 1440px) {
