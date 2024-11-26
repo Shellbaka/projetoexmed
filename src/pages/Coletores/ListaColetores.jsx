@@ -1,33 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import './ListaColetores.css';
-import axios from 'axios';
 
 function ListaColetores({ coletores }) {
   const [compras, setCompras] = useState([]);
 
+  /* Carregar compras do localStorage ao inicializar */
   useEffect(() => {
-    axios.get('/api/purchases')
-      .then((response) => {
-        setCompras(response.data);
-      })
-      .catch((error) => {
-        console.error('Erro ao buscar compras:', error);
-      });
+    const storedCompras = JSON.parse(localStorage.getItem('compras')) || [];
+    setCompras(storedCompras);
   }, []);
 
+  /* Função para adicionar uma nova compra ao localStorage */
+  const addPurchase = (newPurchase) => {
+    const storedCompras = JSON.parse(localStorage.getItem('compras')) || [];
+    const updatedCompras = [...storedCompras, newPurchase];
+    localStorage.setItem('compras', JSON.stringify(updatedCompras));
+    setCompras(updatedCompras);
+    alert('Nova compra adicionada com sucesso!');
+  };
+
+  /* Função para atualizar o status de uma compra */
   const handleStatusChange = (purchaseId, status) => {
-    axios.post('/updatePurchaseStatus', { purchaseId, status })
-      .then((response) => {
-        alert(response.data.message);
-        setCompras((prevCompras) =>
-          prevCompras.map((compra) =>
-            compra.ID_Compra === purchaseId ? { ...compra, Status: status } : compra
-          )
-        );
-      })
-      .catch((error) => {
-        console.error('Erro ao atualizar status:', error);
-      });
+    const updatedCompras = compras.map((compra) =>
+      compra.ID_Compra === purchaseId ? { ...compra, Status: status } : compra
+    );
+    setCompras(updatedCompras);
+    localStorage.setItem('compras', JSON.stringify(updatedCompras));
+    alert(`Status da compra ${purchaseId} atualizado para ${status}.`);
   };
 
   return (
@@ -66,6 +65,18 @@ function ListaColetores({ coletores }) {
           ))}
         </ul>
       )}
+
+      <button
+        onClick={() =>
+          addPurchase({
+            ID_Compra: Date.now(),
+            Nome: 'Nova Compra',
+            Status: 'pendente',
+          })
+        }
+      >
+        Adicionar Compra
+      </button>
     </div>
   );
 }

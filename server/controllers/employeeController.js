@@ -1,90 +1,70 @@
 import { db } from "../db.js";
-import { v4 as uuidv4 } from 'uuid';
-import bcrypt from 'bcrypt';
+import { v4 as uuidv4 } from "uuid";
+import bcrypt from "bcrypt";
 
 export const getEmployees = async (_, res) => {
-  const query = 'SELECT * FROM Funcionario';
+  const query = "SELECT * FROM Funcionario";
 
   try {
     const [data] = await db.query(query);
     return res.status(200).json(data);
   } catch (err) {
-    console.error('Erro ao buscar usuários:', err);
-    return res.status(500).json({ message: 'Erro ao buscar usuários', error: err });
+    console.error("Erro ao buscar usuários:", err);
+    return res.status(500).json({ message: "Erro ao buscar usuários", error: err });
   }
 };
 
 export const getEmployeeById = async (req, res) => {
-  const query = 'SELECT * FROM Funcionario WHERE ID_Funcionario = ?';
+  const query = "SELECT * FROM Funcionario WHERE ID_Funcionario = ?";
   const userId = req.params.id;
 
   try {
     const [data] = await db.query(query, [userId]);
-    
+
     if (data.length === 0) {
-      return res.status(404).json({ message: 'Usuário não encontrado' });
+      return res.status(404).json({ message: "Usuário não encontrado" });
     }
 
     return res.status(200).json(data[0]);
   } catch (err) {
-    console.error('Erro ao buscar usuário por ID:', err);
-    return res.status(500).json({ message: 'Erro ao buscar usuário', error: err });
+    console.error("Erro ao buscar usuário por ID:", err);
+    return res.status(500).json({ message: "Erro ao buscar usuário", error: err });
   }
 };
 
 export const postEmployee = async (req, res) => {
-    const query = `
+  const query = `
       INSERT INTO Funcionario (ID_Funcionario, CPF, Email, Data_Nascimento, Cargo_Funcionario, Nome_Funcionario, Descricao_Setor_Funcionario, Telefone, Genero, Senha)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `;
 
-    const hashedPassword = await bcrypt.hash(req.body.Senha, 10);
+  const hashedPassword = await bcrypt.hash(req.body.Senha, 10);
 
-    const values = [
-        uuidv4(),
-        req.body.CPF,
-        req.body.Email,
-        req.body.Data_Nascimento,
-        req.body.Cargo_Funcionario,
-        req.body.Nome_Funcionario,
-        req.body.Descricao_Setor_Funcionario,
-        req.body.Telefone,
-        req.body.Genero,
-        hashedPassword,
-    ];
-
-    try {
-      const checkEmailQuery = 'SELECT * FROM Funcionario WHERE Email = ?';
-      const [results] = await db.query(checkEmailQuery, [req.body.Email]);
-      
-      if (results.length > 0) {
-        return res.status(400).send('E-mail já está registrado.');
-      }
-  
-      await db.query(query, values);
-      return res.status(200).json("Usuário criado com sucesso. Confira o seu e-mail registrado!");
-  
-    } catch (err) {
-      console.error('Erro na operação:', err);
-      return res.status(500).send('Erro ao processar a solicitação.');
-    }
-};
-
-export const updatePurchaseStatus = async (req, res) => {
-  const { purchaseId, status } = req.body; /* 'status' será 'atendido' ou 'rejeitado' */
-
-  const query = 'UPDATE Compras SET Status = ? WHERE ID_Compra = ?';
+  const values = [
+    uuidv4(),
+    req.body.CPF,
+    req.body.Email,
+    req.body.Data_Nascimento,
+    req.body.Cargo_Funcionario,
+    req.body.Nome_Funcionario,
+    req.body.Descricao_Setor_Funcionario,
+    req.body.Telefone,
+    req.body.Genero,
+    hashedPassword,
+  ];
 
   try {
-    const [result] = await db.query(query, [status, purchaseId]);
+    const checkEmailQuery = "SELECT * FROM Funcionario WHERE Email = ?";
+    const [results] = await db.query(checkEmailQuery, [req.body.Email]);
 
-    if (result.affectedRows === 0) {
-      return res.status(404).json({ message: 'Compra não encontrada.' });
+    if (results.length > 0) {
+      return res.status(400).send("E-mail já está registrado.");
     }
 
-    return res.status(200).json({ message: 'Status da compra atualizado com sucesso.' });
+    await db.query(query, values);
+    return res.status(200).json("Usuário criado com sucesso. Confira o seu e-mail registrado!");
   } catch (err) {
-    console.error('Erro ao atualizar status da compra:', err);
-    return res.status(500).json({ message: 'Erro ao processar a solicitação.', error: err });
+    console.error("Erro na operação:", err);
+    return res.status(500).send("Erro ao processar a solicitação.");
   }
 };
