@@ -23,8 +23,8 @@ function App() {
   return (
     <BrowserRouter
       future={{
-        v7_startTransition: true, // Ativa comportamento futuro do React.startTransition
-        v7_relativeSplatPath: true, // Ativa comportamento futuro para splat paths
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
       }}
     >
       <Header />
@@ -43,7 +43,7 @@ function App() {
             element={<Atendidos atendimentosSalvos={atendimentosSalvos} />}
           />
           <Route
-            path="/agendamento" // Ajustado para a rota solicitada
+            path="/agendamentos"
             element={<Agendamentos adicionarAtendido={adicionarAtendido} />}
           />
           <Route

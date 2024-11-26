@@ -52,7 +52,8 @@ export default function Header() {
           <>
             <Link to="/">Home</Link>
             <Link to="/CadColetores">Cadastro</Link>
-            <Link to="/Atendidos">Pedidos</Link>
+            <Link to="/agendamentos">Agendamentos</Link>
+            <Link to="/atendidos">Finalizados</Link>
             <button className="nav-button" onClick={handleLogout}>
               Sair
             </button>

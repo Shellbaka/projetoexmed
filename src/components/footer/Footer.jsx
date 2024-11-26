@@ -3,7 +3,7 @@ import './Footer.css';
 
 function Footer() {
   return (
-    <footer class="footer">
+    <footer className="footer">
         <p>&copy; 2024 Exmed. Todos os direitos reservados.</p>
     </footer>
   );
