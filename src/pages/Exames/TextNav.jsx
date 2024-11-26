@@ -143,6 +143,7 @@ export default function TextNav() {
             prevLabel="<" // Botão mês anterior
             next2Label=">>" // Botão próximo ano
             prev2Label="<<" // Botão ano anterior
+            locale="pt-BR" // Define o padrão de idioma para "pt-BR"
             formatShortWeekday={(locale, date) => {
               const dias = ["dom", "seg", "ter", "qua", "qui", "sex", "sab"];
               return dias[date.getDay()]; // Sequência correta
