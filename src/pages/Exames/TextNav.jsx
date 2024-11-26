@@ -145,7 +145,7 @@ export default function TextNav() {
             prev2Label="<<" // Botão ano anterior
             formatShortWeekday={(locale, date) => {
               const dias = ["dom", "seg", "ter", "qua", "qui", "sex", "sab"];
-              return dias[date.getDay()]; // Sequência corrigida
+              return dias[date.getDay()]; // Sequência correta
             }}
             className="custom-calendar"
           />
