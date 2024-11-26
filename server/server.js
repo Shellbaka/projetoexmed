@@ -7,6 +7,7 @@ import { getEmployees, postEmployee, getEmployeeById } from "./controllers/emplo
 
 dotenv.config();
 const app = express();
+// eslint-disable-next-line no-undef
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());

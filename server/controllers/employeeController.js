@@ -9,8 +9,8 @@ export const getEmployees = async (_, res) => {
     const [data] = await db.query(query);
     return res.status(200).json(data);
   } catch (err) {
-    console.error("Erro ao buscar usuários:", err);
-    return res.status(500).json({ message: "Erro ao buscar usuários", error: err });
+    console.error("Erro ao buscar funcionários:", err);
+    return res.status(500).json({ message: "Erro ao buscar funcionários", error: err });
   }
 };
 
@@ -22,13 +22,13 @@ export const getEmployeeById = async (req, res) => {
     const [data] = await db.query(query, [userId]);
 
     if (data.length === 0) {
-      return res.status(404).json({ message: "Usuário não encontrado" });
+      return res.status(404).json({ message: "Funcionário não encontrado" });
     }
 
     return res.status(200).json(data[0]);
   } catch (err) {
-    console.error("Erro ao buscar usuário por ID:", err);
-    return res.status(500).json({ message: "Erro ao buscar usuário", error: err });
+    console.error("Erro ao buscar funcionário por ID:", err);
+    return res.status(500).json({ message: "Erro ao buscar funcionário", error: err });
   }
 };
 
@@ -36,7 +36,7 @@ export const postEmployee = async (req, res) => {
   const query = `
       INSERT INTO Funcionario (ID_Funcionario, CPF, Email, Data_Nascimento, Cargo_Funcionario, Nome_Funcionario, Descricao_Setor_Funcionario, Telefone, Genero, Senha)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-      `;
+  `;
 
   const hashedPassword = await bcrypt.hash(req.body.Senha, 10);
 
@@ -61,8 +61,13 @@ export const postEmployee = async (req, res) => {
       return res.status(400).send("E-mail já está registrado.");
     }
 
+    // Restrição para e-mails do funcionário
+    if (!req.body.Email.endsWith("@exmed.com")) {
+      return res.status(400).send("Funcionários só podem usar e-mails do domínio @exmed.com.");
+    }
+
     await db.query(query, values);
-    return res.status(200).json("Usuário criado com sucesso. Confira o seu e-mail registrado!");
+    return res.status(200).json("Funcionário criado com sucesso!");
   } catch (err) {
     console.error("Erro na operação:", err);
     return res.status(500).send("Erro ao processar a solicitação.");
