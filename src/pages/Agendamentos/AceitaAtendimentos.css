@@ -31,7 +31,7 @@
 }
 
 .button-aceitar {
-  background-color: #4caf50;
+  background-color: #00bfa5;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -42,11 +42,11 @@
 }
 
 .button-aceitar:hover {
-  background-color: #45a049;
+  background-color: #e4e8e8;
 }
 
 .button-recusar {
-  background-color: #f44336;
+  background-color: #a21106;
   color: white;
   border: none;
   padding: 10px 15px;
