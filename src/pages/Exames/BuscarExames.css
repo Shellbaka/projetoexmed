@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background-color: #f8f9fa;
+    background-color: #f9f9f9;
     border-radius: 8px;
     padding: 20px;
     max-width: 90%;
@@ -26,43 +26,68 @@
 
 .TabelaExames th,
 .TabelaExames td {
-    border: 1px solid #ddd;
+    border: 1px solid #b2dfdb;
     padding: 12px;
     text-align: center;
-    color: black;
+    color: #333;
 }
 
 .TabelaExames th {
-    background-color: #0864b2;
-    color: #ffffff;
+    background-color: #e0f7f4;
+    color: #03a791;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .TabelaExames td {
     background-color: #ffffff;
 }
 
+.TabelaExames tr:nth-child(even) {
+    background-color: #f4fdfc;
+}
+
 .btn-cancelar {
-    background-color: #d9534f;
+    background-color: #d02d00;
     color: #fff;
     border: none;
     border-radius: 5px;
     padding: 8px 15px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
 .btn-cancelar:hover {
-    background-color: #c9302c;
+    background-color: #b2b5b5;
+}
+
+.btn-voltar {
+    background-color: #00bfa5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn-voltar:hover {
+    background-color: #008e76;
 }
 
 .BuscarExames h2 {
-    color: #0864b2;
+    font-size: 24px;
+    color: #00bfa5;
+    font-weight: bold;
     margin-bottom: 20px;
 }
 
 .BuscarExames p {
     font-size: 18px;
-    color: black;
+    color: #333;
 }
 
 @media (min-width: 1440px) {
@@ -75,7 +100,7 @@
         font-size: 16px;
     }
 
-    .btn-cancelar {
+    .btn-cancelar, .btn-voltar {
         padding: 10px 20px;
     }
 }
@@ -110,6 +135,11 @@
         font-size: 12px;
         padding: 6px 10px;
     }
+
+    .btn-voltar {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -122,7 +152,7 @@
     }
 
     .TabelaExames table {
-        min-width: 400px; 
+        min-width: 400px;
     }
 
     .TabelaExames th, .TabelaExames td {
@@ -131,6 +161,11 @@
 
     .btn-cancelar {
         padding: 5px 8px;
+    }
+
+    .btn-voltar {
+        font-size: 12px;
+        padding: 6px 12px;
     }
 }
 
@@ -147,5 +182,10 @@
     .btn-cancelar {
         font-size: 10px;
         padding: 4px 6px;
+    }
+
+    .btn-voltar {
+        font-size: 10px;
+        padding: 5px 8px;
     }
 }

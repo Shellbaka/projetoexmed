@@ -16,13 +16,13 @@ export default function TextNav() {
   const [diasUteisDisponiveis, setDiasUteisDisponiveis] = useState([]);
   const navigate = useNavigate();
 
-  /* Verifica se uma data é um dia útil */
+  // Verifica se uma data é um dia útil
   const isDiaUtil = (date) => {
     const diaSemana = date.getDay();
     return diaSemana !== 0 && diaSemana !== 6; // Exclui domingos e sábados
   };
 
-  /* Calcula os próximos 30 dias úteis */
+  // Calcula os próximos 30 dias úteis
   const calcularDiasUteis = useCallback(() => {
     const hoje = new Date();
     const diasUteis = [];
@@ -44,7 +44,7 @@ export default function TextNav() {
     setDiasUteisDisponiveis(diasUteis);
   }, [calcularDiasUteis]);
 
-  /* Salva o agendamento no LocalStorage */
+  // Salva o agendamento no LocalStorage
   const salvarAgendamento = () => {
     const novoAgendamento = {
       exame,
@@ -78,24 +78,44 @@ export default function TextNav() {
   };
 
   return (
-    <div className="TextNav">
+    <div className="AgendarExame">
       {step === 1 && (
         <div className="step-container">
-          <h2>Bem-vindo ao Agendamento</h2>
-          <button onClick={() => setStep(2)}>Agendar Exame</button>
-          <button onClick={() => navigate("/resultado")}>Meus Exames</button>
+          <h2 className="agendar-titulo">Bem-vindo ao Agendamento</h2>
+          <button
+            onClick={() => setStep(2)}
+            style={{
+              backgroundColor: "#A4E5D9", // Verde claro da Exmed
+              color: "#333", // Texto em cinza escuro
+            }}
+          >
+            Agendar Exame
+          </button>
+          <button
+            onClick={() => navigate("/resultado")}
+            style={{
+              backgroundColor: "#A4E5D9", // Verde claro da Exmed
+              color: "#333", // Texto em cinza escuro
+            }}
+          >
+            Meus Exames
+          </button>
         </div>
       )}
 
       {step === 2 && (
         <div className="step-container">
-          <h2>Escolha o tipo de exame</h2>
+          <h2 className="agendar-titulo">Escolha o tipo de exame</h2>
           <button
             onClick={() => {
               setExame("Sangue");
               setLaboratorio("Lab Vida Sangue");
               setValor(150);
               avancarEtapa();
+            }}
+            style={{
+              backgroundColor: "#A4E5D9", // Verde claro da Exmed
+              color: "#333", // Texto em cinza escuro
             }}
           >
             Exame de Sangue
@@ -107,6 +127,10 @@ export default function TextNav() {
               setValor(120);
               avancarEtapa();
             }}
+            style={{
+              backgroundColor: "#A4E5D9", // Verde claro da Exmed
+              color: "#333", // Texto em cinza escuro
+            }}
           >
             Urina e Fezes
           </button>
@@ -117,6 +141,10 @@ export default function TextNav() {
               setValor(180);
               avancarEtapa();
             }}
+            style={{
+              backgroundColor: "#A4E5D9", // Verde claro da Exmed
+              color: "#333", // Texto em cinza escuro
+            }}
           >
             Teste de Covid
           </button>
@@ -125,7 +153,7 @@ export default function TextNav() {
 
       {step === 3 && (
         <div className="step-container">
-          <h2>Agendar Data e Hora</h2>
+          <h2 className="agendar-titulo">Agendar Data e Hora</h2>
           <p>Nome do Paciente: {nome}</p>
           <Calendar
             onChange={setSelectedDate}
@@ -155,23 +183,38 @@ export default function TextNav() {
               key={hora}
               onClick={() => setHorario(hora)}
               style={{
-                backgroundColor: horario === hora ? "#0864b2" : "#ccc",
+                backgroundColor: horario === hora ? "#A4E5D9" : "#ccc", // Verde ativo e cinza inativo
+                color: horario === hora ? "#333" : "#333", // Texto em cinza escuro
               }}
             >
               {hora}
             </button>
           ))}
-          <button className="navigation-button" onClick={voltarEtapa}>
+          <button
+            className="navigation-button"
+            onClick={voltarEtapa}
+            style={{
+              backgroundColor: "#A4E5D9", // Verde claro da Exmed
+              color: "#333", // Texto em cinza escuro
+            }}
+          >
             Anterior
           </button>
-          <button className="navigation-button" onClick={avancarEtapa}>
+          <button
+            className="navigation-button"
+            onClick={avancarEtapa}
+            style={{
+              backgroundColor: "#A4E5D9", // Verde claro da Exmed
+              color: "#333", // Texto em cinza escuro
+            }}
+          >
             Próximo
           </button>
         </div>
       )}
 
       {step === 4 && (
-        <div className="step-container">
+        <div className="ConfirmaAgenda">
           <h2>Confirmação de Agendamento</h2>
           <p>Exame: {exame}</p>
           <p>
@@ -183,17 +226,31 @@ export default function TextNav() {
           <p>Horário: {horario}</p>
           <p>Laboratório: {laboratorio}</p>
           <p>Valor: R$ {valor.toFixed(2)}</p>
-          <button className="navigation-button" onClick={voltarEtapa}>
+          <button
+            className="navigation-button"
+            onClick={voltarEtapa}
+            style={{
+              backgroundColor: "#A4E5D9", // Verde claro da Exmed
+              color: "#333", // Texto em cinza escuro
+            }}
+          >
             Anterior
           </button>
-          <button className="navigation-button" onClick={finalizarAgendamento}>
+          <button
+            className="navigation-button"
+            onClick={finalizarAgendamento}
+            style={{
+              backgroundColor: "#A4E5D9", // Verde claro da Exmed
+              color: "#333", // Texto em cinza escuro
+            }}
+          >
             Finalizar
           </button>
         </div>
       )}
 
       {step === 4.5 && (
-        <div className="step-container">
+        <div className="ConfirmaAgenda">
           <h2>Agendamento Realizado!</h2>
           <p>Obrigado, {nome}! Seu agendamento foi concluído com sucesso.</p>
           <p>
@@ -207,7 +264,14 @@ export default function TextNav() {
           <p>Horário: {horario}</p>
           <p>Laboratório: {laboratorio}</p>
           <p>Valor: R$ {valor.toFixed(2)}</p>
-          <button className="navigation-button" onClick={() => navigate("/")}>
+          <button
+            className="navigation-button"
+            onClick={() => navigate("/")}
+            style={{
+              backgroundColor: "#A4E5D9", // Verde claro da Exmed
+              color: "#333", // Texto em cinza escuro
+            }}
+          >
             Voltar ao Início
           </button>
         </div>

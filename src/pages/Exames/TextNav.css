@@ -4,7 +4,7 @@
     align-items: center;
     flex-direction: column;
     text-align: center;
-    background-color: #f8f9fa;
+    background-color: #f9f9f9;
     border-radius: 8px;
     padding: 20px;
     max-width: 600px;
@@ -15,38 +15,26 @@
 
 .agendar-titulo {
     font-size: 24px;
-    color: #0864b2;
+    color: #00bfa5;
     font-weight: bold;
     margin-bottom: 15px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-
-
 .AgendarExame .react-calendar {
     width: 100%;
     max-width: 450px;
-    border: 1px solid #75808b;
+    border: 1px solid #00bfa5;
     border-radius: 12px;
     background-color: #ffffff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin: 20px auto; 
+    margin: 20px auto;
     padding: 5px;
 }
 
-input[type="text"], input[type="time"], select {
-    width: 80%; 
-    max-width: 350px; 
-    padding: 8px;
-    margin: 10px auto; 
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-    
 .AgendarExame .react-calendar__navigation button {
     background: none;
-    color: #007bff;
+    color: #00bfa5;
     font-weight: bold;
     font-size: 16px;
     padding: 10px;
@@ -65,40 +53,50 @@ input[type="text"], input[type="time"], select {
     text-align: center;
     cursor: pointer;
     border-radius: 8px;
-    color: #333;  
+    color: #333;
     transition: background-color 0.2s;
 }
 
 .AgendarExame .react-calendar__tile--active {
-    background-color: #007bff;
+    background-color: #00bfa5;
     color: white;
+    font-weight: bold;
 }
 
 .AgendarExame .react-calendar__tile--now {
-    background-color: #e0f0ff;
-    color: #007bff;
+    background-color: #e0f7f4;
+    color: #00bfa5;
     font-weight: bold;
 }
 
 .AgendarExame .react-calendar__tile:hover {
-    background-color: rgba(0, 123, 255, 0.2);
+    background-color: #b2dfdb;
+    color: #00796b;
 }
 
-
 .AgendarExame .react-calendar__month-view__weekdays {
-    background-color: #f7f7f7;
+    background-color: #e0f7f4;
+    color: #00796b;
     font-weight: bold;
-    border-bottom: 2px solid #007bff;
+    border-bottom: 2px solid #00bfa5;
+    text-transform: uppercase;
+}
+
+.AgendarExame .react-calendar__month-view__days__day--weekend {
+    color: #b0c1c0;
+}
+
+.AgendarExame .react-calendar__month-view__days__day--neighboringMonth {
+    color: #b0bec5;
 }
 
 h2, h3 {
-    color: #0864b2;
+    color: #00bfa5;
     margin-bottom: 10px;
 }
 
-
 button {
-    background-color: #0864b2;
+    background-color: #00bfa5;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -110,9 +108,8 @@ button {
 }
 
 button:hover {
-    background-color: #064c8b;
+    background-color: #008e76;
 }
-
 
 input[type="text"], input[type="time"], select {
     width: 100%;
@@ -123,23 +120,22 @@ input[type="text"], input[type="time"], select {
     font-size: 16px;
 }
 
-
 .ConfirmaAgenda {
-    background-color: #e9f5fe;
-    border: 1px solid #b3daff;
+    background-color: #f9f9f9;
+    border: 1px solid #00bfa5;
     border-radius: 8px;
     padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .ConfirmaAgenda h2 {
-    color: #0864b2;
+    color: #00bfa5;
     margin-bottom: 5px;
 }
 
 .ConfirmaAgenda p {
     color: black;
 }
-
 
 @media (max-width: 480px) {
     .AgendarExame {
